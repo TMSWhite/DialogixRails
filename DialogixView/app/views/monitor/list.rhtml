@@ -1,0 +1,32 @@
+<br/>
+<h1>Listing Dialogix Users</h1>
+
+<table>
+  <tr>
+  <% for column in DialogixUser.content_columns %>
+    <th><%= column.human_name %></th>
+  <% end %>
+  </tr>
+  
+<% for dialogix_user in @dialogix_users %>
+  <tr>
+  <% for column in DialogixUser.content_columns %>
+    <td><%=h dialogix_user.send(column.name) %></td>
+  <% end %>
+    <td> </td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => dialogix_user %></td>
+    <td><%= link_to 'Delete', { :action => 'destroy', :id => dialogix_user }, :confirm => 'Are you sure?', :method => :post %></td>
+    <td> </td>
+    
+    <td><i><%= link_to 'Instrument Sessions', :action => 'show', :id => dialogix_user %></i></td>
+  </tr>
+<% end %>  
+</table>
+
+
+<%= link_to 'Previous page', { :page => @dialogix_user_pages.current.previous } if @dialogix_user_pages.current.previous %>
+<%= link_to 'Next page', { :page => @dialogix_user_pages.current.next } if @dialogix_user_pages.current.next %> 
+
+<br />
+
+<%= link_to 'Create Dialogix User', :action => 'new' %>

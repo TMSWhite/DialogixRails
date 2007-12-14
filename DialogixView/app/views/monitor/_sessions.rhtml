@@ -1,0 +1,15 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<ul>
+<% @dialogix_user_sessions.each do |s| %>
+<li><%= h s.InstrumentSessionFileName %><br>
+  <div style="color: #FF0000; font-size: 10pt">
+    Last Accessed on <%= s.LastAccessTime.strftime("%B %d, %Y at %I:%M %p") %>
+  </div>
+
+</li>
+<% end %>
+</ul>

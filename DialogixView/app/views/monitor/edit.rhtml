@@ -1,0 +1,9 @@
+<h1>Editing Dialogix User</h1>
+
+<% form_tag :action => 'update', :id => @dialogix_user do %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Edit' %>
+<% end %>
+
+<%= link_to 'Show', :action => 'show', :id => @dialogix_user %> |
+<%= link_to 'Back', :action => 'list' %>

@@ -1,0 +1,13 @@
+<h1>Instrument Sessions for User Name: <%= @dialogix_user.user_name %> </h1>
+
+<hr>
+
+<div id="sessions">
+    <%= render(:partial => 'sessions', :object => @dialogix_user_sessions) %>
+</div>
+
+
+
+<%= link_to 'Back', :action => 'list' %>
+
+

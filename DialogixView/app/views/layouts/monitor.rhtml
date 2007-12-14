@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Monitor: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'monitor' %>
+  <%= javascript_include_tag :defaults %>
+</head>
+<body id ="monitor">
+  <div id="banner">
+    <img src="/images/dialogoSmall.jpg"/>
+    <%= @page_title || "Dialogix View" %>
+  </div>
+  <div id="columns">
+     
+    <div id="side">
+    <%= link_to 'Home', :action => 'list' %><br />
+    <a href="http://www..../faq">Questions</a><br />
+    <a href="http://www..../news">News</a><br />
+    <a href="http://www..../contact">Contact</a><br />
+    </div>
+    
+  </div>  
+  <% if flash[:notice] -%>
+    <div id="notice"><%= flash[:notice] %></div>
+  <% end -%>
+  <div id="main">
+    <%= yield  %>
+  </div>
+
+  
+</body>
+</html>
