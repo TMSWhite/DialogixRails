@@ -1,0 +1,2 @@
+module InstrumentSessionHelper
+end
