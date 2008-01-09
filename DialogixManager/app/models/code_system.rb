@@ -1,6 +1,4 @@
 class CodeSystem < ActiveRecord::Base
-  belongs_to :code_system, :class_name => 'CodeSystem', :foreign_key => :code_system_id
-  has_many :code_systems, :class_name => 'CodeSystem', :foreign_key => :code_system_id
   has_many :semantic_mapping_as, :class_name => 'SemanticMappingA', :foreign_key => :code_system_id
   has_many :semantic_mapping_i_q_as, :class_name => 'SemanticMappingIQA', :foreign_key => :code_system_id
   has_many :semantic_mapping_qs, :class_name => 'SemanticMappingQ', :foreign_key => :code_system_id

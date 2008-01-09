@@ -7,11 +7,11 @@ class ItemUsageController < ApplicationController
     config.actions.exclude:update
     config.actions.add:show
     config.action_links.add 'export_csv', :label => 'Export to Excel', :page => true
-    config.list.columns = [:ItemUsageSequence, :QuestionAsAsked, :AnswerString, :AnswerCode,  
-                           :null_flavor, :LanguageCode, :DisplayNum, :GroupNum,  :Time_Stamp, 
+    config.list.columns = [:DisplayNum, :ItemUsageSequence, :QuestionAsAsked, :AnswerString, :AnswerCode,  
+                           :null_flavor, :LanguageCode, :GroupNum,  :Time_Stamp, 
                            :instrument_session, :instrument_content] 
-    config.columns[:DisplayNum].label = "Display"
-    config.columns[:QuestionAsAsked].label = "Question Asked"
+    config.columns[:DisplayNum].label = "Display Num"
+    config.columns[:QuestionAsAsked].label = "Question as Asked"
     config.columns[:LanguageCode].label = "Language"
     config.columns[:AnswerString].label = "Answer"
     config.columns[:AnswerCode].label = "Answer Code"

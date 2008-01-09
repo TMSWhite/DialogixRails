@@ -14,6 +14,6 @@ class InstrumentVersion < ActiveRecord::Base
   validates_inclusion_of :hasLOINCcode, :in => [true, false], :allow_nil => true, :message => ActiveRecord::Errors.default_error_messages[:blank]
   
   def to_label
-    "#{self.VersionSting}"    
+    "#{InstrumentVersion}"    
   end
 end

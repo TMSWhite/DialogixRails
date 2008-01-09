@@ -23,4 +23,8 @@ class InstrumentSession < ActiveRecord::Base
   validates_presence_of :LastAccessTime
   validates_length_of :StatusMsg, :allow_nil => true, :maximum => 255
   validates_numericality_of :MaxVarNum, :allow_nil => true, :only_integer => true
+  
+  def to_label
+    "#{InstrumentSession}"    
+  end
 end
