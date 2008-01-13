@@ -1,5 +1,5 @@
 class Sequence < ActiveRecord::Base
-  validates_presence_of :SEQ_NAME
-  validates_length_of :SEQ_NAME, :allow_nil => false, :maximum => 50
-  validates_numericality_of :SEQ_COUNT, :allow_nil => true, :only_integer => true
+  validates_presence_of :seq_name
+  validates_length_of :seq_name, :allow_nil => false, :maximum => 50
+  validates_numericality_of :seq_count, :allow_nil => true, :only_integer => true
 end

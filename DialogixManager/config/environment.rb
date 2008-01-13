@@ -37,8 +37,8 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_RailsApplication2_session',
-    :secret      => '3076f5cc5019c57f7f806cb25e67af469a5c2a2748811cb28c1dfc7ba098b984a7047a70006492ac432a03192c44da884817ef00129fe251d31ec3fb392371b7'
+    :session_key => '_DialogixManager_session',
+    :secret      => 'bbc394ef2fe95926299f863bc00e601b15bac044a77b8f3f2d698f7ab3aa8bffea70d46d967731355fc40bfdb9e3ce045be629f0b1d4b5f305bdd1ae2b3617fc'
   }
 
   # Use the database for sessions instead of the cookie-based default,
@@ -58,4 +58,3 @@ Rails::Initializer.run do |config|
   # config.active_record.default_timezone = :utc
 end
 ActiveRecord::Base.primary_key_prefix_type = :table_name_with_underscore
-ActiveRecord::Base.pluralize_table_names = false

@@ -1,8 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :instrument_versions
-  map.resources :dialogix_user
-
-   
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -36,4 +32,5 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+  map.connect '', :controller=>'Instrument'
 end

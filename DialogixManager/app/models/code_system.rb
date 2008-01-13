@@ -16,6 +16,6 @@ class CodeSystem < ActiveRecord::Base
   has_many :questions, :through => :semantic_mapping_q_as
   has_many :answers, :through => :semantic_mapping_q_as
   has_many :semantic_mapping_q_as, :through => :semantic_mapping_q_as
-  validates_length_of :CodeSystemName, :allow_nil => true, :maximum => 255
-  validates_length_of :CodeSystemOID, :allow_nil => true, :maximum => 255
+  validates_length_of :name, :allow_nil => true, :maximum => 255
+  validates_length_of :code_system_oid, :allow_nil => true, :maximum => 255
 end

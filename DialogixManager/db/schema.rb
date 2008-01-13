@@ -11,82 +11,81 @@
 
 ActiveRecord::Schema.define(:version => 0) do
 
-  create_table "action_type", :primary_key => "action_type_id", :force => true do |t|
-    t.string "ActionName", :default => "", :null => false
+  create_table "action_types", :primary_key => "action_type_id", :force => true do |t|
+    t.string "name", :default => "", :null => false
   end
 
-  create_table "answer", :primary_key => "answer_id", :force => true do |t|
-    t.boolean "hasLAcode", :default => false
-    t.string  "LAcode"
-  end
-
-  create_table "answer_list", :primary_key => "answer_list_id", :force => true do |t|
-    t.text "Description"
-  end
-
-  create_table "answer_list_content", :primary_key => "answer_list_content_id", :force => true do |t|
-    t.string  "AnswerCode",                   :default => "", :null => false
-    t.integer "AnswerOrder",                                  :null => false
+  create_table "answer_list_contents", :primary_key => "answer_list_content_id", :force => true do |t|
+    t.string  "answer_code",                  :default => "", :null => false
+    t.integer "answer_order",                                 :null => false
     t.integer "answer_list_id", :limit => 20
     t.integer "answer_id",      :limit => 20
   end
 
-  add_index "answer_list_content", ["answer_id"], :name => "FK_answer_list_content_answer_id"
-  add_index "answer_list_content", ["answer_list_id"], :name => "FK_answer_list_content_answer_list_id"
+  add_index "answer_list_contents", ["answer_id"], :name => "FK_answer_list_contents_answer_id"
+  add_index "answer_list_contents", ["answer_list_id"], :name => "FK_answer_list_contents_answer_list_id"
 
-  create_table "answer_list_denormalized", :primary_key => "answer_list_denormalized_id", :force => true do |t|
-    t.integer "AnswerListDenormalizedLength",                               :null => false
-    t.string  "LanguageCode",                 :limit => 2,  :default => "", :null => false
-    t.text    "AnswerListDenormalizedString",               :default => "", :null => false
-    t.integer "answer_list_id",               :limit => 20
+  create_table "answer_list_denormalizeds", :primary_key => "answer_list_denormalized_id", :force => true do |t|
+    t.integer "answer_list_denormalized_length",                               :null => false
+    t.string  "language_code",                   :limit => 2,  :default => "", :null => false
+    t.text    "name",                                          :default => "", :null => false
+    t.integer "answer_list_id",                  :limit => 20
   end
 
-  add_index "answer_list_denormalized", ["answer_list_id"], :name => "FK_answer_list_denormalized_answer_list_id"
+  add_index "answer_list_denormalizeds", ["answer_list_id"], :name => "FK_answer_list_denormalizeds_answer_list_id"
 
-  create_table "answer_localized", :primary_key => "answer_localized_id", :force => true do |t|
-    t.text    "AnswerString"
-    t.integer "AnswerLength",                               :null => false
-    t.string  "LanguageCode", :limit => 2,  :default => "", :null => false
-    t.integer "answer_id",    :limit => 20
+  create_table "answer_lists", :primary_key => "answer_list_id", :force => true do |t|
   end
 
-  add_index "answer_localized", ["answer_id"], :name => "FK_answer_localized_answer_id"
-
-  create_table "code_system", :primary_key => "code_system_id", :force => true do |t|
-    t.string "CodeSystemName"
-    t.string "CodeSystemOID"
+  create_table "answer_localizeds", :primary_key => "answer_localized_id", :force => true do |t|
+    t.text    "name"
+    t.integer "answer_length",                               :null => false
+    t.string  "language_code", :limit => 2,  :default => "", :null => false
+    t.integer "answer_id",     :limit => 20
   end
 
-  create_table "data_element", :primary_key => "data_element_id", :force => true do |t|
-    t.text     "Comments"
-    t.datetime "Time_Stamp"
-    t.integer  "GroupNum"
-    t.integer  "WhenAsMS",              :limit => 20, :null => false
-    t.text     "QuestionAsAsked"
-    t.integer  "DisplayNum",                          :null => false
-    t.text     "AnswerString"
-    t.integer  "itemVisits"
+  add_index "answer_localizeds", ["answer_id"], :name => "FK_answer_localizeds_answer_id"
+
+  create_table "answers", :primary_key => "answer_id", :force => true do |t|
+    t.boolean "has_la_code", :default => false
+    t.string  "la_code"
+  end
+
+  create_table "code_systems", :primary_key => "code_system_id", :force => true do |t|
+    t.string "name"
+    t.string "code_system_oid"
+  end
+
+  create_table "data_elements", :primary_key => "data_element_id", :force => true do |t|
+    t.text     "comments"
+    t.datetime "time_stamp"
+    t.integer  "group_num"
+    t.integer  "when_as_ms",            :limit => 20, :null => false
+    t.text     "question_as_asked"
+    t.integer  "display_num",                         :null => false
+    t.text     "answer_string"
+    t.integer  "item_visits"
     t.integer  "null_flavor_id",                      :null => false
-    t.integer  "responseLatency"
-    t.string   "LanguageCode",          :limit => 2
-    t.integer  "responseDuration"
+    t.integer  "response_latency"
+    t.string   "language_code",         :limit => 2
+    t.integer  "response_duration"
     t.integer  "answer_id",             :limit => 20
-    t.text     "AnswerCode"
-    t.integer  "DataElementSequence",                 :null => false
-    t.integer  "instrument_content_id", :limit => 20
+    t.text     "answer_code"
+    t.integer  "data_element_sequence",               :null => false
     t.integer  "instrument_session_id", :limit => 20
+    t.integer  "instrument_content_id", :limit => 20
     t.integer  "var_name_id",           :limit => 20
   end
 
-  add_index "data_element", ["instrument_content_id"], :name => "FK_data_element_instrument_content_id"
-  add_index "data_element", ["var_name_id"], :name => "FK_data_element_var_name_id"
-  add_index "data_element", ["instrument_session_id"], :name => "FK_data_element_instrument_session_id"
+  add_index "data_elements", ["var_name_id"], :name => "FK_data_elements_var_name_id"
+  add_index "data_elements", ["instrument_content_id"], :name => "FK_data_elements_instrument_content_id"
+  add_index "data_elements", ["instrument_session_id"], :name => "FK_data_elements_instrument_session_id"
 
-  create_table "data_type", :primary_key => "data_type_id", :force => true do |t|
-    t.string "DataType", :default => "", :null => false
+  create_table "data_types", :primary_key => "data_type_id", :force => true do |t|
+    t.string "name", :default => "", :null => false
   end
 
-  create_table "dialogix_user", :primary_key => "dialogix_user_id", :force => true do |t|
+  create_table "dialogix_users", :primary_key => "dialogix_user_id", :force => true do |t|
     t.string "first_name", :default => "", :null => false
     t.string "last_name",  :default => "", :null => false
     t.string "user_name",  :default => "", :null => false
@@ -95,428 +94,423 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string "pwd",        :default => "", :null => false
   end
 
-  create_table "display_type", :primary_key => "display_type_id", :force => true do |t|
-    t.string  "SASinformat",   :default => "",    :null => false
-    t.string  "SASformat",     :default => "",    :null => false
-    t.string  "DisplayType",   :default => "",    :null => false
-    t.string  "SPSSlevel",     :default => "",    :null => false
-    t.string  "SPSSformat",    :default => "",    :null => false
-    t.string  "LOINCscale",    :default => "",    :null => false
-    t.boolean "HasAnswerList", :default => false
+  create_table "display_types", :primary_key => "display_type_id", :force => true do |t|
+    t.string  "sas_informat",    :default => "",    :null => false
+    t.string  "sas_format",      :default => "",    :null => false
+    t.string  "name",            :default => "",    :null => false
+    t.string  "spss_level",      :default => "",    :null => false
+    t.string  "spss_format",     :default => "",    :null => false
+    t.string  "loinc_scale",     :default => "",    :null => false
+    t.boolean "has_answer_list", :default => false
     t.integer "data_type_id"
   end
 
-  add_index "display_type", ["data_type_id"], :name => "FK_display_type_data_type_id"
+  add_index "display_types", ["data_type_id"], :name => "FK_display_types_data_type_id"
 
-  create_table "function_name", :primary_key => "function_name_id", :force => true do |t|
-    t.text   "Syntax",      :default => "", :null => false
-    t.text   "Description", :default => "", :null => false
-    t.string "Name",        :default => "", :null => false
-    t.text   "Definition",  :default => "", :null => false
+  create_table "function_names", :primary_key => "function_name_id", :force => true do |t|
+    t.text   "syntax",      :default => "", :null => false
+    t.text   "description", :default => "", :null => false
+    t.string "name",        :default => "", :null => false
+    t.text   "definition",  :default => "", :null => false
   end
 
-  create_table "help", :primary_key => "help_id", :force => true do |t|
+  create_table "help_localizeds", :primary_key => "help_localized_id", :force => true do |t|
+    t.string  "language_code", :limit => 2,  :default => "", :null => false
+    t.text    "name"
+    t.integer "help_id",       :limit => 20
   end
 
-  create_table "help_localized", :primary_key => "help_localized_id", :force => true do |t|
-    t.string  "LanguageCode", :limit => 2,  :default => "", :null => false
-    t.text    "HelpString"
-    t.integer "help_id",      :limit => 20
+  add_index "help_localizeds", ["help_id"], :name => "FK_help_localizeds_help_id"
+
+  create_table "helps", :primary_key => "help_id", :force => true do |t|
   end
 
-  add_index "help_localized", ["help_id"], :name => "FK_help_localized_help_id"
-
-  create_table "instrument", :primary_key => "instrument_id", :force => true do |t|
-    t.text   "InstrumentDescription"
-    t.string "InstrumentName",        :default => "", :null => false
-  end
-
-  create_table "instrument_content", :primary_key => "instrument_content_id", :force => true do |t|
-    t.text    "DefaultAnswer"
-    t.string  "SPSSformat"
-    t.text    "Concept"
-    t.string  "SASinformat"
-    t.integer "isReadOnly",                                          :null => false
-    t.string  "SASformat"
-    t.integer "GroupNum",                                            :null => false
-    t.integer "ItemSequence",                                        :null => false
-    t.string  "ItemActionType"
-    t.integer "isRequired",                                          :null => false
-    t.integer "isMessage",                                           :null => false
-    t.text    "DisplayName"
-    t.text    "FormatMask"
-    t.text    "Relevance",                           :default => "", :null => false
+  create_table "instrument_contents", :primary_key => "instrument_content_id", :force => true do |t|
+    t.text    "default_answer"
+    t.string  "spss_format"
+    t.text    "concept"
+    t.string  "sas_informat"
+    t.integer "is_read_only",                                        :null => false
+    t.string  "sas_format"
+    t.integer "group_num",                                           :null => false
+    t.integer "item_sequence",                                       :null => false
+    t.string  "item_action_type"
+    t.integer "is_required",                                         :null => false
+    t.integer "is_message",                                          :null => false
+    t.text    "display_name"
+    t.text    "format_mask"
+    t.text    "relevance",                           :default => "", :null => false
+    t.integer "item_id",               :limit => 20
+    t.integer "display_type_id"
     t.integer "help_id",               :limit => 20
     t.integer "instrument_version_id", :limit => 20
-    t.integer "item_id",               :limit => 20
     t.integer "var_name_id",           :limit => 20
-    t.integer "display_type_id"
     t.integer "readback_id",           :limit => 20
   end
 
-  add_index "instrument_content", ["var_name_id"], :name => "FK_instrument_content_var_name_id"
-  add_index "instrument_content", ["display_type_id"], :name => "FK_instrument_content_display_type_id"
-  add_index "instrument_content", ["help_id"], :name => "FK_instrument_content_help_id"
-  add_index "instrument_content", ["instrument_version_id"], :name => "FK_instrument_content_instrument_version_id"
-  add_index "instrument_content", ["readback_id"], :name => "FK_instrument_content_readback_id"
-  add_index "instrument_content", ["item_id"], :name => "FK_instrument_content_item_id"
+  add_index "instrument_contents", ["var_name_id"], :name => "FK_instrument_contents_var_name_id"
+  add_index "instrument_contents", ["readback_id"], :name => "FK_instrument_contents_readback_id"
+  add_index "instrument_contents", ["help_id"], :name => "FK_instrument_contents_help_id"
+  add_index "instrument_contents", ["display_type_id"], :name => "FK_instrument_contents_display_type_id"
+  add_index "instrument_contents", ["item_id"], :name => "FK_instrument_contents_item_id"
+  add_index "instrument_contents", ["instrument_version_id"], :name => "FK_instrument_contents_instrument_version_id"
 
-  create_table "instrument_hash", :primary_key => "instrument_hash_id", :force => true do |t|
-    t.integer "NumEquations",                     :null => false
-    t.integer "NumQuestions",                     :null => false
-    t.string  "VarListMD5",       :default => "", :null => false
-    t.integer "NumBranches",                      :null => false
-    t.integer "NumLanguages",                     :null => false
-    t.integer "NumTailorings",                    :null => false
-    t.integer "NumVars",                          :null => false
-    t.integer "NumGroups"
-    t.integer "NumInstructions",                  :null => false
-    t.string  "InstrumentMD5",    :default => "", :null => false
+  create_table "instrument_hashes", :primary_key => "instrument_hash_id", :force => true do |t|
+    t.integer "num_equations",                    :null => false
+    t.integer "num_questions",                    :null => false
+    t.string  "var_list_md5",     :default => "", :null => false
+    t.integer "num_branches",                     :null => false
+    t.integer "num_languages",                    :null => false
+    t.integer "num_tailorings",                   :null => false
+    t.integer "num_vars",                         :null => false
+    t.integer "num_groups"
+    t.integer "num_instructions",                 :null => false
+    t.string  "instrument_md5",   :default => "", :null => false
     t.integer "language_list_id"
   end
 
-  add_index "instrument_hash", ["language_list_id"], :name => "FK_instrument_hash_language_list_id"
+  add_index "instrument_hashes", ["language_list_id"], :name => "FK_instrument_hashes_language_list_id"
 
-  create_table "instrument_header", :primary_key => "instrument_header_id", :force => true do |t|
-    t.text    "HeaderValue",                         :default => "", :null => false
+  create_table "instrument_headers", :primary_key => "instrument_header_id", :force => true do |t|
+    t.text    "name",                                :default => "", :null => false
     t.integer "instrument_version_id", :limit => 20
     t.integer "reserved_word_id"
   end
 
-  add_index "instrument_header", ["reserved_word_id"], :name => "FK_instrument_header_reserved_word_id"
-  add_index "instrument_header", ["instrument_version_id"], :name => "FK_instrument_header_instrument_version_id"
+  add_index "instrument_headers", ["instrument_version_id"], :name => "FK_instrument_headers_instrument_version_id"
+  add_index "instrument_headers", ["reserved_word_id"], :name => "FK_instrument_headers_reserved_word_id"
 
-  create_table "instrument_load_error", :primary_key => "instrument_load_error_id", :force => true do |t|
-    t.integer "sourceColumn"
-    t.text    "sourceText"
-    t.integer "sourceRow"
-    t.integer "logLevel"
-    t.text    "ErrorMessage"
+  create_table "instrument_load_errors", :primary_key => "instrument_load_error_id", :force => true do |t|
+    t.integer "source_column"
+    t.text    "source_text"
+    t.integer "source_row"
+    t.integer "log_level"
+    t.text    "error_message"
     t.integer "instrument_version_id", :limit => 20
   end
 
-  add_index "instrument_load_error", ["instrument_version_id"], :name => "FK_instrument_load_error_instrument_version_id"
+  add_index "instrument_load_errors", ["instrument_version_id"], :name => "FK_instrument_load_errors_instrument_version_id"
 
-  create_table "instrument_session", :primary_key => "instrument_session_id", :force => true do |t|
-    t.integer  "Finished"
-    t.integer  "NumVars"
-    t.datetime "StartTime",                                               :null => false
-    t.integer  "NumGroups"
-    t.integer  "InstrumentStartingGroup",                                 :null => false
-    t.text     "InstrumentSessionFileName"
-    t.integer  "CurrentVarNum",                                           :null => false
-    t.string   "IPAddress"
-    t.string   "LanguageCode",                            :default => "", :null => false
-    t.string   "Browser"
-    t.integer  "MaxGroup"
-    t.integer  "CurrentGroup",                                            :null => false
-    t.integer  "DisplayNum",                                              :null => false
-    t.datetime "LastAccessTime",                                          :null => false
-    t.string   "StatusMsg"
-    t.integer  "MaxVarNum"
-    t.integer  "action_type_id"
-    t.integer  "instrument_version_id",     :limit => 20
-    t.integer  "instrument_id",             :limit => 20
+  create_table "instrument_sessions", :primary_key => "instrument_session_id", :force => true do |t|
+    t.integer  "finished"
+    t.integer  "num_vars"
+    t.datetime "start_time",                                                 :null => false
+    t.integer  "num_groups"
+    t.integer  "instrument_starting_group",                                  :null => false
+    t.text     "instrument_session_file_name"
+    t.integer  "current_var_name",                                           :null => false
+    t.string   "ip_address"
+    t.string   "language_code",                              :default => "", :null => false
+    t.string   "browser"
+    t.integer  "max_group"
+    t.integer  "current_group",                                              :null => false
+    t.integer  "display_num",                                                :null => false
+    t.datetime "last_access_time",                                           :null => false
+    t.string   "status_msg"
+    t.integer  "max_var_num"
+    t.integer  "instrument_id",                :limit => 20
+    t.integer  "instrument_version_id",        :limit => 20
     t.integer  "dialogix_user_id"
+    t.integer  "action_type_id"
   end
 
-  add_index "instrument_session", ["instrument_id"], :name => "FK_instrument_session_instrument_id"
-  add_index "instrument_session", ["action_type_id"], :name => "FK_instrument_session_action_type_id"
-  add_index "instrument_session", ["dialogix_user_id"], :name => "FK_instrument_session_dialogix_user_id"
-  add_index "instrument_session", ["instrument_version_id"], :name => "FK_instrument_session_instrument_version_id"
+  add_index "instrument_sessions", ["dialogix_user_id"], :name => "FK_instrument_sessions_dialogix_user_id"
+  add_index "instrument_sessions", ["action_type_id"], :name => "FK_instrument_sessions_action_type_id"
+  add_index "instrument_sessions", ["instrument_id"], :name => "FK_instrument_sessions_instrument_id"
+  add_index "instrument_sessions", ["instrument_version_id"], :name => "FK_instrument_sessions_instrument_version_id"
 
-  create_table "instrument_version", :primary_key => "instrument_version_id", :force => true do |t|
-    t.string   "LOINC_NUM"
-    t.datetime "CreationTimeStamp",                                          :null => false
-    t.string   "VersionString",                           :default => "",    :null => false
-    t.text     "InstrumentVersionFileName"
-    t.integer  "InstrumentStatus"
-    t.boolean  "hasLOINCcode",                            :default => false
-    t.text     "InstrumentNotes"
-    t.integer  "instrument_hash_id",        :limit => 20
-    t.integer  "instrument_id",             :limit => 20
+  create_table "instrument_versions", :primary_key => "instrument_version_id", :force => true do |t|
+    t.string   "loinc_num"
+    t.datetime "creation_time_stamp",                                           :null => false
+    t.string   "name",                                       :default => "",    :null => false
+    t.text     "instrument_version_file_name"
+    t.integer  "instrument_status"
+    t.boolean  "has_loinc_code",                             :default => false
+    t.text     "instrument_notes"
+    t.integer  "instrument_id",                :limit => 20
+    t.integer  "instrument_hash_id",           :limit => 20
   end
 
-  add_index "instrument_version", ["instrument_hash_id"], :name => "FK_instrument_version_instrument_hash_id"
-  add_index "instrument_version", ["instrument_id"], :name => "FK_instrument_version_instrument_id"
+  add_index "instrument_versions", ["instrument_id"], :name => "FK_instrument_versions_instrument_id"
+  add_index "instrument_versions", ["instrument_hash_id"], :name => "FK_instrument_versions_instrument_hash_id"
 
-  create_table "item", :primary_key => "item_id", :force => true do |t|
-    t.string  "ItemType",                     :default => "",    :null => false
-    t.boolean "hasLOINCcode",                 :default => false
-    t.string  "LOINC_NUM"
-    t.integer "answer_list_id", :limit => 20
+  create_table "instruments", :primary_key => "instrument_id", :force => true do |t|
+    t.text   "instrument_description"
+    t.string "name",                  :default => "", :null => false
+  end
+
+  create_table "item_usages", :primary_key => "item_usage_id", :force => true do |t|
+    t.integer  "null_flavor_id",                      :null => false
+    t.text     "comments"
+    t.integer  "item_usage_sequence",                 :null => false
+    t.datetime "time_stamp"
+    t.integer  "group_num"
+    t.integer  "when_as_ms",            :limit => 20, :null => false
+    t.text     "question_as_asked"
+    t.integer  "display_num",                         :null => false
+    t.text     "answer_string"
+    t.integer  "item_visits"
+    t.integer  "response_latency"
+    t.string   "language_code",         :limit => 2
+    t.integer  "response_duration"
+    t.integer  "answer_id",             :limit => 20
+    t.text     "answer_code"
+    t.integer  "data_element_sequence",               :null => false
+    t.integer  "instrument_session_id", :limit => 20
+    t.integer  "instrument_content_id", :limit => 20
+    t.integer  "var_name_id",           :limit => 20
+  end
+
+  add_index "item_usages", ["instrument_content_id"], :name => "FK_item_usages_instrument_content_id"
+  add_index "item_usages", ["instrument_session_id"], :name => "FK_item_usages_instrument_session_id"
+  add_index "item_usages", ["var_name_id"], :name => "FK_item_usages_var_name_id"
+
+  create_table "items", :primary_key => "item_id", :force => true do |t|
+    t.string  "item_type",                    :default => "",    :null => false
+    t.boolean "has_loinc_code",               :default => false
+    t.string  "loinc_num"
     t.integer "question_id",    :limit => 20
+    t.integer "answer_list_id", :limit => 20
     t.integer "data_type_id"
     t.integer "validation_id",  :limit => 20
   end
 
-  add_index "item", ["question_id"], :name => "FK_item_question_id"
-  add_index "item", ["answer_list_id"], :name => "FK_item_answer_list_id"
-  add_index "item", ["data_type_id"], :name => "FK_item_data_type_id"
-  add_index "item", ["validation_id"], :name => "FK_item_validation_id"
+  add_index "items", ["validation_id"], :name => "FK_items_validation_id"
+  add_index "items", ["data_type_id"], :name => "FK_items_data_type_id"
+  add_index "items", ["question_id"], :name => "FK_items_question_id"
+  add_index "items", ["answer_list_id"], :name => "FK_items_answer_list_id"
 
-  create_table "item_usage", :primary_key => "item_usage_id", :force => true do |t|
-    t.integer  "null_flavor_id",                      :null => false
-    t.text     "Comments"
-    t.integer  "ItemUsageSequence",                   :null => false
-    t.datetime "Time_Stamp"
-    t.integer  "GroupNum"
-    t.integer  "WhenAsMS",              :limit => 20, :null => false
-    t.text     "QuestionAsAsked"
-    t.integer  "DisplayNum",                          :null => false
-    t.text     "AnswerString"
-    t.integer  "itemVisits"
-    t.integer  "responseLatency"
-    t.string   "LanguageCode",          :limit => 2
-    t.integer  "responseDuration"
-    t.integer  "answer_id",             :limit => 20
-    t.text     "AnswerCode"
-    t.integer  "DataElementSequence",                 :null => false
-    t.integer  "instrument_content_id", :limit => 20
-    t.integer  "var_name_id",           :limit => 20
-    t.integer  "instrument_session_id", :limit => 20
+  create_table "language_lists", :primary_key => "language_list_id", :force => true do |t|
+    t.text "name", :default => "", :null => false
   end
 
-  add_index "item_usage", ["var_name_id"], :name => "FK_item_usage_var_name_id"
-  add_index "item_usage", ["instrument_content_id"], :name => "FK_item_usage_instrument_content_id"
-  add_index "item_usage", ["instrument_session_id"], :name => "FK_item_usage_instrument_session_id"
-
-  create_table "language_list", :primary_key => "language_list_id", :force => true do |t|
-    t.text "LanguageList", :default => "", :null => false
-  end
-
-  create_table "loinc_instrument_request", :primary_key => "loinc_instrument_request_id", :force => true do |t|
-    t.string  "LOINCsystem"
-    t.string  "LOINCscale"
-    t.string  "LOINCproperty"
-    t.string  "LOINCmethod"
-    t.string  "LOINC_NUM"
-    t.string  "LOINCtimeAspect"
+  create_table "loinc_instrument_requests", :primary_key => "loinc_instrument_request_id", :force => true do |t|
+    t.string  "loinc_system"
+    t.string  "loinc_scale"
+    t.string  "loinc_property"
+    t.string  "loinc_method"
+    t.string  "loinc_num"
+    t.string  "loinc_time_aspect"
     t.integer "instrument_version_id", :limit => 20
   end
 
-  add_index "loinc_instrument_request", ["instrument_version_id"], :name => "FK_loinc_instrument_request_instrument_version_id"
+  add_index "loinc_instrument_requests", ["instrument_version_id"], :name => "FK_loinc_instrument_requests_instrument_version_id"
 
-  create_table "loinc_item_request", :primary_key => "loinc_item_request_id", :force => true do |t|
-    t.string  "LOINCsystem"
-    t.string  "LOINCscale"
-    t.string  "LOINCproperty"
-    t.string  "LOINCmethod"
-    t.string  "LOINC_NUM"
-    t.string  "LOINCtimeAspect"
-    t.integer "item_id",         :limit => 20
+  create_table "loinc_item_requests", :primary_key => "loinc_item_request_id", :force => true do |t|
+    t.string  "loinc_system"
+    t.string  "loinc_scale"
+    t.string  "loinc_property"
+    t.string  "loinc_method"
+    t.string  "loinc_num"
+    t.string  "loinc_time_aspect"
+    t.integer "item_id",           :limit => 20
   end
 
-  add_index "loinc_item_request", ["item_id"], :name => "FK_loinc_item_request_item_id"
+  add_index "loinc_item_requests", ["item_id"], :name => "FK_loinc_item_requests_item_id"
 
-  create_table "null_flavor", :primary_key => "null_flavor_id", :force => true do |t|
-    t.string "NullFlavor",  :default => "", :null => false
-    t.string "DisplayName", :default => "", :null => false
-    t.text   "Description"
+  create_table "null_flavors", :primary_key => "null_flavor_id", :force => true do |t|
+    t.string "name",         :default => "", :null => false
+    t.string "display_name", :default => "", :null => false
+    t.text   "description"
   end
 
-  create_table "page_usage", :primary_key => "page_usage_id", :force => true do |t|
-    t.integer  "pageDuration"
-    t.integer  "serverDuration"
-    t.string   "LanguageCode",          :limit => 2,  :default => "", :null => false
-    t.integer  "loadDuration"
-    t.integer  "FromGroupNum",                                        :null => false
-    t.integer  "networkDuration"
-    t.integer  "DisplayNum",                                          :null => false
-    t.integer  "pageVisits"
-    t.integer  "totalDuration"
-    t.string   "IPAddress"
-    t.datetime "Time_Stamp",                                          :null => false
-    t.string   "Browser"
-    t.string   "StatusMsg"
-    t.integer  "ToGroupNum",                                          :null => false
-    t.integer  "PageUsageSequence",                                   :null => false
-    t.integer  "action_type_id"
+  create_table "page_usage_events", :primary_key => "page_usage_event_id", :force => true do |t|
+    t.datetime "time_stamp"
+    t.integer  "duration",                                                :null => false
+    t.integer  "page_usage_event_sequence",                               :null => false
+    t.string   "value1",                                  :default => "", :null => false
+    t.string   "event_type",                              :default => "", :null => false
+    t.string   "value2",                                  :default => "", :null => false
+    t.string   "gui_action_type",                         :default => "", :null => false
+    t.string   "var_name",                                :default => "", :null => false
+    t.integer  "page_usage_id",             :limit => 20
+  end
+
+  add_index "page_usage_events", ["page_usage_id"], :name => "FK_page_usage_events_page_usage_id"
+
+  create_table "page_usages", :primary_key => "page_usage_id", :force => true do |t|
+    t.integer  "page_duration"
+    t.integer  "server_duration"
+    t.integer  "page_usage_sequence",                                 :null => false
+    t.integer  "load_duration"
+    t.datetime "time_stamp",                                          :null => false
+    t.integer  "network_duration"
+    t.integer  "to_group_num",                                        :null => false
+    t.integer  "page_visits"
+    t.string   "status_msg"
+    t.integer  "used_jvm_memory",       :limit => 20
+    t.string   "ip_address"
+    t.integer  "from_group_num",                                      :null => false
+    t.string   "browser"
+    t.integer  "total_duration"
+    t.integer  "display_num",                                         :null => false
+    t.string   "language_code",         :limit => 2,  :default => "", :null => false
     t.integer  "instrument_session_id", :limit => 20
+    t.integer  "action_type_id"
   end
 
-  add_index "page_usage", ["instrument_session_id"], :name => "FK_page_usage_instrument_session_id"
-  add_index "page_usage", ["action_type_id"], :name => "FK_page_usage_action_type_id"
+  add_index "page_usages", ["instrument_session_id"], :name => "FK_page_usages_instrument_session_id"
+  add_index "page_usages", ["action_type_id"], :name => "FK_page_usages_action_type_id"
 
-  create_table "page_usage_event", :primary_key => "page_usage_event_id", :force => true do |t|
-    t.datetime "Time_Stamp"
-    t.integer  "duration",                                             :null => false
-    t.integer  "PageUsageEventSequence",                               :null => false
-    t.string   "value1",                               :default => "", :null => false
-    t.string   "eventType",                            :default => "", :null => false
-    t.string   "value2",                               :default => "", :null => false
-    t.string   "GuiActionType",                        :default => "", :null => false
-    t.string   "VarName",                              :default => "", :null => false
-    t.integer  "page_usage_id",          :limit => 20
+  create_table "question_localizeds", :primary_key => "question_localized_id", :force => true do |t|
+    t.string  "language_code",   :limit => 2,  :default => "", :null => false
+    t.text    "name"
+    t.integer "question_length",                               :null => false
+    t.integer "question_id",     :limit => 20
   end
 
-  add_index "page_usage_event", ["page_usage_id"], :name => "FK_page_usage_event_page_usage_id"
+  add_index "question_localizeds", ["question_id"], :name => "FK_question_localizeds_question_id"
 
-  create_table "question", :primary_key => "question_id", :force => true do |t|
+  create_table "questions", :primary_key => "question_id", :force => true do |t|
   end
 
-  create_table "question_localized", :primary_key => "question_localized_id", :force => true do |t|
-    t.string  "LanguageCode",   :limit => 2,  :default => "", :null => false
-    t.text    "QuestionString"
-    t.integer "questionLength",                               :null => false
-    t.integer "question_id",    :limit => 20
+  create_table "readback_localizeds", :primary_key => "readback_localized_id", :force => true do |t|
+    t.string  "language_code", :limit => 2,  :default => "", :null => false
+    t.text    "name"
+    t.integer "readback_id",   :limit => 20
   end
 
-  add_index "question_localized", ["question_id"], :name => "FK_question_localized_question_id"
+  add_index "readback_localizeds", ["readback_id"], :name => "FK_readback_localizeds_readback_id"
 
-  create_table "readback", :primary_key => "readback_id", :force => true do |t|
+  create_table "readbacks", :primary_key => "readback_id", :force => true do |t|
   end
 
-  create_table "readback_localized", :primary_key => "readback_localized_id", :force => true do |t|
-    t.string  "LanguageCode",   :limit => 2,  :default => "", :null => false
-    t.text    "ReadbackString"
-    t.integer "readback_id",    :limit => 20
+  create_table "reserved_words", :primary_key => "reserved_word_id", :force => true do |t|
+    t.string "name",    :default => "", :null => false
+    t.string "meaning"
   end
 
-  add_index "readback_localized", ["readback_id"], :name => "FK_readback_localized_readback_id"
-
-  create_table "reserved_word", :primary_key => "reserved_word_id", :force => true do |t|
-    t.string "ReservedWord", :default => "", :null => false
-    t.string "Meaning"
-  end
-
-  create_table "semantic_mapping_a", :primary_key => "semantic_mapping_a_id", :force => true do |t|
-    t.text    "CodeDisplayName"
-    t.text    "Code"
-    t.integer "answer_id",       :limit => 20
+  create_table "semantic_mapping_as", :primary_key => "semantic_mapping_a_id", :force => true do |t|
+    t.text    "code_display_name"
+    t.text    "code"
+    t.integer "answer_id",         :limit => 20
     t.integer "code_system_id"
   end
 
-  add_index "semantic_mapping_a", ["answer_id"], :name => "FK_semantic_mapping_a_answer_id"
-  add_index "semantic_mapping_a", ["code_system_id"], :name => "FK_semantic_mapping_a_code_system_id"
+  add_index "semantic_mapping_as", ["code_system_id"], :name => "FK_semantic_mapping_as_code_system_id"
+  add_index "semantic_mapping_as", ["answer_id"], :name => "FK_semantic_mapping_as_answer_id"
 
-  create_table "semantic_mapping_i_q_a", :primary_key => "semantic_mapping_i_q_a_id", :force => true do |t|
-    t.text    "Code"
-    t.text    "CodeDisplayName"
+  create_table "semantic_mapping_i_q_as", :primary_key => "semantic_mapping_i_q_a_id", :force => true do |t|
+    t.text    "code"
+    t.text    "code_display_name"
     t.integer "question_id",           :limit => 20
     t.integer "answer_id",             :limit => 20
+    t.integer "code_system_id"
     t.integer "instrument_version_id", :limit => 20
+  end
+
+  add_index "semantic_mapping_i_q_as", ["question_id"], :name => "FK_semantic_mapping_i_q_as_question_id"
+  add_index "semantic_mapping_i_q_as", ["code_system_id"], :name => "FK_semantic_mapping_i_q_as_code_system_id"
+  add_index "semantic_mapping_i_q_as", ["answer_id"], :name => "FK_semantic_mapping_i_q_as_answer_id"
+  add_index "semantic_mapping_i_q_as", ["instrument_version_id"], :name => "FK_semantic_mapping_i_q_as_instrument_version_id"
+
+  create_table "semantic_mapping_q_as", :primary_key => "semantic_mapping_q_a_id", :force => true do |t|
+    t.text    "code_display_name"
+    t.text    "code"
+    t.integer "question_id",       :limit => 20
+    t.integer "code_system_id"
+    t.integer "answer_id",         :limit => 20
+  end
+
+  add_index "semantic_mapping_q_as", ["question_id"], :name => "FK_semantic_mapping_q_as_question_id"
+  add_index "semantic_mapping_q_as", ["code_system_id"], :name => "FK_semantic_mapping_q_as_code_system_id"
+  add_index "semantic_mapping_q_as", ["answer_id"], :name => "FK_semantic_mapping_q_as_answer_id"
+
+  create_table "semantic_mapping_qs", :primary_key => "semantic_mapping_q_id", :force => true do |t|
+    t.text    "code_display_name"
+    t.text    "code"
+    t.integer "question_id",       :limit => 20
     t.integer "code_system_id"
   end
 
-  add_index "semantic_mapping_i_q_a", ["code_system_id"], :name => "FK_semantic_mapping_i_q_a_code_system_id"
-  add_index "semantic_mapping_i_q_a", ["instrument_version_id"], :name => "FK_semantic_mapping_i_q_a_instrument_version_id"
-  add_index "semantic_mapping_i_q_a", ["question_id"], :name => "FK_semantic_mapping_i_q_a_question_id"
-  add_index "semantic_mapping_i_q_a", ["answer_id"], :name => "FK_semantic_mapping_i_q_a_answer_id"
+  add_index "semantic_mapping_qs", ["code_system_id"], :name => "FK_semantic_mapping_qs_code_system_id"
+  add_index "semantic_mapping_qs", ["question_id"], :name => "FK_semantic_mapping_qs_question_id"
 
-  create_table "semantic_mapping_q", :primary_key => "semantic_mapping_q_id", :force => true do |t|
-    t.text    "CodeDisplayName"
-    t.text    "Code"
-    t.integer "question_id",     :limit => 20
-    t.integer "code_system_id"
+  create_table "sequence", :primary_key => "seq_name", :force => true do |t|
+    t.integer "seq_count", :limit => 38, :precision => 38, :scale => 0
   end
 
-  add_index "semantic_mapping_q", ["question_id"], :name => "FK_semantic_mapping_q_question_id"
-  add_index "semantic_mapping_q", ["code_system_id"], :name => "FK_semantic_mapping_q_code_system_id"
-
-  create_table "semantic_mapping_q_a", :primary_key => "semantic_mapping_q_a_id", :force => true do |t|
-    t.text    "CodeDisplayName"
-    t.text    "Code"
-    t.integer "question_id",     :limit => 20
-    t.integer "answer_id",       :limit => 20
-    t.integer "code_system_id"
+  create_table "v1_data_elements", :primary_key => "v1_data_element_id", :force => true do |t|
+    t.integer "group_num"
+    t.integer "item_visits"
+    t.integer "data_element_sequence",                                   :null => false
+    t.string  "var_name",                 :limit => 200, :default => "", :null => false
+    t.integer "v1_instrument_session_id", :limit => 20
   end
 
-  add_index "semantic_mapping_q_a", ["answer_id"], :name => "FK_semantic_mapping_q_a_answer_id"
-  add_index "semantic_mapping_q_a", ["code_system_id"], :name => "FK_semantic_mapping_q_a_code_system_id"
-  add_index "semantic_mapping_q_a", ["question_id"], :name => "FK_semantic_mapping_q_a_question_id"
+  add_index "v1_data_elements", ["v1_instrument_session_id"], :name => "FK_v1_data_elements_v1_instrument_session_id"
+  add_index "v1_data_elements", ["var_name"], :name => "var_name"
 
-  create_table "sequence", :primary_key => "SEQ_NAME", :force => true do |t|
-    t.integer "SEQ_COUNT", :limit => 38, :precision => 38, :scale => 0
+  create_table "v1_instrument_sessions", :primary_key => "v1_instrument_session_id", :force => true do |t|
+    t.integer  "max_group"
+    t.integer  "max_var_num"
+    t.string   "instrument_version_name",                   :default => "", :null => false
+    t.text     "instrument_version_file_name"
+    t.datetime "last_access_time",                                          :null => false
+    t.text     "instrument_session_file_name"
+    t.integer  "current_group"
+    t.integer  "num_vars"
+    t.string   "language_code",                :limit => 2
+    t.string   "var_list_md5"
+    t.string   "status_msg"
+    t.integer  "num_groups"
+    t.datetime "start_time",                                                :null => false
+    t.integer  "finished"
+    t.integer  "display_num"
+    t.string   "ip_address"
+    t.string   "browser"
+    t.string   "action_type"
+    t.integer  "instrument_starting_group"
   end
 
-  create_table "v1_data_element", :primary_key => "v1_data_element_id", :force => true do |t|
-    t.datetime "Time_Stamp"
-    t.integer  "WhenAsMS",                 :limit => 20,                  :null => false
-    t.integer  "DataElementSequence",                                     :null => false
-    t.integer  "itemVisits"
-    t.integer  "DisplayNum",                                              :null => false
-    t.integer  "totalDuration"
-    t.text     "QuestionAsAsked"
-    t.integer  "pageDuration"
-    t.text     "AnswerString"
-    t.integer  "serverDuration"
-    t.integer  "GroupNum"
-    t.integer  "loadDuration"
-    t.text     "AnswerCode"
-    t.integer  "networkDuration"
-    t.string   "LanguageCode",             :limit => 2
-    t.text     "Comments"
-    t.string   "VarName",                  :limit => 200, :default => "", :null => false
-    t.integer  "v1_instrument_session_id", :limit => 20
+  add_index "v1_instrument_sessions", ["language_code"], :name => "language_code"
+
+  create_table "v1_item_usages", :primary_key => "v1_item_usage_id", :force => true do |t|
+    t.text     "answer_code0"
+    t.text     "answer_string0"
+    t.integer  "display_num",                       :null => false
+    t.datetime "time_stamp"
+    t.text     "question_as_asked"
+    t.integer  "when_as_ms",          :limit => 20
+    t.text     "answer_string"
+    t.integer  "item_visits"
+    t.string   "language_code",       :limit => 2
+    t.text     "comments"
+    t.integer  "item_usage_sequence",               :null => false
+    t.text     "comments0"
+    t.text     "answer_code"
+    t.integer  "v1_data_element_id",  :limit => 20
   end
 
-  add_index "v1_data_element", ["v1_instrument_session_id"], :name => "FK_v1_data_element_v1_instrument_session_id"
-  add_index "v1_data_element", ["VarName"], :name => "VarName"
-  add_index "v1_data_element", ["LanguageCode"], :name => "LanguageCode"
+  add_index "v1_item_usages", ["v1_data_element_id"], :name => "FK_v1_item_usages_v1_data_element_id"
+  add_index "v1_item_usages", ["language_code"], :name => "language_code"
 
-  create_table "v1_instrument_session", :primary_key => "v1_instrument_session_id", :force => true do |t|
-    t.integer  "MaxGroup"
-    t.integer  "MaxVarNum"
-    t.string   "InstrumentVersionName",                  :default => "", :null => false
-    t.text     "InstrumentVersionFileName"
-    t.datetime "LastAccessTime",                                         :null => false
-    t.text     "InstrumentSessionFileName"
-    t.integer  "CurrentGroup"
-    t.integer  "NumVars"
-    t.string   "LanguageCode",              :limit => 2
-    t.string   "VarListMD5"
-    t.string   "StatusMsg"
-    t.integer  "NumGroups"
-    t.datetime "StartTime",                                              :null => false
-    t.integer  "Finished"
-    t.integer  "DisplayNum"
-    t.string   "IPAddress"
-    t.string   "Browser"
-    t.string   "ActionType"
-    t.integer  "InstrumentStartingGroup"
+  create_table "v1_page_usages", :primary_key => "v1_page_usage_id", :force => true do |t|
+    t.integer "server_duration",          :limit => 20
+    t.integer "load_duration",            :limit => 20
+    t.integer "display_num",                            :null => false
+    t.integer "network_duration",         :limit => 20
+    t.integer "page_duration",            :limit => 20
+    t.string  "language_code",            :limit => 2
+    t.integer "total_duration",           :limit => 20
+    t.string  "action_type"
+    t.integer "v1_instrument_session_id", :limit => 20
   end
 
-  add_index "v1_instrument_session", ["LanguageCode"], :name => "LanguageCode"
+  add_index "v1_page_usages", ["v1_instrument_session_id"], :name => "FK_v1_page_usages_v1_instrument_session_id"
 
-  create_table "v1_item_usage", :primary_key => "v1_item_usage_id", :force => true do |t|
-    t.text     "AnswerString"
-    t.datetime "Time_Stamp"
-    t.integer  "ItemUsageSequence",                                       :null => false
-    t.integer  "WhenAsMS",                 :limit => 20
-    t.integer  "DataElementSequence",                                     :null => false
-    t.integer  "itemVisits"
-    t.integer  "DisplayNum",                                              :null => false
-    t.integer  "totalDuration"
-    t.text     "QuestionAsAsked"
-    t.integer  "pageDuration"
-    t.integer  "serverDuration"
-    t.integer  "GroupNum"
-    t.integer  "loadDuration"
-    t.text     "AnswerCode"
-    t.integer  "networkDuration"
-    t.string   "LanguageCode",             :limit => 2
-    t.text     "Comments"
-    t.string   "VarName",                  :limit => 200, :default => "", :null => false
-    t.integer  "v1_instrument_session_id", :limit => 20
-  end
-
-  add_index "v1_item_usage", ["v1_instrument_session_id"], :name => "FK_v1_item_usage_v1_instrument_session_id"
-  add_index "v1_item_usage", ["VarName"], :name => "VarName"
-  add_index "v1_item_usage", ["LanguageCode"], :name => "LanguageCode"
-
-  create_table "validation", :primary_key => "validation_id", :force => true do |t|
-    t.string  "OtherVals"
-    t.string  "InputMask"
-    t.string  "MaxVal"
-    t.string  "MinVal"
+  create_table "validations", :primary_key => "validation_id", :force => true do |t|
+    t.string  "other_vals"
+    t.string  "input_mask"
+    t.string  "max_val"
+    t.string  "min_val"
     t.integer "data_type_id"
   end
 
-  add_index "validation", ["data_type_id"], :name => "FK_validation_data_type_id"
+  add_index "validations", ["data_type_id"], :name => "FK_validations_data_type_id"
 
-  create_table "var_name", :primary_key => "var_name_id", :force => true do |t|
-    t.string "VarName", :default => "", :null => false
+  create_table "var_names", :primary_key => "var_name_id", :force => true do |t|
+    t.string "name", :default => "", :null => false
   end
 
 end

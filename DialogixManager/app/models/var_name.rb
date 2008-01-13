@@ -11,8 +11,8 @@ class VarName < ActiveRecord::Base
   has_many :data_elements, :through => :data_elements
   has_many :readbacks, :through => :instrument_contents
   has_many :items, :through => :instrument_contents
-  has_many :display_types, :through => :instrument_contents
   has_many :helps, :through => :instrument_contents
+  has_many :display_types, :through => :instrument_contents
   has_many :instrument_contents, :through => :instrument_contents
   has_many :instrument_versions, :through => :instrument_contents
   has_many :item_usages, :through => :item_usages
@@ -20,6 +20,6 @@ class VarName < ActiveRecord::Base
   has_many :answers, :through => :item_usages
   has_many :instrument_contents, :through => :item_usages
   has_many :null_flavors, :through => :item_usages
-  validates_presence_of :VarName
-  validates_length_of :VarName, :allow_nil => false, :maximum => 255
+  validates_presence_of :name
+  validates_length_of :name, :allow_nil => false, :maximum => 255
 end
