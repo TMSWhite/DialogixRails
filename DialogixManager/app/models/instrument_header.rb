@@ -5,5 +5,5 @@ class InstrumentHeader < ActiveRecord::Base
   has_many :instrument_headers, :class_name => 'InstrumentHeader', :foreign_key => :instrument_header_id
   has_many :reserved_words, :through => :instrument_headers
   has_many :instrument_versions, :through => :instrument_headers
-  validates_presence_of :HeaderValue
+  validates_presence_of :name
 end

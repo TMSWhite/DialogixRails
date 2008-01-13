@@ -10,17 +10,17 @@ class DisplayType < ActiveRecord::Base
   has_many :helps, :through => :instrument_contents
   has_many :instrument_contents, :through => :instrument_contents
   has_many :instrument_versions, :through => :instrument_contents
-  validates_presence_of :SASinformat
-  validates_length_of :SASinformat, :allow_nil => false, :maximum => 255
-  validates_presence_of :SASformat
-  validates_length_of :SASformat, :allow_nil => false, :maximum => 255
-  validates_presence_of :DisplayType
-  validates_length_of :DisplayType, :allow_nil => false, :maximum => 255
-  validates_presence_of :SPSSlevel
-  validates_length_of :SPSSlevel, :allow_nil => false, :maximum => 255
-  validates_presence_of :SPSSformat
-  validates_length_of :SPSSformat, :allow_nil => false, :maximum => 255
-  validates_presence_of :LOINCscale
-  validates_length_of :LOINCscale, :allow_nil => false, :maximum => 255
-  validates_inclusion_of :HasAnswerList, :in => [true, false], :allow_nil => true, :message => ActiveRecord::Errors.default_error_messages[:blank]
+  validates_presence_of :sas_informat
+  validates_length_of :sas_informat, :allow_nil => false, :maximum => 255
+  validates_presence_of :sas_format
+  validates_length_of :sas_format, :allow_nil => false, :maximum => 255
+  validates_presence_of :name
+  validates_length_of :name, :allow_nil => false, :maximum => 255
+  validates_presence_of :spss_level
+  validates_length_of :spss_level, :allow_nil => false, :maximum => 255
+  validates_presence_of :spss_format
+  validates_length_of :spss_format, :allow_nil => false, :maximum => 255
+  validates_presence_of :loinc_scale
+  validates_length_of :loinc_scale, :allow_nil => false, :maximum => 255
+  validates_inclusion_of :has_answer_list, :in => [true, false], :allow_nil => true, :message => ActiveRecord::Errors.default_error_messages[:blank]
 end

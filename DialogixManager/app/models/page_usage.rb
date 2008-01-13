@@ -1,24 +1,26 @@
 class PageUsage < ActiveRecord::Base
   belongs_to :instrument_session, :class_name => 'InstrumentSession', :foreign_key => :instrument_session_id
+  belongs_to :action_type, :class_name => 'ActionType', :foreign_key => :action_type_id
   has_many :page_usage_events, :class_name => 'PageUsageEvent', :foreign_key => :page_usage_id
-  validates_numericality_of :pageDuration, :allow_nil => true, :only_integer => true
-  validates_numericality_of :serverDuration, :allow_nil => true, :only_integer => true
-  validates_presence_of :LanguageCode
-  validates_length_of :LanguageCode, :allow_nil => false, :maximum => 2
-  validates_numericality_of :loadDuration, :allow_nil => true, :only_integer => true
-  validates_presence_of :FromGroupNum
-  validates_numericality_of :FromGroupNum, :allow_nil => false, :only_integer => true
-  validates_numericality_of :networkDuration, :allow_nil => true, :only_integer => true
-  validates_presence_of :DisplayNum
-  validates_numericality_of :DisplayNum, :allow_nil => false, :only_integer => true
-  validates_numericality_of :pageVisits, :allow_nil => true, :only_integer => true
-  validates_numericality_of :totalDuration, :allow_nil => true, :only_integer => true
-  validates_length_of :IPAddress, :allow_nil => true, :maximum => 255
-  validates_presence_of :Time_Stamp
-  validates_length_of :Browser, :allow_nil => true, :maximum => 255
-  validates_length_of :StatusMsg, :allow_nil => true, :maximum => 255
-  validates_presence_of :ToGroupNum
-  validates_numericality_of :ToGroupNum, :allow_nil => false, :only_integer => true
-  validates_presence_of :PageUsageSequence
-  validates_numericality_of :PageUsageSequence, :allow_nil => false, :only_integer => true
+  validates_numericality_of :page_duration, :allow_nil => true, :only_integer => true
+  validates_numericality_of :server_duration, :allow_nil => true, :only_integer => true
+  validates_presence_of :page_usage_sequence
+  validates_numericality_of :page_usage_sequence, :allow_nil => false, :only_integer => true
+  validates_numericality_of :load_duration, :allow_nil => true, :only_integer => true
+  validates_presence_of :time_stamp
+  validates_numericality_of :network_duration, :allow_nil => true, :only_integer => true
+  validates_presence_of :to_group_num
+  validates_numericality_of :to_group_num, :allow_nil => false, :only_integer => true
+  validates_numericality_of :page_visits, :allow_nil => true, :only_integer => true
+  validates_length_of :status_msg, :allow_nil => true, :maximum => 255
+  validates_numericality_of :used_jvm_memory, :allow_nil => true, :only_integer => true
+  validates_length_of :ip_address, :allow_nil => true, :maximum => 255
+  validates_presence_of :from_group_num
+  validates_numericality_of :from_group_num, :allow_nil => false, :only_integer => true
+  validates_length_of :browser, :allow_nil => true, :maximum => 255
+  validates_numericality_of :total_duration, :allow_nil => true, :only_integer => true
+  validates_presence_of :display_num
+  validates_numericality_of :display_num, :allow_nil => false, :only_integer => true
+  validates_presence_of :language_code
+  validates_length_of :language_code, :allow_nil => false, :maximum => 2
 end

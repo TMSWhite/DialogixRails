@@ -6,23 +6,23 @@ class InstrumentHash < ActiveRecord::Base
   has_many :language_lists, :through => :instrument_hashes
   has_many :instruments, :through => :instrument_versions
   has_many :instrument_versions, :through => :instrument_versions
-  validates_presence_of :NumEquations
-  validates_numericality_of :NumEquations, :allow_nil => false, :only_integer => true
-  validates_presence_of :NumQuestions
-  validates_numericality_of :NumQuestions, :allow_nil => false, :only_integer => true
-  validates_presence_of :VarListMD5
-  validates_length_of :VarListMD5, :allow_nil => false, :maximum => 255
-  validates_presence_of :NumBranches
-  validates_numericality_of :NumBranches, :allow_nil => false, :only_integer => true
-  validates_presence_of :NumLanguages
-  validates_numericality_of :NumLanguages, :allow_nil => false, :only_integer => true
-  validates_presence_of :NumTailorings
-  validates_numericality_of :NumTailorings, :allow_nil => false, :only_integer => true
-  validates_presence_of :NumVars
-  validates_numericality_of :NumVars, :allow_nil => false, :only_integer => true
-  validates_numericality_of :NumGroups, :allow_nil => true, :only_integer => true
-  validates_presence_of :NumInstructions
-  validates_numericality_of :NumInstructions, :allow_nil => false, :only_integer => true
-  validates_presence_of :InstrumentMD5
-  validates_length_of :InstrumentMD5, :allow_nil => false, :maximum => 255
+  validates_presence_of :num_equations
+  validates_numericality_of :num_equations, :allow_nil => false, :only_integer => true
+  validates_presence_of :num_questions
+  validates_numericality_of :num_questions, :allow_nil => false, :only_integer => true
+  validates_presence_of :var_list_md5
+  validates_length_of :var_list_md5, :allow_nil => false, :maximum => 255
+  validates_presence_of :num_branches
+  validates_numericality_of :num_branches, :allow_nil => false, :only_integer => true
+  validates_presence_of :num_languages
+  validates_numericality_of :num_languages, :allow_nil => false, :only_integer => true
+  validates_presence_of :num_tailorings
+  validates_numericality_of :num_tailorings, :allow_nil => false, :only_integer => true
+  validates_presence_of :num_vars
+  validates_numericality_of :num_vars, :allow_nil => false, :only_integer => true
+  validates_numericality_of :num_groups, :allow_nil => true, :only_integer => true
+  validates_presence_of :num_instructions
+  validates_numericality_of :num_instructions, :allow_nil => false, :only_integer => true
+  validates_presence_of :instrument_md5
+  validates_length_of :instrument_md5, :allow_nil => false, :maximum => 255
 end

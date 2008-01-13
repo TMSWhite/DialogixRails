@@ -9,6 +9,6 @@ class ActionType < ActiveRecord::Base
   has_many :instrument_versions, :through => :instrument_sessions
   has_many :instrument_sessions, :through => :page_usages
   has_many :page_usages, :through => :page_usages
-  validates_presence_of :ActionName
-  validates_length_of :ActionName, :allow_nil => false, :maximum => 255
+  validates_presence_of :name
+  validates_length_of :name, :allow_nil => false, :maximum => 255
 end

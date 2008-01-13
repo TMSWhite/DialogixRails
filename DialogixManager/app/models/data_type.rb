@@ -10,6 +10,6 @@ class DataType < ActiveRecord::Base
   has_many :questions, :through => :items
   has_many :answer_lists, :through => :items
   has_many :validations, :through => :validations
-  validates_presence_of :DataType
-  validates_length_of :DataType, :allow_nil => false, :maximum => 255
+  validates_presence_of :name
+  validates_length_of :name, :allow_nil => false, :maximum => 255
 end
