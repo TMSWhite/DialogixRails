@@ -1,0 +1,41 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Application <%= controller.action_name %></title>
+    <%= stylesheet_link_tag "scaffold", "dialogix", :media => "all" %>
+    <%= javascript_include_tag :defaults %> 
+    <%= active_scaffold_includes %>
+  </head>
+  <body id="admin">
+    <div id="banner">
+      <img src="/images/dialogoSmall.jpg"/>
+      <%= @page_title || "Dialogix Manager" %>
+    </div>
+    <div id="columns">
+      <div id="side">
+        <p>
+          <%= link_to "Home",   :controller => 'instrument', :action => 'index' %>
+        </p>
+        <p>
+          <%= link_to "Dialogix Users", :controller => 'dialogix_user', :action => 'index' %>
+          <br/>
+          <%= link_to "LOINC Request",   :controller => 'loinc_item_request', :action => 'index' %>
+        </p>
+        <p>
+          <%= link_to "Logout" %>
+        </p>
+      </div>
+      <div id="main">
+        <%= yield :layout %>
+      </div>
+    </div>
+  </body>
+</html>
