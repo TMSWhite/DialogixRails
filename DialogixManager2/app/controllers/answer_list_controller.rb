@@ -1,4 +1,4 @@
 class AnswerListController < ApplicationController
-  layout "activescaffold"  
+  #layout "activescaffold"  
   active_scaffold :answer_list
 end

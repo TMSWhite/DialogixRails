@@ -1,0 +1,2 @@
+module CodeValueGeneralHelper
+end

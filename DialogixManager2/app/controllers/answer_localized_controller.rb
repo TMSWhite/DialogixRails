@@ -1,5 +1,5 @@
 class AnswerLocalizedController < ApplicationController
-  layout "activescaffold"  
+  #layout "activescaffold"  
   active_scaffold :answer_localized
     
 end

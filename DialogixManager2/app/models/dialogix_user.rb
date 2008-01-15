@@ -1,6 +1,5 @@
 class DialogixUser < ActiveRecord::Base
   has_many :instrument_sessions, :class_name => 'InstrumentSession', :foreign_key => :dialogix_user_id
-  has_many :action_types, :through => :instrument_sessions
   has_many :instruments, :through => :instrument_sessions, :source => :instrument_version
   has_many :instrument_versions, :through => :instrument_sessions
   validates_presence_of :first_name
@@ -15,4 +14,9 @@ class DialogixUser < ActiveRecord::Base
   validates_length_of :phone, :allow_nil => false, :maximum => 255
   validates_presence_of :pwd
   validates_length_of :pwd, :allow_nil => false, :maximum => 255
+  
+  def to_label
+    "#{user_name}"    
+  end
+  
 end

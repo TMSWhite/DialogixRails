@@ -56,6 +56,48 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string "code_system_oid"
   end
 
+  create_table "code_value_generals", :id => false, :force => true do |t|
+    t.string   "code_set_id",                  :limit => 20,  :default => "",  :null => false
+    t.integer  "seq_num",                                                      :null => false
+    t.string   "code",                         :limit => 20,  :default => "",  :null => false
+    t.string   "assigning_authority_cd",       :limit => 20
+    t.string   "assigning_authority_desc_txt", :limit => 100
+    t.string   "code_desc_txt",                :limit => 300
+    t.string   "code_short_desc_txt",          :limit => 50
+    t.string   "code_system_cd",               :limit => 20
+    t.string   "code_system_desc_txt",         :limit => 100
+    t.datetime "effective_from_time"
+    t.datetime "effective_to_time"
+    t.integer  "indent_level_nbr"
+    t.string   "is_modifiable_ind",            :limit => 1,   :default => "Y"
+    t.integer  "nbs_uid"
+    t.string   "parent_is_cd",                 :limit => 20
+    t.string   "source_concept_id",            :limit => 20
+    t.string   "super_code_set_id",            :limit => 10
+    t.string   "super_code",                   :limit => 20
+    t.string   "status_cd",                    :limit => 1
+    t.datetime "status_time"
+  end
+
+  create_table "code_sets", :id => false, :force => true do |t|
+    t.string   "code_set_id",                  :limit => 20,   :default => "",  :null => false
+    t.integer  "seq_num",                                                       :null => false
+    t.string   "assigning_authority_cd",       :limit => 20
+    t.string   "assigning_authority_desc_txt", :limit => 100
+    t.string   "code_set_desc_txt",            :limit => 2000
+    t.string   "code_system_cd",               :limit => 20
+    t.string   "code_system_desc_txt",         :limit => 100
+    t.string   "class_cd",                     :limit => 20
+    t.datetime "effective_from_time"
+    t.datetime "effective_to_time"
+    t.string   "is_modifiable_ind",            :limit => 1,    :default => "Y"
+    t.integer  "nbs_uid"
+    t.string   "source_version_txt",           :limit => 20
+    t.string   "source_domain_nm",             :limit => 50
+    t.string   "status_cd",                    :limit => 1
+    t.datetime "status_time"
+  end
+
   create_table "data_elements", :primary_key => "data_element_id", :force => true do |t|
     t.text     "comments"
     t.datetime "time_stamp"
@@ -236,7 +278,7 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "instruments", :primary_key => "instrument_id", :force => true do |t|
     t.text   "instrument_description"
-    t.string "name",                  :default => "", :null => false
+    t.string "name",                   :default => "", :null => false
   end
 
   create_table "item_usages", :primary_key => "item_usage_id", :force => true do |t|

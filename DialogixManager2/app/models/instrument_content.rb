@@ -4,12 +4,9 @@ class InstrumentContent < ActiveRecord::Base
   belongs_to :help, :class_name => 'Help', :foreign_key => :help_id
   belongs_to :instrument_version, :class_name => 'InstrumentVersion', :foreign_key => :instrument_version_id
   belongs_to :var_name, :class_name => 'VarName', :foreign_key => :var_name_id
-  belongs_to :readback, :class_name => 'Readback', :foreign_key => :readback_id
+  belongs_to :readback, :class_name => 'Readback', :foreign_key => :readback_id  
   has_many :item_usages, :class_name => 'ItemUsage', :foreign_key => :instrument_content_id
-  has_many :instrument_sessions, :through => :item_usages
-  has_many :answers, :through => :item_usages
-  has_many :null_flavors, :through => :item_usages
-  has_many :answer_localized, :through => :answers, :source => :answer_lists
+  #has_one :question_localized, :through => :item
   validates_length_of :spss_format, :allow_nil => true, :maximum => 255
   validates_length_of :sas_informat, :allow_nil => true, :maximum => 255
   validates_presence_of :is_read_only
@@ -25,4 +22,6 @@ class InstrumentContent < ActiveRecord::Base
   validates_presence_of :is_message
   validates_numericality_of :is_message, :allow_nil => false, :only_integer => true
   validates_presence_of :relevance
+  
+  
 end
