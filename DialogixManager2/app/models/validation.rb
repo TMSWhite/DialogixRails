@@ -12,4 +12,9 @@ class Validation < ActiveRecord::Base
   validates_length_of :input_mask, :allow_nil => true, :maximum => 255
   validates_length_of :max_val, :allow_nil => true, :maximum => 255
   validates_length_of :min_val, :allow_nil => true, :maximum => 255
+  
+  def to_label
+    "(#{min_val} - #{max_val}) or (#{other_vals})"    
+  end
+  
 end

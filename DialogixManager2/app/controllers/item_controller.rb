@@ -6,7 +6,7 @@ class ItemController < ApplicationController
     config.actions.exclude:show
     config.actions.exclude:update
     config.actions.add:show
-    config.list.columns = [:item_type, :question_id, :answer_list_id] 
+    #config.list.columns = [:item_type, :question_id, :answer_list_id] 
     #config.nested.add_link("Answers", [:answer_localized])
     
     #config.columns[:answer_localized].includes = [{'item' => 'answer_localized'}]
@@ -24,4 +24,5 @@ class ItemController < ApplicationController
                                     AND itemss.item_id = ?", @items.item_id]) 
     end        
   end
+
 end

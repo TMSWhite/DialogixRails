@@ -1,5 +1,5 @@
 class CodeValueGeneral < ActiveRecord::Base
-  set_primary_key :code_set_id, :seq_num, :code
+  set_primary_keys :code_set_id, :seq_num, :code
   has_many :code_set, :class_name => 'CodeSet', 
     :foreign_key => :code_set_id
   validates_presence_of :seq_num

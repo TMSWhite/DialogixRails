@@ -9,7 +9,7 @@ class ItemUsageController < ApplicationController
     config.action_links.add 'export_csv', :label => 'Export to Excel', :page => true
     config.list.columns = [:display_num, :item_usage_sequence, :question_as_asked, :answer_string, :answer_code,  
                            :null_flavor, :language_code, :group_num,  :time_stamp, 
-                           :instrument_session, :instrument_content] 
+                           :instrument_session] 
     config.columns[:display_num].label = "Display Num"
     config.columns[:question_as_asked].label = "Question as Asked"
     config.columns[:language_code].label = "Language"

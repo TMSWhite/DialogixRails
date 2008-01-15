@@ -25,9 +25,15 @@
           <%= link_to "Home",   :controller => 'instrument', :action => 'index' %>
         </p>
         <p>
-          <%= link_to "Dialogix Users", :controller => 'dialogix_user', :action => 'index' %>
+          <%= link_to "Instruments", :controller => 'instrument', :action => 'index' %>
           <br/>
-          <%= link_to "LOINC Request",   :controller => 'loinc_item_request', :action => 'index' %>
+          <%= link_to "Items", :controller => 'item', :action => 'index' %>
+          <br/>
+          <%= link_to "Sessions", :controller => 'instrument_session', :action => 'index' %>
+          <br/>
+          <%= link_to "Users", :controller => 'dialogix_user', :action => 'index' %>
+          <br/>
+          <%= link_to "Answers", :controller => 'answer_localized', :action => 'index' %>
         </p>
         <p>
           <%= link_to "Logout" %>

@@ -23,4 +23,8 @@ class PageUsage < ActiveRecord::Base
   validates_numericality_of :display_num, :allow_nil => false, :only_integer => true
   validates_presence_of :language_code
   validates_length_of :language_code, :allow_nil => false, :maximum => 2
+  
+  def to_label
+    "#{page_usage_sequence}"    
+  end  
 end
