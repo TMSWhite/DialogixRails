@@ -1,6 +1,7 @@
 class Item < ActiveRecord::Base
   #belongs_to :answer_list, :class_name => 'AnswerList', :foreign_key => :answer_list_id
   has_many :answer_list_content, :class_name => 'AnswerListContent', :foreign_key => :answer_list_id
+  has_many :answer_list_denormalized, :class_name => 'AnswerListDenormalized', :foreign_key => :answer_list_id
   belongs_to :data_type, :class_name => 'DataType', :foreign_key => :data_type_id
   belongs_to :validation, :class_name => 'Validation', :foreign_key => :validation_id
   has_many :question_localized, :class_name => 'QuestionLocalized', :foreign_key => :question_id
