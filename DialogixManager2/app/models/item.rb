@@ -4,10 +4,11 @@ class Item < ActiveRecord::Base
   has_many :answer_list_denormalized, :class_name => 'AnswerListDenormalized', :foreign_key => :answer_list_id
   belongs_to :data_type, :class_name => 'DataType', :foreign_key => :data_type_id
   belongs_to :validation, :class_name => 'Validation', :foreign_key => :validation_id
-  has_many :question_localized, :class_name => 'QuestionLocalized', :foreign_key => :question_id
+  has_many :question_localizeds, :class_name => 'QuestionLocalized', :foreign_key => :question_id
+  #has_many :answer_localized, :class_name => 'AnswerLocalized', :foreign_key => :answer_id
   has_many :instrument_contents, :class_name => 'InstrumentContent', :foreign_key => :item_id
   has_many :loinc_item_requests, :class_name => 'LoincItemRequest', :foreign_key => :item_id
-  #has_many :answer_localized, :through => :answer_list_content, :source => :answer
+  #has_many :answer_localizeds, :through => :answer_list_contents
   validates_presence_of :item_type
   validates_length_of :item_type, :allow_nil => false, :maximum => 255
   validates_inclusion_of :has_loinc_code, :in => [true, false], :allow_nil => true, :message => ActiveRecord::Errors.default_error_messages[:blank]

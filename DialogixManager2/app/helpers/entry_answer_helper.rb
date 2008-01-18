@@ -1,0 +1,2 @@
+module EntryAnswerHelper
+end
