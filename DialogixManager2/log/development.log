@@ -2805,3 +2805,100 @@ Rendered instrument/_list_actions (0.00800)
 Rendered instrument/_list_record (0.03200)
 Rendered instrument/_list (0.17000)
 Completed in 0.35800 (2 reqs/sec) | Rendering: 0.26200 (73%) | DB: 0.41300 (115%) | 200 OK [http://localhost/]
+  [4;35;1mInstrument Columns (0.000000)[0m   [0mSHOW FIELDS FROM `instruments`[0m
+
+
+Processing InstrumentController#index (for 127.0.0.1 at 2008-01-22 14:39:28) [GET]
+  Session ID: BAh7DyISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjgwZjZjYzNhNzlm%0ANGVkMGEzZDVmMzEwYmJmOGYxODIzewg6EGNvbnN0cmFpbnRzewY6EGVudHJ5%0AX2l0ZW1zIgY5Og9jb25kaXRpb25zMDsAewY6CmxhYmVsIiFFbnRyeSBBbnN3%0AZXJzIGZvciBRdWVzdGlvbiAxIhJhczpJbnN0cnVtZW50ewY7AHsAOgxjc3Jm%0AX2lkIiVkZGQ5ZGIxODU1ZTQ2NGQ1MGMxYTYxYmExY2FiYTlmNyIoYXM6ZTdh%0AOGFhZWUzZTU0ODUwODMyMGY4NDBkOWM5MWEwZTh7CDsGewY6GWVudHJ5X2l0%0AZW1fcXVlc3Rpb25zewY6D2VudHJ5X2l0ZW0iBjg7CDA7AHsHOwkiIUVudHJ5%0AIFF1ZXN0aW9ucyBmb3IgUXVlc3Rpb24iCXBhZ2VpBiIoYXM6YzA1MWU5NmE1%0AZjU2MjA4NGI2YjVlOTQwODU5MjZlNjZ7CDsGewY7ByIHMTE7CDA7AHsGOwki%0AH0VudHJ5IEFuc3dlcnMgZm9yIFN1cnZleSAyIihhczpiZDI5YWE2ODE2OTU3%0AMDRhNTA5MmFmYTVkZjE4MjgxNXsIOwZ7BjsHIgcxMDsIMDsAewY7CSIfRW50%0AcnkgQW5zd2VycyBmb3IgU3VydmV5IDEiKGFzOjE4YjU2ZDU3ZGI1YzdlMThi%0AMTNlOTg4YTBjMTFhZDc0ewg7BnsGOhVlbnRyeV9pbnN0cnVtZW50IgYxOwgw%0AOwB7BzsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIJcGFnZWkGIgpmbGFzaElD%0AOidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNl%0AZHsAIhhhczplbnRyeV9pbnN0cnVtZW50ewY7AHsA--904e126dbc215b4942ee5efbe0b8673adb9c4932
+  Parameters: {"action"=>"index", "controller"=>"Instrument"}
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT count(DISTINCT `instruments`.instrument_id) AS count_all FROM `instruments` LEFT OUTER JOIN `instrument_versions` ON instrument_versions.instrument_id = instruments.instrument_id [0m
+  [4;35;1mInstrumentVersion Columns (0.000000)[0m   [0mSHOW FIELDS FROM `instrument_versions`[0m
+  [4;36;1mInstrument Load IDs For Limited Eager Loading (0.016000)[0m   [0;1mSELECT instrument_id FROM `instruments` ORDER BY instruments.`name` ASC LIMIT 0, 15[0m
+  [4;35;1mInstrument Load Including Associations (0.046000)[0m   [0mSELECT `instruments`.`instrument_id` AS t0_r0, `instruments`.`instrument_description` AS t0_r1, `instruments`.`name` AS t0_r2, `instrument_versions`.`instrument_version_id` AS t1_r0, `instrument_versions`.`instrument_status` AS t1_r1, `instrument_versions`.`creation_time_stamp` AS t1_r2, `instrument_versions`.`name` AS t1_r3, `instrument_versions`.`instrument_version_file_name` AS t1_r4, `instrument_versions`.`has_loinc_code` AS t1_r5, `instrument_versions`.`instrument_notes` AS t1_r6, `instrument_versions`.`loinc_num` AS t1_r7, `instrument_versions`.`instrument_id` AS t1_r8, `instrument_versions`.`instrument_hash_id` AS t1_r9 FROM `instruments` LEFT OUTER JOIN `instrument_versions` ON instrument_versions.instrument_id = instruments.instrument_id WHERE `instruments`.instrument_id IN (2, 1, 3) ORDER BY instruments.`name` ASC[0m
+Rendering template within layouts/application
+Rendering instrument/list
+Rendered instrument/_list_header (0.01600)
+Rendered instrument/_list_column_headings (0.01500)
+Rendered instrument/_messages (0.00000)
+Rendered instrument/_list_actions (0.01500)
+Rendered instrument/_list_record (0.01500)
+Rendered instrument/_list_actions (0.00000)
+Rendered instrument/_list_record (0.01600)
+Rendered instrument/_list_actions (0.00000)
+Rendered instrument/_list_record (0.01600)
+Rendered instrument/_list (0.07800)
+Completed in 0.20300 (4 reqs/sec) | Rendering: 0.12500 (61%) | DB: 0.06200 (30%) | 200 OK [http://localhost/]
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000000)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mInstrument Columns (0.032000)[0m   [0;1mSHOW FIELDS FROM `instruments`[0m
+
+
+Processing InstrumentController#index (for 127.0.0.1 at 2008-01-22 14:54:05) [GET]
+  Session ID: BAh7DyISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjgwZjZjYzNhNzlm%0ANGVkMGEzZDVmMzEwYmJmOGYxODIzewg6EGNvbnN0cmFpbnRzewY6EGVudHJ5%0AX2l0ZW1zIgY5Og9jb25kaXRpb25zMDsAewY6CmxhYmVsIiFFbnRyeSBBbnN3%0AZXJzIGZvciBRdWVzdGlvbiAxOgxjc3JmX2lkIiVkZGQ5ZGIxODU1ZTQ2NGQ1%0AMGMxYTYxYmExY2FiYTlmNyISYXM6SW5zdHJ1bWVudHsGOwB7ACIoYXM6ZTdh%0AOGFhZWUzZTU0ODUwODMyMGY4NDBkOWM5MWEwZTh7CDsGewY6GWVudHJ5X2l0%0AZW1fcXVlc3Rpb25zewY6D2VudHJ5X2l0ZW0iBjg7CDA7AHsHOwkiIUVudHJ5%0AIFF1ZXN0aW9ucyBmb3IgUXVlc3Rpb24iCXBhZ2VpBiIoYXM6YzA1MWU5NmE1%0AZjU2MjA4NGI2YjVlOTQwODU5MjZlNjZ7CDsGewY7ByIHMTE7CDA7AHsGOwki%0AH0VudHJ5IEFuc3dlcnMgZm9yIFN1cnZleSAyIihhczoxOGI1NmQ1N2RiNWM3%0AZTE4YjEzZTk4OGEwYzExYWQ3NHsIOwZ7BjoVZW50cnlfaW5zdHJ1bWVudCIG%0AMTsIMDsAewc7CSIZRW50cnkgSXRlbXMgZm9yIFRlc3QiCXBhZ2VpBiIoYXM6%0AYmQyOWFhNjgxNjk1NzA0YTUwOTJhZmE1ZGYxODI4MTV7CDsGewY7ByIHMTA7%0ACDA7AHsGOwkiH0VudHJ5IEFuc3dlcnMgZm9yIFN1cnZleSAxIgpmbGFzaElD%0AOidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNl%0AZHsAIhhhczplbnRyeV9pbnN0cnVtZW50ewY7AHsA--6a3abeefd65a537cb24a9610fb1d16b8585fa398
+  Parameters: {"action"=>"index", "controller"=>"Instrument"}
+  [4;35;1mSQL (0.016000)[0m   [0mSELECT count(DISTINCT `instruments`.instrument_id) AS count_all FROM `instruments` LEFT OUTER JOIN `instrument_versions` ON instrument_versions.instrument_id = instruments.instrument_id [0m
+  [4;36;1mInstrumentVersion Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `instrument_versions`[0m
+  [4;35;1mInstrument Load IDs For Limited Eager Loading (0.000000)[0m   [0mSELECT instrument_id FROM `instruments` ORDER BY instruments.`name` ASC LIMIT 0, 15[0m
+  [4;36;1mInstrument Load Including Associations (0.015000)[0m   [0;1mSELECT `instruments`.`instrument_id` AS t0_r0, `instruments`.`instrument_description` AS t0_r1, `instruments`.`name` AS t0_r2, `instrument_versions`.`instrument_version_id` AS t1_r0, `instrument_versions`.`instrument_status` AS t1_r1, `instrument_versions`.`creation_time_stamp` AS t1_r2, `instrument_versions`.`name` AS t1_r3, `instrument_versions`.`instrument_version_file_name` AS t1_r4, `instrument_versions`.`has_loinc_code` AS t1_r5, `instrument_versions`.`instrument_notes` AS t1_r6, `instrument_versions`.`loinc_num` AS t1_r7, `instrument_versions`.`instrument_id` AS t1_r8, `instrument_versions`.`instrument_hash_id` AS t1_r9 FROM `instruments` LEFT OUTER JOIN `instrument_versions` ON instrument_versions.instrument_id = instruments.instrument_id WHERE `instruments`.instrument_id IN (2, 1, 3) ORDER BY instruments.`name` ASC[0m
+Rendering template within layouts/application
+Rendering instrument/list
+Rendered instrument/_list_header (0.01500)
+Rendered instrument/_list_column_headings (0.01600)
+Rendered instrument/_messages (0.01500)
+Rendered instrument/_list_actions (0.00000)
+Rendered instrument/_list_record (0.01500)
+Rendered instrument/_list_actions (0.01600)
+Rendered instrument/_list_record (0.01600)
+Rendered instrument/_list_actions (0.00000)
+Rendered instrument/_list_record (0.01500)
+Rendered instrument/_list (0.12500)
+Completed in 0.21900 (4 reqs/sec) | Rendering: 0.17200 (78%) | DB: 0.06300 (28%) | 200 OK [http://localhost/]
+  [4;35;1mEntryInstrument Columns (0.015000)[0m   [0mSHOW FIELDS FROM `entry_instruments`[0m
+
+
+Processing EntryInstrumentController#index (for 127.0.0.1 at 2008-01-22 14:54:10) [GET]
+  Session ID: BAh7DyISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjgwZjZjYzNhNzlm%0ANGVkMGEzZDVmMzEwYmJmOGYxODIzewg6D2NvbmRpdGlvbnMwOhBjb25zdHJh%0AaW50c3sGOhBlbnRyeV9pdGVtcyIGOTsAewY6CmxhYmVsIiFFbnRyeSBBbnN3%0AZXJzIGZvciBRdWVzdGlvbiAxIhJhczpJbnN0cnVtZW50ewY7AHsAOgxjc3Jm%0AX2lkIiVkZGQ5ZGIxODU1ZTQ2NGQ1MGMxYTYxYmExY2FiYTlmNyIoYXM6ZTdh%0AOGFhZWUzZTU0ODUwODMyMGY4NDBkOWM5MWEwZTh7CDsGMDsHewY6GWVudHJ5%0AX2l0ZW1fcXVlc3Rpb25zewY6D2VudHJ5X2l0ZW0iBjg7AHsHOwkiIUVudHJ5%0AIFF1ZXN0aW9ucyBmb3IgUXVlc3Rpb24iCXBhZ2VpBiIoYXM6YzA1MWU5NmE1%0AZjU2MjA4NGI2YjVlOTQwODU5MjZlNjZ7CDsGMDsHewY7CCIHMTE7AHsGOwki%0AH0VudHJ5IEFuc3dlcnMgZm9yIFN1cnZleSAyIihhczpiZDI5YWE2ODE2OTU3%0AMDRhNTA5MmFmYTVkZjE4MjgxNXsIOwYwOwd7BjsIIgcxMDsAewY7CSIfRW50%0AcnkgQW5zd2VycyBmb3IgU3VydmV5IDEiKGFzOjE4YjU2ZDU3ZGI1YzdlMThi%0AMTNlOTg4YTBjMTFhZDc0ewg7BjA7B3sGOhVlbnRyeV9pbnN0cnVtZW50IgYx%0AOwB7BzsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIJcGFnZWkGIgpmbGFzaElD%0AOidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNl%0AZHsAIhhhczplbnRyeV9pbnN0cnVtZW50ewY7AHsA--8f21e8bc7077ab92980eb6f611b642456a22e8eb
+  Parameters: {"action"=>"index", "controller"=>"entry_instrument"}
+  [4;36;1mSQL (0.015000)[0m   [0;1mSELECT count(DISTINCT `entry_instruments`.entry_instrument_id) AS count_all FROM `entry_instruments` LEFT OUTER JOIN `entry_items` ON entry_items.entry_instrument_id = entry_instruments.entry_instrument_id [0m
+  [4;35;1mEntryItem Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_items`[0m
+  [4;36;1mEntryInstrument Load IDs For Limited Eager Loading (0.000000)[0m   [0;1mSELECT entry_instrument_id FROM `entry_instruments` ORDER BY entry_instruments.`entry_instrument_id` ASC LIMIT 0, 15[0m
+  [4;35;1mEntryInstrument Load Including Associations (0.000000)[0m   [0mSELECT `entry_instruments`.`entry_instrument_id` AS t0_r0, `entry_instruments`.`version` AS t0_r1, `entry_instruments`.`instrument_description` AS t0_r2, `entry_instruments`.`name` AS t0_r3, `entry_instruments`.`created_on` AS t0_r4, `entry_instruments`.`updated_on` AS t0_r5, `entry_items`.`entry_item_id` AS t1_r0, `entry_items`.`entry_instrument_id` AS t1_r1, `entry_items`.`display_type_id` AS t1_r2, `entry_items`.`name` AS t1_r3, `entry_items`.`relevance` AS t1_r4, `entry_items`.`position` AS t1_r5, `entry_items`.`created_on` AS t1_r6, `entry_items`.`updated_on` AS t1_r7 FROM `entry_instruments` LEFT OUTER JOIN `entry_items` ON entry_items.entry_instrument_id = entry_instruments.entry_instrument_id WHERE `entry_instruments`.entry_instrument_id IN (1) ORDER BY entry_instruments.`entry_instrument_id` ASC[0m
+Rendering template within layouts/application
+Rendering entry_instrument/list
+Rendered entry_instrument/_list_header (0.00000)
+Rendered entry_instrument/_list_column_headings (0.01600)
+Rendered entry_instrument/_messages (0.00000)
+Rendered entry_instrument/_list_actions (0.00000)
+Rendered entry_instrument/_list_record (0.01600)
+Rendered entry_instrument/_list (0.04700)
+Completed in 0.14000 (7 reqs/sec) | Rendering: 0.09300 (66%) | DB: 0.03000 (21%) | 200 OK [http://localhost/entry_instrument]
+  [4;36;1mEntryInstrument Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_instruments`[0m
+
+
+Processing EntryInstrumentController#new (for 127.0.0.1 at 2008-01-22 14:54:14) [GET]
+  Session ID: BAh7DyISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjgwZjZjYzNhNzlm%0ANGVkMGEzZDVmMzEwYmJmOGYxODIzewg6EGNvbnN0cmFpbnRzewY6EGVudHJ5%0AX2l0ZW1zIgY5Og9jb25kaXRpb25zMDsAewY6CmxhYmVsIiFFbnRyeSBBbnN3%0AZXJzIGZvciBRdWVzdGlvbiAxOgxjc3JmX2lkIiVkZGQ5ZGIxODU1ZTQ2NGQ1%0AMGMxYTYxYmExY2FiYTlmNyISYXM6SW5zdHJ1bWVudHsGOwB7ACIoYXM6ZTdh%0AOGFhZWUzZTU0ODUwODMyMGY4NDBkOWM5MWEwZTh7CDsGewY6GWVudHJ5X2l0%0AZW1fcXVlc3Rpb25zewY6D2VudHJ5X2l0ZW0iBjg7CDA7AHsHOwkiIUVudHJ5%0AIFF1ZXN0aW9ucyBmb3IgUXVlc3Rpb24iCXBhZ2VpBiIoYXM6YzA1MWU5NmE1%0AZjU2MjA4NGI2YjVlOTQwODU5MjZlNjZ7CDsGewY7ByIHMTE7CDA7AHsGOwki%0AH0VudHJ5IEFuc3dlcnMgZm9yIFN1cnZleSAyIihhczoxOGI1NmQ1N2RiNWM3%0AZTE4YjEzZTk4OGEwYzExYWQ3NHsIOwZ7BjoVZW50cnlfaW5zdHJ1bWVudCIG%0AMTsIMDsAewc7CSIZRW50cnkgSXRlbXMgZm9yIFRlc3QiCXBhZ2VpBiIoYXM6%0AYmQyOWFhNjgxNjk1NzA0YTUwOTJhZmE1ZGYxODI4MTV7CDsGewY7ByIHMTA7%0ACDA7AHsGOwkiH0VudHJ5IEFuc3dlcnMgZm9yIFN1cnZleSAxIgpmbGFzaElD%0AOidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNl%0AZHsAIhhhczplbnRyeV9pbnN0cnVtZW50ewY7AHsA--6a3abeefd65a537cb24a9610fb1d16b8585fa398
+  Parameters: {"adapter"=>"_list_inline_adapter", "_method"=>"get", "action"=>"new", "controller"=>"entry_instrument"}
+Rendered entry_instrument/_form_attribute (0.00000)
+Rendered entry_instrument/_form_attribute (0.01500)
+Rendered entry_instrument/_form_attribute (0.01600)
+  [4;35;1mEntryItem Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+  [4;36;1mEntryQuestion Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM `entry_questions`[0m
+Rendered entry_instrument/_form_association_header (0.07800)
+Rendered entry_instrument/_form_attribute (0.03100)
+  [4;35;1mDisplayType Load (0.016000)[0m   [0mSELECT * FROM `display_types` [0m
+  [4;36;1mDisplayType Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM `display_types`[0m
+Rendered entry_instrument/_form_attribute (0.10900)
+Rendered entry_instrument/_form_attribute (0.00000)
+  [4;35;1mEntryQuestion Load (0.016000)[0m   [0mSELECT * FROM `entry_questions` WHERE (entry_item_id IS NULL) [0m
+Rendered entry_instrument/_form_attribute (0.01600)
+Rendered entry_instrument/_form_association_record (0.25000)
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT count(*) AS count_all FROM `entry_items` WHERE (entry_instrument_id IS NULL) [0m
+Rendered entry_instrument/_form_association_footer (0.01600)
+Rendered entry_instrument/_form_association (0.35900)
+Rendered entry_instrument/_form (0.51500)
+Rendered entry_instrument/_create_form (0.53100)
+Rendering _list_inline_adapter
+Rendered core/_messages (0.00000)
+Completed in 0.57700 (1 reqs/sec) | Rendering: 0.03100 (5%) | DB: 0.00000 (0%) | 200 OK [http://localhost/entry_instrument/new?_method=get&adapter=_list_inline_adapter]
