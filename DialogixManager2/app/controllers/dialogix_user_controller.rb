@@ -4,6 +4,8 @@ class DialogixUserController < ApplicationController
   active_scaffold :dialogix_user do |config|
     config.list.columns = [:user_name, :first_name, :last_name, :email, :instrument_sessions] 
     config.columns[:user_name].label = "User Name"
+    
+    #config.columns[:email].inplace_edit = true
     config.list.sorting = [{:user_name => :ASC}]        
   end
 end

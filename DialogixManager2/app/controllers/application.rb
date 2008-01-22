@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # :secret => '24b107c70a1551ed35aa5035d3aedc71'
   
   ActiveScaffold.set_defaults do |config| 
-    config.ignore_columns.add [:created_at, :updated_at, :lock_version]
+    config.ignore_columns.add [:created_on, :updated_on, :lock_version]
   end  
 end
