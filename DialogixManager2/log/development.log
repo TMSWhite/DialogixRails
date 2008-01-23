@@ -2902,3 +2902,693 @@ Rendered entry_instrument/_create_form (0.53100)
 Rendering _list_inline_adapter
 Rendered core/_messages (0.00000)
 Completed in 0.57700 (1 reqs/sec) | Rendering: 0.03100 (5%) | DB: 0.00000 (0%) | 200 OK [http://localhost/entry_instrument/new?_method=get&adapter=_list_inline_adapter]
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.109000)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mInstrument Columns (0.141000)[0m   [0;1mSHOW FIELDS FROM `instruments`[0m
+
+
+Processing InstrumentController#index (for 127.0.0.1 at 2008-01-23 10:00:03) [GET]
+  Session ID: 733f0c8d5e8321081888b2d11adcba95
+  Parameters: {"action"=>"index", "controller"=>"Instrument"}
+  [4;35;1mSQL (0.093000)[0m   [0mSELECT count(DISTINCT `instruments`.instrument_id) AS count_all FROM `instruments` LEFT OUTER JOIN `instrument_versions` ON instrument_versions.instrument_id = instruments.instrument_id [0m
+  [4;36;1mInstrumentVersion Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM `instrument_versions`[0m
+  [4;35;1mInstrument Load IDs For Limited Eager Loading (0.000000)[0m   [0mSELECT instrument_id FROM `instruments` ORDER BY instruments.`name` ASC LIMIT 0, 15[0m
+  [4;36;1mInstrument Load Including Associations (0.016000)[0m   [0;1mSELECT `instruments`.`instrument_id` AS t0_r0, `instruments`.`instrument_description` AS t0_r1, `instruments`.`name` AS t0_r2, `instrument_versions`.`instrument_version_id` AS t1_r0, `instrument_versions`.`instrument_status` AS t1_r1, `instrument_versions`.`creation_time_stamp` AS t1_r2, `instrument_versions`.`name` AS t1_r3, `instrument_versions`.`instrument_version_file_name` AS t1_r4, `instrument_versions`.`has_loinc_code` AS t1_r5, `instrument_versions`.`instrument_notes` AS t1_r6, `instrument_versions`.`loinc_num` AS t1_r7, `instrument_versions`.`instrument_id` AS t1_r8, `instrument_versions`.`instrument_hash_id` AS t1_r9 FROM `instruments` LEFT OUTER JOIN `instrument_versions` ON instrument_versions.instrument_id = instruments.instrument_id WHERE `instruments`.instrument_id IN (2, 1, 3) ORDER BY instruments.`name` ASC[0m
+Rendering template within layouts/application
+Rendering instrument/list
+Rendered instrument/_list_header (0.04700)
+Rendered instrument/_list_column_headings (0.06200)
+Rendered instrument/_messages (0.01600)
+Rendered instrument/_list_actions (0.04700)
+Rendered instrument/_list_record (0.09400)
+Rendered instrument/_list_actions (0.00000)
+Rendered instrument/_list_record (0.01600)
+Rendered instrument/_list_actions (0.01600)
+Rendered instrument/_list_record (0.03100)
+Rendered instrument/_list (0.29600)
+Completed in 0.65500 (1 reqs/sec) | Rendering: 0.46800 (71%) | DB: 0.37400 (57%) | 200 OK [http://localhost/]
+  [4;35;1mEntryInstrument Columns (0.016000)[0m   [0mSHOW FIELDS FROM `entry_instruments`[0m
+
+
+Processing EntryInstrumentController#index (for 127.0.0.1 at 2008-01-23 10:00:09) [GET]
+  Session ID: BAh7CDoMY3NyZl9pZCIlMGQ0MjlhOWNjOTRjZTQxNTYyMGZiNmFjMTg5M2Q1%0ANTIiEmFzOkluc3RydW1lbnR7BjoJbGlzdHsAIgpmbGFzaElDOidBY3Rpb25D%0Ab250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNlZHsA--81f3a9d79d652423b0d226708cf28e6a18d69cc1
+  Parameters: {"action"=>"index", "controller"=>"entry_instrument"}
+  [4;36;1mSQL (0.015000)[0m   [0;1mSELECT count(DISTINCT `entry_instruments`.entry_instrument_id) AS count_all FROM `entry_instruments` LEFT OUTER JOIN `entry_items` ON entry_items.entry_instrument_id = entry_instruments.entry_instrument_id [0m
+  [4;35;1mEntryItem Columns (0.016000)[0m   [0mSHOW FIELDS FROM `entry_items`[0m
+  [4;36;1mEntryInstrument Load IDs For Limited Eager Loading (0.000000)[0m   [0;1mSELECT entry_instrument_id FROM `entry_instruments` ORDER BY entry_instruments.`entry_instrument_id` ASC LIMIT 0, 15[0m
+  [4;35;1mEntryInstrument Load Including Associations (0.016000)[0m   [0mSELECT `entry_instruments`.`entry_instrument_id` AS t0_r0, `entry_instruments`.`version` AS t0_r1, `entry_instruments`.`instrument_description` AS t0_r2, `entry_instruments`.`name` AS t0_r3, `entry_instruments`.`created_on` AS t0_r4, `entry_instruments`.`updated_on` AS t0_r5, `entry_items`.`entry_item_id` AS t1_r0, `entry_items`.`entry_instrument_id` AS t1_r1, `entry_items`.`display_type_id` AS t1_r2, `entry_items`.`name` AS t1_r3, `entry_items`.`relevance` AS t1_r4, `entry_items`.`position` AS t1_r5, `entry_items`.`created_on` AS t1_r6, `entry_items`.`updated_on` AS t1_r7 FROM `entry_instruments` LEFT OUTER JOIN `entry_items` ON entry_items.entry_instrument_id = entry_instruments.entry_instrument_id WHERE `entry_instruments`.entry_instrument_id IN (1) ORDER BY entry_instruments.`entry_instrument_id` ASC[0m
+Rendering template within layouts/application
+Rendering entry_instrument/list
+Rendered entry_instrument/_list_header (0.00000)
+Rendered entry_instrument/_list_column_headings (0.01500)
+Rendered entry_instrument/_messages (0.00000)
+Rendered entry_instrument/_list_actions (0.01600)
+Rendered entry_instrument/_list_record (0.01600)
+Rendered entry_instrument/_list (0.04700)
+Completed in 0.15600 (6 reqs/sec) | Rendering: 0.07800 (50%) | DB: 0.06300 (40%) | 200 OK [http://localhost/entry_instrument]
+  [4;36;1mEntryInstrument Columns (0.031000)[0m   [0;1mSHOW FIELDS FROM `entry_instruments`[0m
+
+
+Processing EntryInstrumentController#nested (for 127.0.0.1 at 2008-01-23 10:00:18) [GET]
+  Session ID: BAh7CSISYXM6SW5zdHJ1bWVudHsGOglsaXN0ewA6DGNzcmZfaWQiJTBkNDI5%0AYTljYzk0Y2U0MTU2MjBmYjZhYzE4OTNkNTUyIgpmbGFzaElDOidBY3Rpb25D%0Ab250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNlZHsAIhhhczpl%0AbnRyeV9pbnN0cnVtZW50ewY7AHsA--275ceddc330b32d4f2cc16f342ecd57b3ac456d8
+  Parameters: {"associations"=>"entry_items", "adapter"=>"_list_inline_adapter", "_method"=>"get", "action"=>"nested", "id"=>"1", "controller"=>"entry_instrument"}
+  [4;35;1mEntryInstrument Load (0.000000)[0m   [0mSELECT * FROM `entry_instruments` WHERE (`entry_instruments`.`entry_instrument_id` = 1) [0m
+  [4;36;1mEntryItem Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+  [4;35;1mSQL (0.000000)[0m   [0mSHOW TABLES[0m
+Start rendering component ({:controller=>"entry_item", :params=>{:nested=>true, :eid=>"18b56d57db5c7e18b13e988a0c11ad74", :parent_model=>EntryInstrument(entry_instrument_id: integer, version: string, instrument_description: text, name: string, created_on: timestamp, updated_on: timestamp), :parent_column=>"entry_items"}, :action=>"table"}): 
+
+
+Processing EntryItemController#table (for 127.0.0.1 at 2008-01-23 10:00:18) [GET]
+  Session ID: BAh7CSISYXM6SW5zdHJ1bWVudHsGOglsaXN0ewA6DGNzcmZfaWQiJTBkNDI5%0AYTljYzk0Y2U0MTU2MjBmYjZhYzE4OTNkNTUyIgpmbGFzaElDOidBY3Rpb25D%0Ab250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNlZHsAIhhhczpl%0AbnRyeV9pbnN0cnVtZW50ewY7AHsA--275ceddc330b32d4f2cc16f342ecd57b3ac456d8
+  [4;36;1mSQL (0.000000)[0m   [0;1mSHOW TABLES[0m
+  Parameters: {"parent_column"=>"entry_items", "eid"=>"18b56d57db5c7e18b13e988a0c11ad74", "nested"=>true, "action"=>"table", "id"=>nil, "controller"=>"entry_item", "parent_model"=>EntryInstrument(entry_instrument_id: integer, version: string, instrument_description: text, name: string, created_on: timestamp, updated_on: timestamp)}
+  [4;35;1mEntryQuestion Columns (0.016000)[0m   [0mSHOW FIELDS FROM `entry_questions`[0m
+  [4;36;1mSQL (0.078000)[0m   [0;1mSELECT count(DISTINCT `entry_items`.entry_item_id) AS count_all FROM `entry_items` LEFT OUTER JOIN `display_types` ON `display_types`.display_type_id = `entry_items`.display_type_id LEFT OUTER JOIN `entry_questions` ON entry_questions.entry_item_id = entry_items.entry_item_id LEFT OUTER JOIN `entry_answers_entry_items` ON `entry_answers_entry_items`.entry_item_id = `entry_items`.entry_item_id LEFT OUTER JOIN `entry_answers` ON `entry_answers`.entry_answer_id = `entry_answers_entry_items`.entry_answer_id LEFT OUTER JOIN `entry_instruments` ON `entry_instruments`.entry_instrument_id = `entry_items`.entry_instrument_id WHERE (entry_items.entry_instrument_id = '1') [0m
+  [4;35;1mDisplayType Columns (0.032000)[0m   [0mSHOW FIELDS FROM `display_types`[0m
+  [4;36;1mEntryAnswer Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_answers`[0m
+  [4;35;1mEntryItem Load IDs For Limited Eager Loading (0.000000)[0m   [0mSELECT entry_item_id FROM `entry_items` WHERE (entry_items.entry_instrument_id = '1') ORDER BY entry_items.`entry_item_id` ASC LIMIT 0, 15[0m
+  [4;36;1mCACHE (0.000000)[0m   [0;1mSELECT entry_item_id FROM `entry_items` WHERE (entry_items.entry_instrument_id = '1') ORDER BY entry_items.`entry_item_id` ASC LIMIT 0, 15[0m
+Rendering entry_item/list
+Rendered entry_item/_list_header (0.00000)
+Rendered entry_item/_list_column_headings (0.00000)
+Rendered entry_item/_messages (0.00000)
+Rendered entry_item/_list (0.03100)
+Completed in 0.23400 (4 reqs/sec) | Rendering: 0.04700 (20%) | DB: 0.12600 (53%) | 200 OK [http://localhost/entry_instrument/nested/1?_method=get&associations=entry_items&adapter=_list_inline_adapter]
+
+
+End of component rendering
+Rendered entry_instrument/_nested (0.37400)
+Rendering _list_inline_adapter
+Rendered core/_messages (0.01500)
+Completed in 0.42100 (2 reqs/sec) | Rendering: 0.03100 (7%) | DB: 0.00000 (0%) | 200 OK [http://localhost/entry_instrument/nested/1?_method=get&associations=entry_items&adapter=_list_inline_adapter]
+  [4;35;1mEntryItem Columns (0.016000)[0m   [0mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+
+
+Processing EntryItemController#new (for 127.0.0.1 at 2008-01-23 10:00:22) [GET]
+  Session ID: BAh7CjoMY3NyZl9pZCIlMGQ0MjlhOWNjOTRjZTQxNTYyMGZiNmFjMTg5M2Q1%0ANTIiEmFzOkluc3RydW1lbnR7BjoJbGlzdHsAIihhczoxOGI1NmQ1N2RiNWM3%0AZTE4YjEzZTk4OGEwYzExYWQ3NHsIOg9jb25kaXRpb25zMDoQY29uc3RyYWlu%0AdHN7BjoVZW50cnlfaW5zdHJ1bWVudCIGMTsGewc6CmxhYmVsIhlFbnRyeSBJ%0AdGVtcyBmb3IgVGVzdCIJcGFnZWkGIgpmbGFzaElDOidBY3Rpb25Db250cm9s%0AbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNlZHsAIhhhczplbnRyeV9p%0AbnN0cnVtZW50ewY7BnsA--ab2f3c1fcefd5bfea56841fa738cf8735f954a1e
+  Parameters: {"parent_column"=>"entry_items", "eid"=>"18b56d57db5c7e18b13e988a0c11ad74", "nested"=>"true", "adapter"=>"_list_inline_adapter", "_method"=>"get", "action"=>"new", "controller"=>"entry_item", "parent_model"=>"EntryInstrument"}
+  [4;36;1mEntryQuestion Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM `entry_questions`[0m
+  [4;35;1mEntryInstrument Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_instruments`[0m
+  [4;36;1mEntryInstrument Load (0.000000)[0m   [0;1mSELECT * FROM `entry_instruments` WHERE (`entry_instruments`.`entry_instrument_id` = 1) [0m
+Rendered entry_item/_form_attribute (0.01600)
+  [4;35;1mDisplayType Load (0.000000)[0m   [0mSELECT * FROM `display_types` [0m
+  [4;36;1mDisplayType Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM `display_types`[0m
+Rendered entry_item/_form_attribute (0.03100)
+Rendered entry_item/_form_attribute (0.01500)
+Rendered entry_item/_form_association_header (0.03100)
+Rendered entry_item/_form_attribute (0.00000)
+Rendered entry_item/_form_association_record (0.03200)
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT count(*) AS count_all FROM `entry_questions` WHERE (entry_item_id IS NULL) [0m
+Rendered entry_item/_form_association_footer (0.03100)
+Rendered entry_item/_form_association (0.14000)
+  [4;36;1mEntryAnswer Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_answers`[0m
+Rendered entry_item/_form_association_header (0.01500)
+Rendered entry_item/_form_attribute (0.01600)
+Rendered entry_item/_form_attribute (0.00000)
+Rendered entry_item/_form_association_record (0.04700)
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT count(*) AS count_all FROM `entry_answers` [0m
+Rendered entry_item/_form_association_footer (0.00000)
+Rendered entry_item/_form_association (0.06200)
+Rendered entry_item/_form (0.37400)
+Rendered entry_item/_create_form (0.43700)
+Rendering _list_inline_adapter
+Rendered core/_messages (0.00000)
+Completed in 0.53000 (1 reqs/sec) | Rendering: 0.01500 (2%) | DB: 0.00000 (0%) | 200 OK [http://localhost/entry_item/new?_method=get&eid=18b56d57db5c7e18b13e988a0c11ad74&nested=true&parent_column=entry_items&parent_model=EntryInstrument&adapter=_list_inline_adapter]
+  [4;36;1mEntryItem Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+
+
+Processing EntryItemController#edit_associated (for 127.0.0.1 at 2008-01-23 10:00:55) [GET]
+  Session ID: BAh7CiISYXM6SW5zdHJ1bWVudHsGOglsaXN0ewA6DGNzcmZfaWQiJTBkNDI5%0AYTljYzk0Y2U0MTU2MjBmYjZhYzE4OTNkNTUyIihhczoxOGI1NmQ1N2RiNWM3%0AZTE4YjEzZTk4OGEwYzExYWQ3NHsIOhBjb25zdHJhaW50c3sGOhVlbnRyeV9p%0AbnN0cnVtZW50IgYxOg9jb25kaXRpb25zMDsAewc6CmxhYmVsIhlFbnRyeSBJ%0AdGVtcyBmb3IgVGVzdCIJcGFnZWkGIgpmbGFzaElDOidBY3Rpb25Db250cm9s%0AbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNlZHsAIhhhczplbnRyeV9p%0AbnN0cnVtZW50ewY7AHsA--007d04e7359322e9999fa0a79db5a47508423abf
+  Parameters: {"association"=>"entry_answers", "_method"=>"get", "action"=>"edit_associated", "controller"=>"entry_item"}
+  [4;35;1mEntryQuestion Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_questions`[0m
+  [4;36;1mEntryAnswer Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM `entry_answers`[0m
+Rendering entry_item/edit_associated.rjs
+Rendered entry_item/_form_attribute (0.00000)
+Rendered entry_item/_form_attribute (0.01600)
+Rendered entry_item/_form_association_record (0.04700)
+Completed in 0.15600 (6 reqs/sec) | Rendering: 0.09400 (60%) | DB: 0.01600 (10%) | 200 OK [http://localhost/entry_item/edit_associated?_method=get&association=entry_answers]
+  [4;35;1mEntryItem Columns (0.015000)[0m   [0mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+
+
+Processing EntryItemController#edit_associated (for 127.0.0.1 at 2008-01-23 10:00:59) [GET]
+  Session ID: BAh7CyISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewA6DGNzcmZfaWQiJTBkNDI5%0AYTljYzk0Y2U0MTU2MjBmYjZhYzE4OTNkNTUyIhJhczpJbnN0cnVtZW50ewY7%0AAHsAIihhczoxOGI1NmQ1N2RiNWM3ZTE4YjEzZTk4OGEwYzExYWQ3NHsIOg9j%0Ab25kaXRpb25zMDoQY29uc3RyYWludHN7BjoVZW50cnlfaW5zdHJ1bWVudCIG%0AMTsAewc6CmxhYmVsIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIJcGFnZWkGIgpm%0AbGFzaElDOidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewAG%0AOgpAdXNlZHsAIhhhczplbnRyeV9pbnN0cnVtZW50ewY7AHsA--b89ed35b3cd067b495868ca261ede26cd126a10f
+  Parameters: {"association"=>"entry_answers", "_method"=>"get", "action"=>"edit_associated", "controller"=>"entry_item"}
+  [4;36;1mEntryQuestion Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM `entry_questions`[0m
+  [4;35;1mEntryAnswer Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_answers`[0m
+Rendering entry_item/edit_associated.rjs
+Rendered entry_item/_form_attribute (0.00000)
+Rendered entry_item/_form_attribute (0.00000)
+Rendered entry_item/_form_association_record (0.04700)
+Completed in 0.12500 (8 reqs/sec) | Rendering: 0.06200 (49%) | DB: 0.03000 (23%) | 200 OK [http://localhost/entry_item/edit_associated?_method=get&association=entry_answers]
+  [4;36;1mEntryItem Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+
+
+Processing EntryItemController#create (for 127.0.0.1 at 2008-01-23 10:01:15) [POST]
+  Session ID: BAh7CyISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiEmFzOkluc3RydW1lbnR7%0ABjsAewA6DGNzcmZfaWQiJTBkNDI5YTljYzk0Y2U0MTU2MjBmYjZhYzE4OTNk%0ANTUyIihhczoxOGI1NmQ1N2RiNWM3ZTE4YjEzZTk4OGEwYzExYWQ3NHsIOhBj%0Ab25zdHJhaW50c3sGOhVlbnRyeV9pbnN0cnVtZW50IgYxOg9jb25kaXRpb25z%0AMDsAewc6CmxhYmVsIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIJcGFnZWkGIgpm%0AbGFzaElDOidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewAG%0AOgpAdXNlZHsAIhhhczplbnRyeV9pbnN0cnVtZW50ewY7AHsA--ccb1d7a55ec10d62842212af888112d1683e46f7
+  Parameters: {"parent_column"=>"entry_items", "eid"=>"18b56d57db5c7e18b13e988a0c11ad74", "commit"=>"Create", "nested"=>"true", "authenticity_token"=>"6365320a88167310fe7a5b5e5d5e443aad7afc00", "action"=>"create", "controller"=>"entry_item", "parent_model"=>"EntryInstrument", "record"=>{"name"=>"ddfffff", "display_type"=>{"id"=>"6"}, "relevance"=>"xxxxxx", "entry_question"=>{"name"=>"Are you hungry?"}, "entry_answers"=>{"1201100422945"=>{"name"=>"Yes", "answer_code"=>""}, "1201100459668"=>{"name"=>"Maybe", "answer_code"=>""}, "1201100455643"=>{"name"=>"No", "answer_code"=>""}}}}
+  [4;35;1mEntryQuestion Columns (0.016000)[0m   [0mSHOW FIELDS FROM `entry_questions`[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mBEGIN[0m
+  [4;35;1mDisplayType Columns (0.000000)[0m   [0mSHOW FIELDS FROM `display_types`[0m
+  [4;36;1mDisplayType Load (0.000000)[0m   [0;1mSELECT * FROM `display_types` WHERE (`display_types`.`display_type_id` = 6) [0m
+  [4;35;1mEntryAnswer Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_answers`[0m
+  [4;36;1mEntryInstrument Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM `entry_instruments`[0m
+  [4;35;1mEntryInstrument Load (0.000000)[0m   [0mSELECT * FROM `entry_instruments` WHERE (`entry_instruments`.`entry_instrument_id` = 1) [0m
+  [4;36;1mEntryItem Load (0.000000)[0m   [0;1mSELECT * FROM `entry_items` WHERE (entry_items.name = 'ddfffff') LIMIT 1[0m
+  [4;35;1mCACHE (0.000000)[0m   [0mSELECT * FROM `entry_items` WHERE (entry_items.name = 'ddfffff') LIMIT 1[0m
+  [4;36;1mEntryItem Create (0.078000)[0m   [0;1mINSERT INTO `entry_items` (`created_on`, `name`, `updated_on`, `display_type_id`, `relevance`, `position`, `entry_instrument_id`) VALUES('2008-01-23 10:01:15', 'ddfffff', '2008-01-23 10:01:15', 6, 'xxxxxx', NULL, 1)[0m
+  [4;35;1mEntryAnswer Create (0.000000)[0m   [0mINSERT INTO `entry_answers` (`created_on`, `name`, `answer_code`, `updated_on`, `position`) VALUES('2008-01-23 10:01:15', 'Yes', NULL, '2008-01-23 10:01:15', NULL)[0m
+  [4;36;1mentry_answers_entry_items Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_answers_entry_items`[0m
+  [4;35;1mSQL (0.015000)[0m   [0mINSERT INTO entry_answers_entry_items (`entry_answer_id`, `entry_item_id`) VALUES (12, 12)[0m
+  [4;36;1mEntryAnswer Create (0.000000)[0m   [0;1mINSERT INTO `entry_answers` (`created_on`, `name`, `answer_code`, `updated_on`, `position`) VALUES('2008-01-23 10:01:15', 'Maybe', NULL, '2008-01-23 10:01:15', NULL)[0m
+  [4;35;1mentry_answers_entry_items Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_answers_entry_items`[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mINSERT INTO entry_answers_entry_items (`entry_answer_id`, `entry_item_id`) VALUES (13, 12)[0m
+  [4;35;1mEntryAnswer Create (0.000000)[0m   [0mINSERT INTO `entry_answers` (`created_on`, `name`, `answer_code`, `updated_on`, `position`) VALUES('2008-01-23 10:01:15', 'No', NULL, '2008-01-23 10:01:15', NULL)[0m
+  [4;36;1mentry_answers_entry_items Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM `entry_answers_entry_items`[0m
+  [4;35;1mSQL (0.000000)[0m   [0mINSERT INTO entry_answers_entry_items (`entry_answer_id`, `entry_item_id`) VALUES (14, 12)[0m
+  [4;36;1mEntryQuestion Create (0.000000)[0m   [0;1mINSERT INTO `entry_questions` (`created_on`, `name`, `updated_on`, `entry_item_id`) VALUES('2008-01-23 10:01:15', 'Are you hungry?', '2008-01-23 10:01:15', 12)[0m
+  [4;35;1mEntryAnswer Update (0.016000)[0m   [0mUPDATE `entry_answers` SET `position` = NULL, `updated_on` = '2008-01-23 10:01:15', `answer_code` = NULL, `name` = 'Yes', `created_on` = '2008-01-23 10:01:15' WHERE `entry_answer_id` = 12[0m
+  [4;36;1mEntryAnswer Update (0.000000)[0m   [0;1mUPDATE `entry_answers` SET `position` = NULL, `updated_on` = '2008-01-23 10:01:15', `answer_code` = NULL, `name` = 'Maybe', `created_on` = '2008-01-23 10:01:15' WHERE `entry_answer_id` = 13[0m
+  [4;35;1mEntryAnswer Update (0.000000)[0m   [0mUPDATE `entry_answers` SET `position` = NULL, `updated_on` = '2008-01-23 10:01:15', `answer_code` = NULL, `name` = 'No', `created_on` = '2008-01-23 10:01:15' WHERE `entry_answer_id` = 14[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCOMMIT[0m
+Rendering entry_item/create.rjs
+Rendered entry_item/_list_actions (0.00000)
+Rendered entry_item/_list_record (0.01600)
+Completed in 0.31200 (3 reqs/sec) | Rendering: 0.06200 (19%) | DB: 0.15700 (50%) | 200 OK [http://localhost/entry_item/create?eid=18b56d57db5c7e18b13e988a0c11ad74&nested=true&parent_column=entry_items&parent_model=EntryInstrument]
+  [4;35;1mEntryItem Columns (0.016000)[0m   [0mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+
+
+Processing EntryItemController#nested (for 127.0.0.1 at 2008-01-23 10:01:20) [GET]
+  Session ID: BAh7CyISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewA6DGNzcmZfaWQiJTBkNDI5%0AYTljYzk0Y2U0MTU2MjBmYjZhYzE4OTNkNTUyIhJhczpJbnN0cnVtZW50ewY7%0AAHsAIihhczoxOGI1NmQ1N2RiNWM3ZTE4YjEzZTk4OGEwYzExYWQ3NHsIOg9j%0Ab25kaXRpb25zMDoQY29uc3RyYWludHN7BjoVZW50cnlfaW5zdHJ1bWVudCIG%0AMTsAewc6CmxhYmVsIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIJcGFnZWkGIgpm%0AbGFzaElDOidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewAG%0AOgpAdXNlZHsAIhhhczplbnRyeV9pbnN0cnVtZW50ewY7AHsA--b89ed35b3cd067b495868ca261ede26cd126a10f
+  Parameters: {"parent_column"=>"entry_items", "eid"=>"18b56d57db5c7e18b13e988a0c11ad74", "associations"=>"entry_answers", "nested"=>"true", "adapter"=>"_list_inline_adapter", "authenticity_token"=>"6365320a88167310fe7a5b5e5d5e443aad7afc00", "_method"=>"get", "action"=>"nested", "id"=>"12", "controller"=>"entry_item", "parent_model"=>"EntryInstrument"}
+  [4;36;1mEntryQuestion Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_questions`[0m
+  [4;35;1mEntryItem Load (0.000000)[0m   [0mSELECT * FROM `entry_items` WHERE (`entry_items`.`entry_item_id` = 12) [0m
+  [4;36;1mEntryAnswer Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_answers`[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSHOW TABLES[0m
+Start rendering component ({:controller=>"entry_answer", :params=>{:nested=>true, :eid=>"28c8af21056392ee8ea4c3f361fb7eba", :parent_model=>EntryItem(entry_item_id: integer, entry_instrument_id: integer, display_type_id: integer, name: string, relevance: string, position: integer, created_on: timestamp, updated_on: timestamp), :parent_column=>"entry_answers"}, :action=>"table"}): 
+
+
+Processing EntryAnswerController#table (for 127.0.0.1 at 2008-01-23 10:01:20) [GET]
+  Session ID: BAh7CyISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewA6DGNzcmZfaWQiJTBkNDI5%0AYTljYzk0Y2U0MTU2MjBmYjZhYzE4OTNkNTUyIhJhczpJbnN0cnVtZW50ewY7%0AAHsAIihhczoxOGI1NmQ1N2RiNWM3ZTE4YjEzZTk4OGEwYzExYWQ3NHsIOg9j%0Ab25kaXRpb25zMDoQY29uc3RyYWludHN7BjoVZW50cnlfaW5zdHJ1bWVudCIG%0AMTsAewc6CmxhYmVsIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIJcGFnZWkGIgpm%0AbGFzaElDOidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewAG%0AOgpAdXNlZHsAIhhhczplbnRyeV9pbnN0cnVtZW50ewY7AHsA--b89ed35b3cd067b495868ca261ede26cd126a10f
+  [4;36;1mSQL (0.016000)[0m   [0;1mSHOW TABLES[0m
+  Parameters: {"parent_column"=>"entry_answers", "eid"=>"28c8af21056392ee8ea4c3f361fb7eba", "nested"=>true, "action"=>"table", "id"=>nil, "controller"=>"entry_answer", "parent_model"=>EntryItem(entry_item_id: integer, entry_instrument_id: integer, display_type_id: integer, name: string, relevance: string, position: integer, created_on: timestamp, updated_on: timestamp)}
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT count(DISTINCT `entry_answers`.entry_answer_id) AS count_all FROM `entry_answers` LEFT OUTER JOIN `entry_answers_entry_items` ON `entry_answers_entry_items`.entry_answer_id = `entry_answers`.entry_answer_id LEFT OUTER JOIN `entry_items` ON `entry_items`.entry_item_id = `entry_answers_entry_items`.entry_item_id WHERE (entry_answers_entry_items.entry_item_id = '12') [0m
+  [4;36;1mEntryAnswer Load IDs For Limited Eager Loading (0.000000)[0m   [0;1mSELECT DISTINCT `entry_answers`.entry_answer_id FROM `entry_answers` LEFT OUTER JOIN `entry_answers_entry_items` ON `entry_answers_entry_items`.entry_answer_id = `entry_answers`.entry_answer_id LEFT OUTER JOIN `entry_items` ON `entry_items`.entry_item_id = `entry_answers_entry_items`.entry_item_id WHERE (entry_answers_entry_items.entry_item_id = '12') ORDER BY entry_answers.`entry_answer_id` ASC LIMIT 0, 15[0m
+  [4;35;1mEntryAnswer Load Including Associations (0.015000)[0m   [0mSELECT `entry_answers`.`entry_answer_id` AS t0_r0, `entry_answers`.`name` AS t0_r1, `entry_answers`.`answer_code` AS t0_r2, `entry_answers`.`position` AS t0_r3, `entry_answers`.`created_on` AS t0_r4, `entry_answers`.`updated_on` AS t0_r5, `entry_items`.`entry_item_id` AS t1_r0, `entry_items`.`entry_instrument_id` AS t1_r1, `entry_items`.`display_type_id` AS t1_r2, `entry_items`.`name` AS t1_r3, `entry_items`.`relevance` AS t1_r4, `entry_items`.`position` AS t1_r5, `entry_items`.`created_on` AS t1_r6, `entry_items`.`updated_on` AS t1_r7 FROM `entry_answers` LEFT OUTER JOIN `entry_answers_entry_items` ON `entry_answers_entry_items`.entry_answer_id = `entry_answers`.entry_answer_id LEFT OUTER JOIN `entry_items` ON `entry_items`.entry_item_id = `entry_answers_entry_items`.entry_item_id WHERE (entry_answers_entry_items.entry_item_id = '12') AND `entry_answers`.entry_answer_id IN (12, 13, 14) ORDER BY entry_answers.`entry_answer_id` ASC[0m
+Rendering entry_answer/list
+Rendered entry_answer/_list_header (0.00000)
+Rendered entry_answer/_list_column_headings (0.00000)
+Rendered entry_answer/_messages (0.00000)
+Rendered entry_answer/_list_actions (0.00000)
+Rendered entry_answer/_list_record (0.01600)
+Rendered entry_answer/_list_actions (0.01600)
+Rendered entry_answer/_list_record (0.01600)
+Rendered entry_answer/_list_actions (0.01600)
+Rendered entry_answer/_list_record (0.01600)
+Rendered entry_answer/_list (0.09400)
+Completed in 0.12500 (8 reqs/sec) | Rendering: 0.11000 (87%) | DB: 0.03100 (24%) | 200 OK [http://localhost/entry_item/nested/12?_method=get&associations=entry_answers&authenticity_token=6365320a88167310fe7a5b5e5d5e443aad7afc00&eid=18b56d57db5c7e18b13e988a0c11ad74&nested=true&parent_column=entry_items&parent_model=EntryInstrument&adapter=_list_inline_adapter]
+
+
+End of component rendering
+Rendered entry_item/_nested (0.18800)
+Rendering _list_inline_adapter
+Rendered core/_messages (0.00000)
+Completed in 0.26500 (3 reqs/sec) | Rendering: 0.01500 (5%) | DB: 0.00000 (0%) | 200 OK [http://localhost/entry_item/nested/12?_method=get&associations=entry_answers&authenticity_token=6365320a88167310fe7a5b5e5d5e443aad7afc00&eid=18b56d57db5c7e18b13e988a0c11ad74&nested=true&parent_column=entry_items&parent_model=EntryInstrument&adapter=_list_inline_adapter]
+  [4;36;1mEntryItem Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+
+
+Processing EntryItemController#edit (for 127.0.0.1 at 2008-01-23 10:02:33) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6D2NvbmRpdGlvbnMwOhBjb25zdHJh%0AaW50c3sGOhBlbnRyeV9pdGVtcyIHMTI7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZiISYXM6SW5zdHJ1bWVudHsGOwB7ADoMY3NyZl9p%0AZCIlMGQ0MjlhOWNjOTRjZTQxNTYyMGZiNmFjMTg5M2Q1NTIiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7B3sGOhVlbnRyeV9pbnN0%0AcnVtZW50IgYxOwYwOwB7BzsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIJcGFn%0AZWkGIgpmbGFzaElDOidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hI%0AYXNoewAGOgpAdXNlZHsAIhhhczplbnRyeV9pbnN0cnVtZW50ewY7AHsA--337217d6d98826c22a82af0f5c8a0c1e343da9e9
+  Parameters: {"parent_column"=>"entry_items", "eid"=>"18b56d57db5c7e18b13e988a0c11ad74", "nested"=>"true", "adapter"=>"_list_inline_adapter", "authenticity_token"=>"6365320a88167310fe7a5b5e5d5e443aad7afc00", "_method"=>"get", "action"=>"edit", "id"=>"12", "controller"=>"entry_item", "parent_model"=>"EntryInstrument"}
+  [4;35;1mEntryQuestion Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_questions`[0m
+  [4;36;1mEntryItem Load (0.000000)[0m   [0;1mSELECT * FROM `entry_items` WHERE (`entry_items`.`entry_item_id` = 12) [0m
+Rendered entry_item/_form_attribute (0.00000)
+  [4;35;1mDisplayType Columns (0.000000)[0m   [0mSHOW FIELDS FROM `display_types`[0m
+  [4;36;1mDisplayType Load (0.000000)[0m   [0;1mSELECT * FROM `display_types` WHERE (`display_types`.`display_type_id` = 6) [0m
+  [4;35;1mDisplayType Load (0.000000)[0m   [0mSELECT * FROM `display_types` [0m
+Rendered entry_item/_form_attribute (0.01600)
+Rendered entry_item/_form_attribute (0.00000)
+  [4;36;1mEntryQuestion Load (0.000000)[0m   [0;1mSELECT * FROM `entry_questions` WHERE (entry_questions.entry_item_id = 12) LIMIT 1[0m
+Rendered entry_item/_form_association_header (0.03200)
+Rendered entry_item/_form_attribute (0.01600)
+Rendered entry_item/_form_association_record (0.03100)
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT count(*) AS count_all FROM `entry_questions` WHERE (entry_item_id IS NULL) [0m
+Rendered entry_item/_form_association_footer (0.01500)
+Rendered entry_item/_form_association (0.07800)
+  [4;36;1mEntryAnswer Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM `entry_answers`[0m
+  [4;35;1mJoin Table Columns (0.016000)[0m   [0mSHOW FIELDS FROM `entry_answers_entry_items`[0m
+  [4;36;1mEntryAnswer Load (0.000000)[0m   [0;1mSELECT * FROM `entry_answers` INNER JOIN entry_answers_entry_items ON entry_answers.entry_answer_id = entry_answers_entry_items.entry_answer_id WHERE (entry_answers_entry_items.entry_item_id = 12 ) [0m
+Rendered entry_item/_form_association_header (0.01500)
+Rendered entry_item/_form_attribute (0.01600)
+Rendered entry_item/_form_attribute (0.00000)
+Rendered entry_item/_form_association_record (0.03200)
+Rendered entry_item/_form_attribute (0.00000)
+Rendered entry_item/_form_attribute (0.00000)
+Rendered entry_item/_form_association_record (0.03100)
+Rendered entry_item/_form_attribute (0.00000)
+Rendered entry_item/_form_attribute (0.00000)
+Rendered entry_item/_form_association_record (0.09400)
+Rendered entry_item/_form_attribute (0.01600)
+Rendered entry_item/_form_attribute (0.01500)
+Rendered entry_item/_form_association_record (0.04600)
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT count(*) AS count_all FROM `entry_answers` [0m
+  [4;36;1mEntryAnswer Load (0.000000)[0m   [0;1mSELECT * FROM `entry_answers` [0m
+Rendered entry_item/_form_association_footer (0.01600)
+Rendered entry_item/_form_association (0.28100)
+Rendered entry_item/_form (0.49900)
+Rendered entry_item/_update_form (0.54600)
+Rendering _list_inline_adapter
+Rendered core/_messages (0.00000)
+Completed in 0.60900 (1 reqs/sec) | Rendering: 0.01600 (2%) | DB: 0.00000 (0%) | 200 OK [http://localhost/entry_item/edit/12?_method=get&authenticity_token=6365320a88167310fe7a5b5e5d5e443aad7afc00&eid=18b56d57db5c7e18b13e988a0c11ad74&nested=true&parent_column=entry_items&parent_model=EntryInstrument&adapter=_list_inline_adapter]
+  [4;35;1mEntryItem Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+
+
+Processing EntryItemController#row (for 127.0.0.1 at 2008-01-23 10:03:23) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6EGNvbnN0cmFpbnRzewY6EGVudHJ5%0AX2l0ZW1zIgcxMjoPY29uZGl0aW9uczA7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZjoMY3NyZl9pZCIlMGQ0MjlhOWNjOTRjZTQxNTYy%0AMGZiNmFjMTg5M2Q1NTIiEmFzOkluc3RydW1lbnR7BjsAewAiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7CDA7BnsGOhVlbnRyeV9p%0AbnN0cnVtZW50IgYxOwB7BzsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIJcGFn%0AZWkGIgpmbGFzaElDOidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hI%0AYXNoewAGOgpAdXNlZHsAIhhhczplbnRyeV9pbnN0cnVtZW50ewY7AHsA--a24ae3427e76f2af5cd4aa1a013d76df2e38779f
+  Parameters: {"parent_column"=>"entry_items", "eid"=>"18b56d57db5c7e18b13e988a0c11ad74", "nested"=>"true", "authenticity_token"=>"6365320a88167310fe7a5b5e5d5e443aad7afc00", "_method"=>"get", "action"=>"row", "id"=>"12", "controller"=>"entry_item", "parent_model"=>"EntryInstrument"}
+  [4;36;1mEntryQuestion Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_questions`[0m
+  [4;35;1mEntryItem Load (0.000000)[0m   [0mSELECT * FROM `entry_items` WHERE (`entry_items`.`entry_item_id` = 12) [0m
+  [4;36;1mDisplayType Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `display_types`[0m
+  [4;35;1mDisplayType Load (0.000000)[0m   [0mSELECT * FROM `display_types` WHERE (`display_types`.`display_type_id` = 6) [0m
+  [4;36;1mEntryQuestion Load (0.000000)[0m   [0;1mSELECT * FROM `entry_questions` WHERE (entry_questions.entry_item_id = 12) LIMIT 1[0m
+  [4;35;1mJoin Table Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_answers_entry_items`[0m
+  [4;36;1mEntryAnswer Load (0.016000)[0m   [0;1mSELECT * FROM `entry_answers` INNER JOIN entry_answers_entry_items ON entry_answers.entry_answer_id = entry_answers_entry_items.entry_answer_id WHERE (entry_answers_entry_items.entry_item_id = 12 ) [0m
+  [4;35;1mEntryAnswer Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_answers`[0m
+Rendered entry_item/_list_actions (0.01500)
+Rendered entry_item/_list_record (0.06200)
+Completed in 0.10900 (9 reqs/sec) | Rendering: 0.04600 (42%) | DB: 0.01600 (14%) | 200 OK [http://localhost/entry_item/row/12?_method=get&authenticity_token=6365320a88167310fe7a5b5e5d5e443aad7afc00&eid=18b56d57db5c7e18b13e988a0c11ad74&nested=true&parent_column=entry_items&parent_model=EntryInstrument]
+  [4;36;1mEntryInstrument Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_instruments`[0m
+
+
+Processing EntryInstrumentController#edit (for 127.0.0.1 at 2008-01-23 10:04:09) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6D2NvbmRpdGlvbnMwOhBjb25zdHJh%0AaW50c3sGOhBlbnRyeV9pdGVtcyIHMTI7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZiISYXM6SW5zdHJ1bWVudHsGOwB7ADoMY3NyZl9p%0AZCIlMGQ0MjlhOWNjOTRjZTQxNTYyMGZiNmFjMTg5M2Q1NTIiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7B3sGOhVlbnRyeV9pbnN0%0AcnVtZW50IgYxOwYwOwB7BzsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIJcGFn%0AZWkGIgpmbGFzaElDOidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hI%0AYXNoewAGOgpAdXNlZHsAIhhhczplbnRyeV9pbnN0cnVtZW50ewY7AHsA--337217d6d98826c22a82af0f5c8a0c1e343da9e9
+  Parameters: {"adapter"=>"_list_inline_adapter", "_method"=>"get", "action"=>"edit", "id"=>"1", "controller"=>"entry_instrument"}
+  [4;35;1mEntryInstrument Load (0.000000)[0m   [0mSELECT * FROM `entry_instruments` WHERE (`entry_instruments`.`entry_instrument_id` = 1) [0m
+Rendered entry_instrument/_form_attribute (0.00000)
+Rendered entry_instrument/_form_attribute (0.00000)
+Rendered entry_instrument/_form_attribute (0.00000)
+  [4;36;1mEntryItem Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+  [4;35;1mEntryItem Load (0.000000)[0m   [0mSELECT * FROM `entry_items` WHERE (entry_items.entry_instrument_id = 1) [0m
+  [4;36;1mEntryQuestion Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_questions`[0m
+Rendered entry_instrument/_form_association_header (0.04700)
+Rendered entry_instrument/_form_attribute (0.00000)
+  [4;35;1mDisplayType Columns (0.000000)[0m   [0mSHOW FIELDS FROM `display_types`[0m
+  [4;36;1mDisplayType Load (0.000000)[0m   [0;1mSELECT * FROM `display_types` WHERE (`display_types`.`display_type_id` = 6) [0m
+  [4;35;1mDisplayType Load (0.000000)[0m   [0mSELECT * FROM `display_types` [0m
+Rendered entry_instrument/_form_attribute (0.09300)
+Rendered entry_instrument/_form_attribute (0.00000)
+  [4;36;1mEntryQuestion Load (0.000000)[0m   [0;1mSELECT * FROM `entry_questions` WHERE (entry_questions.entry_item_id = 12) LIMIT 1[0m
+  [4;35;1mEntryQuestion Load (0.000000)[0m   [0mSELECT * FROM `entry_questions` WHERE (entry_item_id IS NULL) [0m
+Rendered entry_instrument/_form_attribute (0.00000)
+Rendered entry_instrument/_form_association_record (0.15600)
+Rendered entry_instrument/_form_attribute (0.00000)
+  [4;36;1mCACHE (0.000000)[0m   [0;1mSELECT * FROM `display_types` [0m
+Rendered entry_instrument/_form_attribute (0.01500)
+Rendered entry_instrument/_form_attribute (0.01600)
+  [4;35;1mCACHE (0.000000)[0m   [0mSELECT * FROM `entry_questions` WHERE (entry_item_id IS NULL) [0m
+Rendered entry_instrument/_form_attribute (0.01600)
+Rendered entry_instrument/_form_association_record (0.07800)
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT count(*) AS count_all FROM `entry_items` WHERE (entry_instrument_id IS NULL) [0m
+Rendered entry_instrument/_form_association_footer (0.01500)
+Rendered entry_instrument/_form_association (0.31200)
+Rendered entry_instrument/_form (0.43700)
+Rendered entry_instrument/_update_form (0.43700)
+Rendering _list_inline_adapter
+Rendered core/_messages (0.00000)
+Completed in 0.46800 (2 reqs/sec) | Rendering: 0.01600 (3%) | DB: 0.00000 (0%) | 200 OK [http://localhost/entry_instrument/edit/1?_method=get&adapter=_list_inline_adapter]
+  [4;35;1mEntryInstrument Columns (0.016000)[0m   [0mSHOW FIELDS FROM `entry_instruments`[0m
+
+
+Processing EntryInstrumentController#row (for 127.0.0.1 at 2008-01-23 10:04:31) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6EGNvbnN0cmFpbnRzewY6EGVudHJ5%0AX2l0ZW1zIgcxMjoPY29uZGl0aW9uczA7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZjoMY3NyZl9pZCIlMGQ0MjlhOWNjOTRjZTQxNTYy%0AMGZiNmFjMTg5M2Q1NTIiEmFzOkluc3RydW1lbnR7BjsAewAiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7CDA7BnsGOhVlbnRyeV9p%0AbnN0cnVtZW50IgYxOwB7BzsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIJcGFn%0AZWkGIgpmbGFzaElDOidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hI%0AYXNoewAGOgpAdXNlZHsAIhhhczplbnRyeV9pbnN0cnVtZW50ewY7AHsA--a24ae3427e76f2af5cd4aa1a013d76df2e38779f
+  Parameters: {"_method"=>"get", "action"=>"row", "id"=>"1", "controller"=>"entry_instrument"}
+  [4;36;1mEntryInstrument Load (0.015000)[0m   [0;1mSELECT * FROM `entry_instruments` WHERE (`entry_instruments`.`entry_instrument_id` = 1) [0m
+  [4;35;1mEntryItem Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_items`[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT count(*) AS count_all FROM `entry_items` WHERE (entry_items.entry_instrument_id = 1) [0m
+  [4;35;1mEntryItem Load (0.000000)[0m   [0mSELECT * FROM `entry_items` WHERE (entry_items.entry_instrument_id = 1) [0m
+Rendered entry_instrument/_list_actions (0.00000)
+Rendered entry_instrument/_list_record (0.03200)
+Completed in 0.04700 (21 reqs/sec) | Rendering: 0.03200 (68%) | DB: 0.03100 (65%) | 200 OK [http://localhost/entry_instrument/row/1?_method=get]
+  [4;36;1mEntryInstrument Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_instruments`[0m
+
+
+Processing EntryInstrumentController#index (for 127.0.0.1 at 2008-01-23 10:04:48) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6D2NvbmRpdGlvbnMwOhBjb25zdHJh%0AaW50c3sGOhBlbnRyeV9pdGVtcyIHMTI7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZiISYXM6SW5zdHJ1bWVudHsGOwB7ADoMY3NyZl9p%0AZCIlMGQ0MjlhOWNjOTRjZTQxNTYyMGZiNmFjMTg5M2Q1NTIiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7B3sGOhVlbnRyeV9pbnN0%0AcnVtZW50IgYxOwYwOwB7BzsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIJcGFn%0AZWkGIgpmbGFzaElDOidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hI%0AYXNoewAGOgpAdXNlZHsAIhhhczplbnRyeV9pbnN0cnVtZW50ewY7AHsA--337217d6d98826c22a82af0f5c8a0c1e343da9e9
+  Parameters: {"action"=>"index", "controller"=>"entry_instrument"}
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT count(DISTINCT `entry_instruments`.entry_instrument_id) AS count_all FROM `entry_instruments` LEFT OUTER JOIN `entry_items` ON entry_items.entry_instrument_id = entry_instruments.entry_instrument_id [0m
+  [4;36;1mEntryItem Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_items`[0m
+  [4;35;1mEntryInstrument Load IDs For Limited Eager Loading (0.000000)[0m   [0mSELECT entry_instrument_id FROM `entry_instruments` ORDER BY entry_instruments.`entry_instrument_id` ASC LIMIT 0, 15[0m
+  [4;36;1mEntryInstrument Load Including Associations (0.016000)[0m   [0;1mSELECT `entry_instruments`.`entry_instrument_id` AS t0_r0, `entry_instruments`.`version` AS t0_r1, `entry_instruments`.`instrument_description` AS t0_r2, `entry_instruments`.`name` AS t0_r3, `entry_instruments`.`created_on` AS t0_r4, `entry_instruments`.`updated_on` AS t0_r5, `entry_items`.`entry_item_id` AS t1_r0, `entry_items`.`entry_instrument_id` AS t1_r1, `entry_items`.`display_type_id` AS t1_r2, `entry_items`.`name` AS t1_r3, `entry_items`.`relevance` AS t1_r4, `entry_items`.`position` AS t1_r5, `entry_items`.`created_on` AS t1_r6, `entry_items`.`updated_on` AS t1_r7 FROM `entry_instruments` LEFT OUTER JOIN `entry_items` ON entry_items.entry_instrument_id = entry_instruments.entry_instrument_id WHERE `entry_instruments`.entry_instrument_id IN (1) ORDER BY entry_instruments.`entry_instrument_id` ASC[0m
+Rendering template within layouts/application
+Rendering entry_instrument/list
+Rendered entry_instrument/_list_header (0.00000)
+Rendered entry_instrument/_list_column_headings (0.01600)
+Rendered entry_instrument/_messages (0.00000)
+Rendered entry_instrument/_list_actions (0.00000)
+Rendered entry_instrument/_list_record (0.01500)
+Rendered entry_instrument/_list (0.06200)
+Completed in 0.10900 (9 reqs/sec) | Rendering: 0.07800 (71%) | DB: 0.01600 (14%) | 200 OK [http://localhost/entry_instrument]
+  [4;35;1mEntryInstrument Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_instruments`[0m
+
+
+Processing EntryInstrumentController#nested (for 127.0.0.1 at 2008-01-23 10:04:51) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6EGNvbnN0cmFpbnRzewY6EGVudHJ5%0AX2l0ZW1zIgcxMjoPY29uZGl0aW9uczA7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZjoMY3NyZl9pZCIlMGQ0MjlhOWNjOTRjZTQxNTYy%0AMGZiNmFjMTg5M2Q1NTIiEmFzOkluc3RydW1lbnR7BjsAewAiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7CDA7BnsGOhVlbnRyeV9p%0AbnN0cnVtZW50IgYxOwB7BzsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIJcGFn%0AZWkGIgpmbGFzaElDOidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hI%0AYXNoewAGOgpAdXNlZHsAIhhhczplbnRyeV9pbnN0cnVtZW50ewY7AHsA--a24ae3427e76f2af5cd4aa1a013d76df2e38779f
+  Parameters: {"associations"=>"entry_items", "adapter"=>"_list_inline_adapter", "_method"=>"get", "action"=>"nested", "id"=>"1", "controller"=>"entry_instrument"}
+  [4;36;1mEntryInstrument Load (0.000000)[0m   [0;1mSELECT * FROM `entry_instruments` WHERE (`entry_instruments`.`entry_instrument_id` = 1) [0m
+  [4;35;1mEntryItem Columns (0.015000)[0m   [0mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+  [4;36;1mSQL (0.000000)[0m   [0;1mSHOW TABLES[0m
+Start rendering component ({:controller=>"entry_item", :params=>{:nested=>true, :eid=>"18b56d57db5c7e18b13e988a0c11ad74", :parent_model=>EntryInstrument(entry_instrument_id: integer, version: string, instrument_description: text, name: string, created_on: timestamp, updated_on: timestamp), :parent_column=>"entry_items"}, :action=>"table"}): 
+
+
+Processing EntryItemController#table (for 127.0.0.1 at 2008-01-23 10:04:51) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6EGNvbnN0cmFpbnRzewY6EGVudHJ5%0AX2l0ZW1zIgcxMjoPY29uZGl0aW9uczA7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZjoMY3NyZl9pZCIlMGQ0MjlhOWNjOTRjZTQxNTYy%0AMGZiNmFjMTg5M2Q1NTIiEmFzOkluc3RydW1lbnR7BjsAewAiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7CDA7BnsGOhVlbnRyeV9p%0AbnN0cnVtZW50IgYxOwB7BzsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIJcGFn%0AZWkGIgpmbGFzaElDOidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hI%0AYXNoewAGOgpAdXNlZHsAIhhhczplbnRyeV9pbnN0cnVtZW50ewY7AHsA--a24ae3427e76f2af5cd4aa1a013d76df2e38779f
+  [4;35;1mSQL (0.000000)[0m   [0mSHOW TABLES[0m
+  Parameters: {"parent_column"=>"entry_items", "eid"=>"18b56d57db5c7e18b13e988a0c11ad74", "nested"=>true, "action"=>"table", "id"=>nil, "controller"=>"entry_item", "parent_model"=>EntryInstrument(entry_instrument_id: integer, version: string, instrument_description: text, name: string, created_on: timestamp, updated_on: timestamp)}
+  [4;36;1mEntryQuestion Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_questions`[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT count(DISTINCT `entry_items`.entry_item_id) AS count_all FROM `entry_items` LEFT OUTER JOIN `display_types` ON `display_types`.display_type_id = `entry_items`.display_type_id LEFT OUTER JOIN `entry_questions` ON entry_questions.entry_item_id = entry_items.entry_item_id LEFT OUTER JOIN `entry_answers_entry_items` ON `entry_answers_entry_items`.entry_item_id = `entry_items`.entry_item_id LEFT OUTER JOIN `entry_answers` ON `entry_answers`.entry_answer_id = `entry_answers_entry_items`.entry_answer_id LEFT OUTER JOIN `entry_instruments` ON `entry_instruments`.entry_instrument_id = `entry_items`.entry_instrument_id WHERE (entry_items.entry_instrument_id = '1') [0m
+  [4;36;1mDisplayType Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM `display_types`[0m
+  [4;35;1mEntryAnswer Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_answers`[0m
+  [4;36;1mEntryItem Load IDs For Limited Eager Loading (0.000000)[0m   [0;1mSELECT entry_item_id FROM `entry_items` WHERE (entry_items.entry_instrument_id = '1') ORDER BY entry_items.`entry_item_id` ASC LIMIT 0, 15[0m
+  [4;35;1mEntryItem Load Including Associations (0.047000)[0m   [0mSELECT `entry_items`.`entry_item_id` AS t0_r0, `entry_items`.`entry_instrument_id` AS t0_r1, `entry_items`.`display_type_id` AS t0_r2, `entry_items`.`name` AS t0_r3, `entry_items`.`relevance` AS t0_r4, `entry_items`.`position` AS t0_r5, `entry_items`.`created_on` AS t0_r6, `entry_items`.`updated_on` AS t0_r7, `display_types`.`display_type_id` AS t1_r0, `display_types`.`sas_informat` AS t1_r1, `display_types`.`sas_format` AS t1_r2, `display_types`.`name` AS t1_r3, `display_types`.`spss_level` AS t1_r4, `display_types`.`spss_format` AS t1_r5, `display_types`.`loinc_scale` AS t1_r6, `display_types`.`has_answer_list` AS t1_r7, `display_types`.`data_type_id` AS t1_r8, `entry_questions`.`entry_question_id` AS t2_r0, `entry_questions`.`entry_item_id` AS t2_r1, `entry_questions`.`name` AS t2_r2, `entry_questions`.`created_on` AS t2_r3, `entry_questions`.`updated_on` AS t2_r4, `entry_answers`.`entry_answer_id` AS t3_r0, `entry_answers`.`name` AS t3_r1, `entry_answers`.`answer_code` AS t3_r2, `entry_answers`.`position` AS t3_r3, `entry_answers`.`created_on` AS t3_r4, `entry_answers`.`updated_on` AS t3_r5, `entry_instruments`.`entry_instrument_id` AS t4_r0, `entry_instruments`.`version` AS t4_r1, `entry_instruments`.`instrument_description` AS t4_r2, `entry_instruments`.`name` AS t4_r3, `entry_instruments`.`created_on` AS t4_r4, `entry_instruments`.`updated_on` AS t4_r5 FROM `entry_items` LEFT OUTER JOIN `display_types` ON `display_types`.display_type_id = `entry_items`.display_type_id LEFT OUTER JOIN `entry_questions` ON entry_questions.entry_item_id = entry_items.entry_item_id LEFT OUTER JOIN `entry_answers_entry_items` ON `entry_answers_entry_items`.entry_item_id = `entry_items`.entry_item_id LEFT OUTER JOIN `entry_answers` ON `entry_answers`.entry_answer_id = `entry_answers_entry_items`.entry_answer_id LEFT OUTER JOIN `entry_instruments` ON `entry_instruments`.entry_instrument_id = `entry_items`.entry_instrument_id WHERE (entry_items.entry_instrument_id = '1') AND `entry_items`.entry_item_id IN (12) ORDER BY entry_items.`entry_item_id` ASC[0m
+Rendering entry_item/list
+Rendered entry_item/_list_header (0.00000)
+Rendered entry_item/_list_column_headings (0.01500)
+Rendered entry_item/_messages (0.00000)
+Rendered entry_item/_list_actions (0.01600)
+Rendered entry_item/_list_record (0.03200)
+Rendered entry_item/_list (0.06300)
+Completed in 0.18800 (5 reqs/sec) | Rendering: 0.07800 (41%) | DB: 0.07800 (41%) | 200 OK [http://localhost/entry_instrument/nested/1?_method=get&associations=entry_items&adapter=_list_inline_adapter]
+
+
+End of component rendering
+Rendered entry_instrument/_nested (0.32800)
+Rendering _list_inline_adapter
+Rendered core/_messages (0.00000)
+Completed in 0.35900 (2 reqs/sec) | Rendering: 0.01500 (4%) | DB: 0.00000 (0%) | 200 OK [http://localhost/entry_instrument/nested/1?_method=get&associations=entry_items&adapter=_list_inline_adapter]
+  [4;36;1mEntryQuestion Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_questions`[0m
+
+
+Processing EntryQuestionController#show (for 127.0.0.1 at 2008-01-23 10:04:54) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6D2NvbmRpdGlvbnMwOhBjb25zdHJh%0AaW50c3sGOhBlbnRyeV9pdGVtcyIHMTI7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZiISYXM6SW5zdHJ1bWVudHsGOwB7ADoMY3NyZl9p%0AZCIlMGQ0MjlhOWNjOTRjZTQxNTYyMGZiNmFjMTg5M2Q1NTIiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7BjA7B3sGOhVlbnRyeV9p%0AbnN0cnVtZW50IgYxOwB7BjsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIKZmxh%0Ac2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoK%0AQHVzZWR7ACIYYXM6ZW50cnlfaW5zdHJ1bWVudHsGOwB7AA%3D%3D--c94982a0ee7df958d0e00369245969e7228bb513
+  Parameters: {"parent_column"=>"entry_items", "eid"=>"18b56d57db5c7e18b13e988a0c11ad74", "nested"=>"true", "adapter"=>"_list_inline_adapter", "_method"=>"get", "action"=>"show", "id"=>"6", "controller"=>"entry_question", "parent_model"=>"EntryInstrument", "parent_controller"=>"entry_item"}
+  [4;35;1mEntryItem Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+  [4;36;1mEntryQuestion Load (0.000000)[0m   [0;1mSELECT * FROM `entry_questions` WHERE (`entry_questions`.`entry_question_id` = 6) [0m
+  [4;35;1mEntryItem Load (0.000000)[0m   [0mSELECT * FROM `entry_items` WHERE (`entry_items`.`entry_item_id` = 12) [0m
+Rendered entry_question/_show_columns (0.01600)
+Rendered entry_question/_show (0.03200)
+Rendering _list_inline_adapter
+Rendered core/_messages (0.00000)
+Completed in 0.10900 (9 reqs/sec) | Rendering: 0.01500 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/entry_question/show/6?_method=get&eid=18b56d57db5c7e18b13e988a0c11ad74&nested=true&parent_column=entry_items&parent_controller=entry_item&parent_model=EntryInstrument&adapter=_list_inline_adapter]
+  [4;36;1mEntryItem Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+
+
+Processing EntryItemController#row (for 127.0.0.1 at 2008-01-23 10:05:24) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6EGNvbnN0cmFpbnRzewY6EGVudHJ5%0AX2l0ZW1zIgcxMjoPY29uZGl0aW9uczA7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZjoMY3NyZl9pZCIlMGQ0MjlhOWNjOTRjZTQxNTYy%0AMGZiNmFjMTg5M2Q1NTIiEmFzOkluc3RydW1lbnR7BjsAewAiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7BnsGOhVlbnRyeV9pbnN0%0AcnVtZW50IgYxOwgwOwB7BjsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIKZmxh%0Ac2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoK%0AQHVzZWR7ACIYYXM6ZW50cnlfaW5zdHJ1bWVudHsGOwB7AA%3D%3D--1e7aac55ce91f8de6e025f2d8fa835956d1db0f9
+  Parameters: {"parent_column"=>"entry_items", "eid"=>"18b56d57db5c7e18b13e988a0c11ad74", "nested"=>"true", "_method"=>"get", "action"=>"row", "id"=>"12", "controller"=>"entry_item", "parent_model"=>"EntryInstrument"}
+  [4;35;1mEntryQuestion Columns (0.016000)[0m   [0mSHOW FIELDS FROM `entry_questions`[0m
+  [4;36;1mEntryItem Load (0.000000)[0m   [0;1mSELECT * FROM `entry_items` WHERE (`entry_items`.`entry_item_id` = 12) [0m
+  [4;35;1mDisplayType Columns (0.000000)[0m   [0mSHOW FIELDS FROM `display_types`[0m
+  [4;36;1mDisplayType Load (0.000000)[0m   [0;1mSELECT * FROM `display_types` WHERE (`display_types`.`display_type_id` = 6) [0m
+  [4;35;1mEntryQuestion Load (0.000000)[0m   [0mSELECT * FROM `entry_questions` WHERE (entry_questions.entry_item_id = 12) LIMIT 1[0m
+  [4;36;1mJoin Table Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM `entry_answers_entry_items`[0m
+  [4;35;1mEntryAnswer Load (0.000000)[0m   [0mSELECT * FROM `entry_answers` INNER JOIN entry_answers_entry_items ON entry_answers.entry_answer_id = entry_answers_entry_items.entry_answer_id WHERE (entry_answers_entry_items.entry_item_id = 12 ) [0m
+  [4;36;1mEntryAnswer Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_answers`[0m
+Rendered entry_item/_list_actions (0.00000)
+Rendered entry_item/_list_record (0.04700)
+Completed in 0.10900 (9 reqs/sec) | Rendering: 0.04700 (43%) | DB: 0.04700 (43%) | 200 OK [http://localhost/entry_item/row/12?_method=get&eid=18b56d57db5c7e18b13e988a0c11ad74&nested=true&parent_column=entry_items&parent_model=EntryInstrument]
+  [4;35;1mEntryItem Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+
+
+Processing EntryItemController#nested (for 127.0.0.1 at 2008-01-23 10:05:27) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6D2NvbmRpdGlvbnMwOhBjb25zdHJh%0AaW50c3sGOhBlbnRyeV9pdGVtcyIHMTI7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZiISYXM6SW5zdHJ1bWVudHsGOwB7ADoMY3NyZl9p%0AZCIlMGQ0MjlhOWNjOTRjZTQxNTYyMGZiNmFjMTg5M2Q1NTIiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7BjA7B3sGOhVlbnRyeV9p%0AbnN0cnVtZW50IgYxOwB7BjsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIKZmxh%0Ac2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoK%0AQHVzZWR7ACIYYXM6ZW50cnlfaW5zdHJ1bWVudHsGOwB7AA%3D%3D--c94982a0ee7df958d0e00369245969e7228bb513
+  Parameters: {"parent_column"=>"entry_items", "eid"=>"18b56d57db5c7e18b13e988a0c11ad74", "associations"=>"entry_answers", "nested"=>"true", "adapter"=>"_list_inline_adapter", "_method"=>"get", "action"=>"nested", "id"=>"12", "controller"=>"entry_item", "parent_model"=>"EntryInstrument"}
+  [4;36;1mEntryQuestion Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_questions`[0m
+  [4;35;1mEntryItem Load (0.000000)[0m   [0mSELECT * FROM `entry_items` WHERE (`entry_items`.`entry_item_id` = 12) [0m
+  [4;36;1mEntryAnswer Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_answers`[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSHOW TABLES[0m
+Start rendering component ({:controller=>"entry_answer", :params=>{:nested=>true, :eid=>"28c8af21056392ee8ea4c3f361fb7eba", :parent_model=>EntryItem(entry_item_id: integer, entry_instrument_id: integer, display_type_id: integer, name: string, relevance: string, position: integer, created_on: timestamp, updated_on: timestamp), :parent_column=>"entry_answers"}, :action=>"table"}): 
+
+
+Processing EntryAnswerController#table (for 127.0.0.1 at 2008-01-23 10:05:28) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6D2NvbmRpdGlvbnMwOhBjb25zdHJh%0AaW50c3sGOhBlbnRyeV9pdGVtcyIHMTI7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZiISYXM6SW5zdHJ1bWVudHsGOwB7ADoMY3NyZl9p%0AZCIlMGQ0MjlhOWNjOTRjZTQxNTYyMGZiNmFjMTg5M2Q1NTIiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7BjA7B3sGOhVlbnRyeV9p%0AbnN0cnVtZW50IgYxOwB7BjsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIKZmxh%0Ac2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoK%0AQHVzZWR7ACIYYXM6ZW50cnlfaW5zdHJ1bWVudHsGOwB7AA%3D%3D--c94982a0ee7df958d0e00369245969e7228bb513
+  [4;36;1mSQL (0.016000)[0m   [0;1mSHOW TABLES[0m
+  Parameters: {"parent_column"=>"entry_answers", "eid"=>"28c8af21056392ee8ea4c3f361fb7eba", "nested"=>true, "action"=>"table", "id"=>nil, "controller"=>"entry_answer", "parent_model"=>EntryItem(entry_item_id: integer, entry_instrument_id: integer, display_type_id: integer, name: string, relevance: string, position: integer, created_on: timestamp, updated_on: timestamp)}
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT count(DISTINCT `entry_answers`.entry_answer_id) AS count_all FROM `entry_answers` LEFT OUTER JOIN `entry_answers_entry_items` ON `entry_answers_entry_items`.entry_answer_id = `entry_answers`.entry_answer_id LEFT OUTER JOIN `entry_items` ON `entry_items`.entry_item_id = `entry_answers_entry_items`.entry_item_id WHERE (entry_answers_entry_items.entry_item_id = '12') [0m
+  [4;36;1mEntryAnswer Load IDs For Limited Eager Loading (0.000000)[0m   [0;1mSELECT DISTINCT `entry_answers`.entry_answer_id FROM `entry_answers` LEFT OUTER JOIN `entry_answers_entry_items` ON `entry_answers_entry_items`.entry_answer_id = `entry_answers`.entry_answer_id LEFT OUTER JOIN `entry_items` ON `entry_items`.entry_item_id = `entry_answers_entry_items`.entry_item_id WHERE (entry_answers_entry_items.entry_item_id = '12') ORDER BY entry_answers.`entry_answer_id` ASC LIMIT 0, 15[0m
+  [4;35;1mEntryAnswer Load Including Associations (0.000000)[0m   [0mSELECT `entry_answers`.`entry_answer_id` AS t0_r0, `entry_answers`.`name` AS t0_r1, `entry_answers`.`answer_code` AS t0_r2, `entry_answers`.`position` AS t0_r3, `entry_answers`.`created_on` AS t0_r4, `entry_answers`.`updated_on` AS t0_r5, `entry_items`.`entry_item_id` AS t1_r0, `entry_items`.`entry_instrument_id` AS t1_r1, `entry_items`.`display_type_id` AS t1_r2, `entry_items`.`name` AS t1_r3, `entry_items`.`relevance` AS t1_r4, `entry_items`.`position` AS t1_r5, `entry_items`.`created_on` AS t1_r6, `entry_items`.`updated_on` AS t1_r7 FROM `entry_answers` LEFT OUTER JOIN `entry_answers_entry_items` ON `entry_answers_entry_items`.entry_answer_id = `entry_answers`.entry_answer_id LEFT OUTER JOIN `entry_items` ON `entry_items`.entry_item_id = `entry_answers_entry_items`.entry_item_id WHERE (entry_answers_entry_items.entry_item_id = '12') AND `entry_answers`.entry_answer_id IN (12, 13, 14) ORDER BY entry_answers.`entry_answer_id` ASC[0m
+Rendering entry_answer/list
+Rendered entry_answer/_list_header (0.00000)
+Rendered entry_answer/_list_column_headings (0.00000)
+Rendered entry_answer/_messages (0.00000)
+Rendered entry_answer/_list_actions (0.00000)
+Rendered entry_answer/_list_record (0.01600)
+Rendered entry_answer/_list_actions (0.00000)
+Rendered entry_answer/_list_record (0.01600)
+Rendered entry_answer/_list_actions (0.01600)
+Rendered entry_answer/_list_record (0.01600)
+Rendered entry_answer/_list (0.09400)
+Completed in 0.12500 (8 reqs/sec) | Rendering: 0.11000 (87%) | DB: 0.01600 (12%) | 200 OK [http://localhost/entry_item/nested/12?_method=get&associations=entry_answers&eid=18b56d57db5c7e18b13e988a0c11ad74&nested=true&parent_column=entry_items&parent_model=EntryInstrument&adapter=_list_inline_adapter]
+
+
+End of component rendering
+Rendered entry_item/_nested (0.18800)
+Rendering _list_inline_adapter
+Rendered core/_messages (0.00000)
+Completed in 0.26500 (3 reqs/sec) | Rendering: 0.01500 (5%) | DB: 0.00000 (0%) | 200 OK [http://localhost/entry_item/nested/12?_method=get&associations=entry_answers&eid=18b56d57db5c7e18b13e988a0c11ad74&nested=true&parent_column=entry_items&parent_model=EntryInstrument&adapter=_list_inline_adapter]
+  [4;36;1mEntryItem Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+
+
+Processing EntryItemController#row (for 127.0.0.1 at 2008-01-23 10:06:02) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6D2NvbmRpdGlvbnMwOhBjb25zdHJh%0AaW50c3sGOhBlbnRyeV9pdGVtcyIHMTI7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZjoMY3NyZl9pZCIlMGQ0MjlhOWNjOTRjZTQxNTYy%0AMGZiNmFjMTg5M2Q1NTIiEmFzOkluc3RydW1lbnR7BjsAewAiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7B3sGOhVlbnRyeV9pbnN0%0AcnVtZW50IgYxOwYwOwB7BjsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIKZmxh%0Ac2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoK%0AQHVzZWR7ACIYYXM6ZW50cnlfaW5zdHJ1bWVudHsGOwB7AA%3D%3D--f319911cd8618566494e0e815b29f8b21b73fb44
+  Parameters: {"parent_column"=>"entry_items", "eid"=>"18b56d57db5c7e18b13e988a0c11ad74", "nested"=>"true", "_method"=>"get", "action"=>"row", "id"=>"12", "controller"=>"entry_item", "parent_model"=>"EntryInstrument"}
+  [4;35;1mEntryQuestion Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_questions`[0m
+  [4;36;1mEntryItem Load (0.000000)[0m   [0;1mSELECT * FROM `entry_items` WHERE (`entry_items`.`entry_item_id` = 12) [0m
+  [4;35;1mDisplayType Columns (0.000000)[0m   [0mSHOW FIELDS FROM `display_types`[0m
+  [4;36;1mDisplayType Load (0.000000)[0m   [0;1mSELECT * FROM `display_types` WHERE (`display_types`.`display_type_id` = 6) [0m
+  [4;35;1mEntryQuestion Load (0.000000)[0m   [0mSELECT * FROM `entry_questions` WHERE (entry_questions.entry_item_id = 12) LIMIT 1[0m
+  [4;36;1mJoin Table Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM `entry_answers_entry_items`[0m
+  [4;35;1mEntryAnswer Load (0.000000)[0m   [0mSELECT * FROM `entry_answers` INNER JOIN entry_answers_entry_items ON entry_answers.entry_answer_id = entry_answers_entry_items.entry_answer_id WHERE (entry_answers_entry_items.entry_item_id = 12 ) [0m
+  [4;36;1mEntryAnswer Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_answers`[0m
+Rendered entry_item/_list_actions (0.00000)
+Rendered entry_item/_list_record (0.06300)
+Completed in 0.10900 (9 reqs/sec) | Rendering: 0.04800 (44%) | DB: 0.01500 (13%) | 200 OK [http://localhost/entry_item/row/12?_method=get&eid=18b56d57db5c7e18b13e988a0c11ad74&nested=true&parent_column=entry_items&parent_model=EntryInstrument]
+  [4;35;1mEntryItem Columns (0.016000)[0m   [0mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+
+
+Processing EntryItemController#edit (for 127.0.0.1 at 2008-01-23 10:06:08) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6EGNvbnN0cmFpbnRzewY6EGVudHJ5%0AX2l0ZW1zIgcxMjoPY29uZGl0aW9uczA7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZiISYXM6SW5zdHJ1bWVudHsGOwB7ADoMY3NyZl9p%0AZCIlMGQ0MjlhOWNjOTRjZTQxNTYyMGZiNmFjMTg5M2Q1NTIiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7CDA7BnsGOhVlbnRyeV9p%0AbnN0cnVtZW50IgYxOwB7BjsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIKZmxh%0Ac2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoK%0AQHVzZWR7ACIYYXM6ZW50cnlfaW5zdHJ1bWVudHsGOwB7AA%3D%3D--187adcbf4a11915e71e51e87adc30662b322b0e6
+  Parameters: {"parent_column"=>"entry_items", "eid"=>"18b56d57db5c7e18b13e988a0c11ad74", "nested"=>"true", "adapter"=>"_list_inline_adapter", "_method"=>"get", "action"=>"edit", "id"=>"12", "controller"=>"entry_item", "parent_model"=>"EntryInstrument"}
+  [4;36;1mEntryQuestion Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_questions`[0m
+  [4;35;1mEntryItem Load (0.000000)[0m   [0mSELECT * FROM `entry_items` WHERE (`entry_items`.`entry_item_id` = 12) [0m
+Rendered entry_item/_form_attribute (0.00000)
+  [4;36;1mDisplayType Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `display_types`[0m
+  [4;35;1mDisplayType Load (0.000000)[0m   [0mSELECT * FROM `display_types` WHERE (`display_types`.`display_type_id` = 6) [0m
+  [4;36;1mDisplayType Load (0.000000)[0m   [0;1mSELECT * FROM `display_types` [0m
+Rendered entry_item/_form_attribute (0.01600)
+Rendered entry_item/_form_attribute (0.00000)
+  [4;35;1mEntryQuestion Load (0.000000)[0m   [0mSELECT * FROM `entry_questions` WHERE (entry_questions.entry_item_id = 12) LIMIT 1[0m
+Rendered entry_item/_form_association_header (0.03200)
+Rendered entry_item/_form_attribute (0.00000)
+Rendered entry_item/_form_association_record (0.03100)
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT count(*) AS count_all FROM `entry_questions` WHERE (entry_item_id IS NULL) [0m
+Rendered entry_item/_form_association_footer (0.01500)
+Rendered entry_item/_form_association (0.07800)
+  [4;35;1mEntryAnswer Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_answers`[0m
+  [4;36;1mJoin Table Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM `entry_answers_entry_items`[0m
+  [4;35;1mEntryAnswer Load (0.000000)[0m   [0mSELECT * FROM `entry_answers` INNER JOIN entry_answers_entry_items ON entry_answers.entry_answer_id = entry_answers_entry_items.entry_answer_id WHERE (entry_answers_entry_items.entry_item_id = 12 ) [0m
+Rendered entry_item/_form_association_header (0.01500)
+Rendered entry_item/_form_attribute (0.01600)
+Rendered entry_item/_form_attribute (0.01500)
+Rendered entry_item/_form_association_record (0.04700)
+Rendered entry_item/_form_attribute (0.01500)
+Rendered entry_item/_form_attribute (0.00000)
+Rendered entry_item/_form_association_record (0.03100)
+Rendered entry_item/_form_attribute (0.00000)
+Rendered entry_item/_form_attribute (0.00000)
+Rendered entry_item/_form_association_record (0.03100)
+Rendered entry_item/_form_attribute (0.00000)
+Rendered entry_item/_form_attribute (0.01600)
+Rendered entry_item/_form_association_record (0.03100)
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT count(*) AS count_all FROM `entry_answers` [0m
+  [4;35;1mEntryAnswer Load (0.000000)[0m   [0mSELECT * FROM `entry_answers` [0m
+Rendered entry_item/_form_association_footer (0.01600)
+Rendered entry_item/_form_association (0.21900)
+Rendered entry_item/_form (0.43700)
+Rendered entry_item/_update_form (0.45300)
+Rendering _list_inline_adapter
+Rendered core/_messages (0.00000)
+Completed in 0.51500 (1 reqs/sec) | Rendering: 0.01500 (2%) | DB: 0.00000 (0%) | 200 OK [http://localhost/entry_item/edit/12?_method=get&eid=18b56d57db5c7e18b13e988a0c11ad74&nested=true&parent_column=entry_items&parent_model=EntryInstrument&adapter=_list_inline_adapter]
+  [4;36;1mEntryItem Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+
+
+Processing EntryItemController#row (for 127.0.0.1 at 2008-01-23 10:07:04) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6D2NvbmRpdGlvbnMwOhBjb25zdHJh%0AaW50c3sGOhBlbnRyeV9pdGVtcyIHMTI7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZjoMY3NyZl9pZCIlMGQ0MjlhOWNjOTRjZTQxNTYy%0AMGZiNmFjMTg5M2Q1NTIiEmFzOkluc3RydW1lbnR7BjsAewAiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7B3sGOhVlbnRyeV9pbnN0%0AcnVtZW50IgYxOwYwOwB7BjsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIKZmxh%0Ac2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoK%0AQHVzZWR7ACIYYXM6ZW50cnlfaW5zdHJ1bWVudHsGOwB7AA%3D%3D--f319911cd8618566494e0e815b29f8b21b73fb44
+  Parameters: {"parent_column"=>"entry_items", "eid"=>"18b56d57db5c7e18b13e988a0c11ad74", "nested"=>"true", "_method"=>"get", "action"=>"row", "id"=>"12", "controller"=>"entry_item", "parent_model"=>"EntryInstrument"}
+  [4;35;1mEntryQuestion Columns (0.015000)[0m   [0mSHOW FIELDS FROM `entry_questions`[0m
+  [4;36;1mEntryItem Load (0.000000)[0m   [0;1mSELECT * FROM `entry_items` WHERE (`entry_items`.`entry_item_id` = 12) [0m
+  [4;35;1mDisplayType Columns (0.015000)[0m   [0mSHOW FIELDS FROM `display_types`[0m
+  [4;36;1mDisplayType Load (0.000000)[0m   [0;1mSELECT * FROM `display_types` WHERE (`display_types`.`display_type_id` = 6) [0m
+  [4;35;1mEntryQuestion Load (0.000000)[0m   [0mSELECT * FROM `entry_questions` WHERE (entry_questions.entry_item_id = 12) LIMIT 1[0m
+  [4;36;1mJoin Table Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_answers_entry_items`[0m
+  [4;35;1mEntryAnswer Load (0.000000)[0m   [0mSELECT * FROM `entry_answers` INNER JOIN entry_answers_entry_items ON entry_answers.entry_answer_id = entry_answers_entry_items.entry_answer_id WHERE (entry_answers_entry_items.entry_item_id = 12 ) [0m
+  [4;36;1mEntryAnswer Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM `entry_answers`[0m
+Rendered entry_item/_list_actions (0.00000)
+Rendered entry_item/_list_record (0.04700)
+Completed in 0.10900 (9 reqs/sec) | Rendering: 0.01600 (14%) | DB: 0.06100 (55%) | 200 OK [http://localhost/entry_item/row/12?_method=get&eid=18b56d57db5c7e18b13e988a0c11ad74&nested=true&parent_column=entry_items&parent_model=EntryInstrument]
+  [4;35;1mEntryInstrument Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_instruments`[0m
+
+
+Processing EntryInstrumentController#row (for 127.0.0.1 at 2008-01-23 10:07:07) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6EGNvbnN0cmFpbnRzewY6EGVudHJ5%0AX2l0ZW1zIgcxMjoPY29uZGl0aW9uczA7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZiISYXM6SW5zdHJ1bWVudHsGOwB7ADoMY3NyZl9p%0AZCIlMGQ0MjlhOWNjOTRjZTQxNTYyMGZiNmFjMTg5M2Q1NTIiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7CDA7BnsGOhVlbnRyeV9p%0AbnN0cnVtZW50IgYxOwB7BjsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIKZmxh%0Ac2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoK%0AQHVzZWR7ACIYYXM6ZW50cnlfaW5zdHJ1bWVudHsGOwB7AA%3D%3D--187adcbf4a11915e71e51e87adc30662b322b0e6
+  Parameters: {"_method"=>"get", "action"=>"row", "id"=>"1", "controller"=>"entry_instrument"}
+  [4;36;1mEntryInstrument Load (0.000000)[0m   [0;1mSELECT * FROM `entry_instruments` WHERE (`entry_instruments`.`entry_instrument_id` = 1) [0m
+  [4;35;1mEntryItem Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_items`[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT count(*) AS count_all FROM `entry_items` WHERE (entry_items.entry_instrument_id = 1) [0m
+  [4;35;1mEntryItem Load (0.000000)[0m   [0mSELECT * FROM `entry_items` WHERE (entry_items.entry_instrument_id = 1) [0m
+Rendered entry_instrument/_list_actions (0.00000)
+Rendered entry_instrument/_list_record (0.03100)
+Completed in 0.04700 (21 reqs/sec) | Rendering: 0.04700 (100%) | DB: 0.00000 (0%) | 200 OK [http://localhost/entry_instrument/row/1?_method=get]
+  [4;36;1mEntryInstrument Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_instruments`[0m
+
+
+Processing EntryInstrumentController#nested (for 127.0.0.1 at 2008-01-23 10:07:18) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6D2NvbmRpdGlvbnMwOhBjb25zdHJh%0AaW50c3sGOhBlbnRyeV9pdGVtcyIHMTI7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZjoMY3NyZl9pZCIlMGQ0MjlhOWNjOTRjZTQxNTYy%0AMGZiNmFjMTg5M2Q1NTIiEmFzOkluc3RydW1lbnR7BjsAewAiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7B3sGOhVlbnRyeV9pbnN0%0AcnVtZW50IgYxOwYwOwB7BjsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIKZmxh%0Ac2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoK%0AQHVzZWR7ACIYYXM6ZW50cnlfaW5zdHJ1bWVudHsGOwB7AA%3D%3D--f319911cd8618566494e0e815b29f8b21b73fb44
+  Parameters: {"associations"=>"entry_items", "adapter"=>"_list_inline_adapter", "_method"=>"get", "action"=>"nested", "id"=>"1", "controller"=>"entry_instrument"}
+  [4;35;1mEntryInstrument Load (0.000000)[0m   [0mSELECT * FROM `entry_instruments` WHERE (`entry_instruments`.`entry_instrument_id` = 1) [0m
+  [4;36;1mEntryItem Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+  [4;35;1mSQL (0.000000)[0m   [0mSHOW TABLES[0m
+Start rendering component ({:controller=>"entry_item", :params=>{:nested=>true, :eid=>"18b56d57db5c7e18b13e988a0c11ad74", :parent_model=>EntryInstrument(entry_instrument_id: integer, version: string, instrument_description: text, name: string, created_on: timestamp, updated_on: timestamp), :parent_column=>"entry_items"}, :action=>"table"}): 
+
+
+Processing EntryItemController#table (for 127.0.0.1 at 2008-01-23 10:07:18) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6D2NvbmRpdGlvbnMwOhBjb25zdHJh%0AaW50c3sGOhBlbnRyeV9pdGVtcyIHMTI7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZjoMY3NyZl9pZCIlMGQ0MjlhOWNjOTRjZTQxNTYy%0AMGZiNmFjMTg5M2Q1NTIiEmFzOkluc3RydW1lbnR7BjsAewAiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7B3sGOhVlbnRyeV9pbnN0%0AcnVtZW50IgYxOwYwOwB7BjsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIKZmxh%0Ac2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoK%0AQHVzZWR7ACIYYXM6ZW50cnlfaW5zdHJ1bWVudHsGOwB7AA%3D%3D--f319911cd8618566494e0e815b29f8b21b73fb44
+  [4;36;1mSQL (0.000000)[0m   [0;1mSHOW TABLES[0m
+  Parameters: {"parent_column"=>"entry_items", "eid"=>"18b56d57db5c7e18b13e988a0c11ad74", "nested"=>true, "action"=>"table", "id"=>nil, "controller"=>"entry_item", "parent_model"=>EntryInstrument(entry_instrument_id: integer, version: string, instrument_description: text, name: string, created_on: timestamp, updated_on: timestamp)}
+  [4;35;1mEntryQuestion Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_questions`[0m
+  [4;36;1mSQL (0.015000)[0m   [0;1mSELECT count(DISTINCT `entry_items`.entry_item_id) AS count_all FROM `entry_items` LEFT OUTER JOIN `display_types` ON `display_types`.display_type_id = `entry_items`.display_type_id LEFT OUTER JOIN `entry_questions` ON entry_questions.entry_item_id = entry_items.entry_item_id LEFT OUTER JOIN `entry_answers_entry_items` ON `entry_answers_entry_items`.entry_item_id = `entry_items`.entry_item_id LEFT OUTER JOIN `entry_answers` ON `entry_answers`.entry_answer_id = `entry_answers_entry_items`.entry_answer_id LEFT OUTER JOIN `entry_instruments` ON `entry_instruments`.entry_instrument_id = `entry_items`.entry_instrument_id WHERE (entry_items.entry_instrument_id = '1') [0m
+  [4;35;1mDisplayType Columns (0.000000)[0m   [0mSHOW FIELDS FROM `display_types`[0m
+  [4;36;1mEntryAnswer Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM `entry_answers`[0m
+  [4;35;1mEntryItem Load IDs For Limited Eager Loading (0.000000)[0m   [0mSELECT entry_item_id FROM `entry_items` WHERE (entry_items.entry_instrument_id = '1') ORDER BY entry_items.`entry_item_id` ASC LIMIT 0, 15[0m
+  [4;36;1mEntryItem Load Including Associations (0.000000)[0m   [0;1mSELECT `entry_items`.`entry_item_id` AS t0_r0, `entry_items`.`entry_instrument_id` AS t0_r1, `entry_items`.`display_type_id` AS t0_r2, `entry_items`.`name` AS t0_r3, `entry_items`.`relevance` AS t0_r4, `entry_items`.`position` AS t0_r5, `entry_items`.`created_on` AS t0_r6, `entry_items`.`updated_on` AS t0_r7, `display_types`.`display_type_id` AS t1_r0, `display_types`.`sas_informat` AS t1_r1, `display_types`.`sas_format` AS t1_r2, `display_types`.`name` AS t1_r3, `display_types`.`spss_level` AS t1_r4, `display_types`.`spss_format` AS t1_r5, `display_types`.`loinc_scale` AS t1_r6, `display_types`.`has_answer_list` AS t1_r7, `display_types`.`data_type_id` AS t1_r8, `entry_questions`.`entry_question_id` AS t2_r0, `entry_questions`.`entry_item_id` AS t2_r1, `entry_questions`.`name` AS t2_r2, `entry_questions`.`created_on` AS t2_r3, `entry_questions`.`updated_on` AS t2_r4, `entry_answers`.`entry_answer_id` AS t3_r0, `entry_answers`.`name` AS t3_r1, `entry_answers`.`answer_code` AS t3_r2, `entry_answers`.`position` AS t3_r3, `entry_answers`.`created_on` AS t3_r4, `entry_answers`.`updated_on` AS t3_r5, `entry_instruments`.`entry_instrument_id` AS t4_r0, `entry_instruments`.`version` AS t4_r1, `entry_instruments`.`instrument_description` AS t4_r2, `entry_instruments`.`name` AS t4_r3, `entry_instruments`.`created_on` AS t4_r4, `entry_instruments`.`updated_on` AS t4_r5 FROM `entry_items` LEFT OUTER JOIN `display_types` ON `display_types`.display_type_id = `entry_items`.display_type_id LEFT OUTER JOIN `entry_questions` ON entry_questions.entry_item_id = entry_items.entry_item_id LEFT OUTER JOIN `entry_answers_entry_items` ON `entry_answers_entry_items`.entry_item_id = `entry_items`.entry_item_id LEFT OUTER JOIN `entry_answers` ON `entry_answers`.entry_answer_id = `entry_answers_entry_items`.entry_answer_id LEFT OUTER JOIN `entry_instruments` ON `entry_instruments`.entry_instrument_id = `entry_items`.entry_instrument_id WHERE (entry_items.entry_instrument_id = '1') AND `entry_items`.entry_item_id IN (12) ORDER BY entry_items.`entry_item_id` ASC[0m
+Rendering entry_item/list
+Rendered entry_item/_list_header (0.01500)
+Rendered entry_item/_list_column_headings (0.00000)
+Rendered entry_item/_messages (0.01500)
+Rendered entry_item/_list_actions (0.00000)
+Rendered entry_item/_list_record (0.01600)
+Rendered entry_item/_list (0.04700)
+Completed in 0.14000 (7 reqs/sec) | Rendering: 0.07800 (55%) | DB: 0.04700 (33%) | 200 OK [http://localhost/entry_instrument/nested/1?_method=get&associations=entry_items&adapter=_list_inline_adapter]
+
+
+End of component rendering
+Rendered entry_instrument/_nested (0.29600)
+Rendering _list_inline_adapter
+Rendered core/_messages (0.00000)
+Completed in 0.34300 (2 reqs/sec) | Rendering: 0.01500 (4%) | DB: 0.00000 (0%) | 200 OK [http://localhost/entry_instrument/nested/1?_method=get&associations=entry_items&adapter=_list_inline_adapter]
+  [4;35;1mEntryItem Columns (0.015000)[0m   [0mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+
+
+Processing EntryItemController#nested (for 127.0.0.1 at 2008-01-23 10:07:21) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6EGNvbnN0cmFpbnRzewY6EGVudHJ5%0AX2l0ZW1zIgcxMjoPY29uZGl0aW9uczA7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZiISYXM6SW5zdHJ1bWVudHsGOwB7ADoMY3NyZl9p%0AZCIlMGQ0MjlhOWNjOTRjZTQxNTYyMGZiNmFjMTg5M2Q1NTIiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7CDA7BnsGOhVlbnRyeV9p%0AbnN0cnVtZW50IgYxOwB7BjsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIKZmxh%0Ac2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoK%0AQHVzZWR7ACIYYXM6ZW50cnlfaW5zdHJ1bWVudHsGOwB7AA%3D%3D--187adcbf4a11915e71e51e87adc30662b322b0e6
+  Parameters: {"parent_column"=>"entry_items", "eid"=>"18b56d57db5c7e18b13e988a0c11ad74", "associations"=>"entry_answers", "nested"=>"true", "adapter"=>"_list_inline_adapter", "_method"=>"get", "action"=>"nested", "id"=>"12", "controller"=>"entry_item", "parent_model"=>"EntryInstrument"}
+  [4;36;1mEntryQuestion Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM `entry_questions`[0m
+  [4;35;1mEntryItem Load (0.000000)[0m   [0mSELECT * FROM `entry_items` WHERE (`entry_items`.`entry_item_id` = 12) [0m
+  [4;36;1mEntryAnswer Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM `entry_answers`[0m
+  [4;35;1mSQL (0.016000)[0m   [0mSHOW TABLES[0m
+Start rendering component ({:controller=>"entry_answer", :params=>{:nested=>true, :eid=>"28c8af21056392ee8ea4c3f361fb7eba", :parent_model=>EntryItem(entry_item_id: integer, entry_instrument_id: integer, display_type_id: integer, name: string, relevance: string, position: integer, created_on: timestamp, updated_on: timestamp), :parent_column=>"entry_answers"}, :action=>"table"}): 
+
+
+Processing EntryAnswerController#table (for 127.0.0.1 at 2008-01-23 10:07:22) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6EGNvbnN0cmFpbnRzewY6EGVudHJ5%0AX2l0ZW1zIgcxMjoPY29uZGl0aW9uczA7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZiISYXM6SW5zdHJ1bWVudHsGOwB7ADoMY3NyZl9p%0AZCIlMGQ0MjlhOWNjOTRjZTQxNTYyMGZiNmFjMTg5M2Q1NTIiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7CDA7BnsGOhVlbnRyeV9p%0AbnN0cnVtZW50IgYxOwB7BjsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIKZmxh%0Ac2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoK%0AQHVzZWR7ACIYYXM6ZW50cnlfaW5zdHJ1bWVudHsGOwB7AA%3D%3D--187adcbf4a11915e71e51e87adc30662b322b0e6
+  [4;36;1mSQL (0.000000)[0m   [0;1mSHOW TABLES[0m
+  Parameters: {"parent_column"=>"entry_answers", "eid"=>"28c8af21056392ee8ea4c3f361fb7eba", "nested"=>true, "action"=>"table", "id"=>nil, "controller"=>"entry_answer", "parent_model"=>EntryItem(entry_item_id: integer, entry_instrument_id: integer, display_type_id: integer, name: string, relevance: string, position: integer, created_on: timestamp, updated_on: timestamp)}
+  [4;35;1mSQL (0.015000)[0m   [0mSELECT count(DISTINCT `entry_answers`.entry_answer_id) AS count_all FROM `entry_answers` LEFT OUTER JOIN `entry_answers_entry_items` ON `entry_answers_entry_items`.entry_answer_id = `entry_answers`.entry_answer_id LEFT OUTER JOIN `entry_items` ON `entry_items`.entry_item_id = `entry_answers_entry_items`.entry_item_id WHERE (entry_answers_entry_items.entry_item_id = '12') [0m
+  [4;36;1mEntryAnswer Load IDs For Limited Eager Loading (0.000000)[0m   [0;1mSELECT DISTINCT `entry_answers`.entry_answer_id FROM `entry_answers` LEFT OUTER JOIN `entry_answers_entry_items` ON `entry_answers_entry_items`.entry_answer_id = `entry_answers`.entry_answer_id LEFT OUTER JOIN `entry_items` ON `entry_items`.entry_item_id = `entry_answers_entry_items`.entry_item_id WHERE (entry_answers_entry_items.entry_item_id = '12') ORDER BY entry_answers.`entry_answer_id` ASC LIMIT 0, 15[0m
+  [4;35;1mEntryAnswer Load Including Associations (0.000000)[0m   [0mSELECT `entry_answers`.`entry_answer_id` AS t0_r0, `entry_answers`.`name` AS t0_r1, `entry_answers`.`answer_code` AS t0_r2, `entry_answers`.`position` AS t0_r3, `entry_answers`.`created_on` AS t0_r4, `entry_answers`.`updated_on` AS t0_r5, `entry_items`.`entry_item_id` AS t1_r0, `entry_items`.`entry_instrument_id` AS t1_r1, `entry_items`.`display_type_id` AS t1_r2, `entry_items`.`name` AS t1_r3, `entry_items`.`relevance` AS t1_r4, `entry_items`.`position` AS t1_r5, `entry_items`.`created_on` AS t1_r6, `entry_items`.`updated_on` AS t1_r7 FROM `entry_answers` LEFT OUTER JOIN `entry_answers_entry_items` ON `entry_answers_entry_items`.entry_answer_id = `entry_answers`.entry_answer_id LEFT OUTER JOIN `entry_items` ON `entry_items`.entry_item_id = `entry_answers_entry_items`.entry_item_id WHERE (entry_answers_entry_items.entry_item_id = '12') AND `entry_answers`.entry_answer_id IN (12, 13, 14) ORDER BY entry_answers.`entry_answer_id` ASC[0m
+Rendering entry_answer/list
+Rendered entry_answer/_list_header (0.00000)
+Rendered entry_answer/_list_column_headings (0.01600)
+Rendered entry_answer/_messages (0.00000)
+Rendered entry_answer/_list_actions (0.00000)
+Rendered entry_answer/_list_record (0.01500)
+Rendered entry_answer/_list_actions (0.01600)
+Rendered entry_answer/_list_record (0.01600)
+Rendered entry_answer/_list_actions (0.00000)
+Rendered entry_answer/_list_record (0.01500)
+Rendered entry_answer/_list (0.07800)
+Completed in 0.12400 (8 reqs/sec) | Rendering: 0.10900 (87%) | DB: 0.04600 (37%) | 200 OK [http://localhost/entry_item/nested/12?_method=get&associations=entry_answers&eid=18b56d57db5c7e18b13e988a0c11ad74&nested=true&parent_column=entry_items&parent_model=EntryInstrument&adapter=_list_inline_adapter]
+
+
+End of component rendering
+Rendered entry_item/_nested (0.24900)
+Rendering _list_inline_adapter
+Rendered core/_messages (0.01600)
+Completed in 0.34400 (2 reqs/sec) | Rendering: 0.03200 (9%) | DB: 0.00000 (0%) | 200 OK [http://localhost/entry_item/nested/12?_method=get&associations=entry_answers&eid=18b56d57db5c7e18b13e988a0c11ad74&nested=true&parent_column=entry_items&parent_model=EntryInstrument&adapter=_list_inline_adapter]
+  [4;36;1mEntryAnswer Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_answers`[0m
+
+
+Processing EntryAnswerController#new (for 127.0.0.1 at 2008-01-23 10:08:33) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6D2NvbmRpdGlvbnMwOhBjb25zdHJh%0AaW50c3sGOhBlbnRyeV9pdGVtcyIHMTI7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZjoMY3NyZl9pZCIlMGQ0MjlhOWNjOTRjZTQxNTYy%0AMGZiNmFjMTg5M2Q1NTIiEmFzOkluc3RydW1lbnR7BjsAewAiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7B3sGOhVlbnRyeV9pbnN0%0AcnVtZW50IgYxOwYwOwB7BjsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIKZmxh%0Ac2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoK%0AQHVzZWR7ACIYYXM6ZW50cnlfaW5zdHJ1bWVudHsGOwB7AA%3D%3D--f319911cd8618566494e0e815b29f8b21b73fb44
+  Parameters: {"parent_column"=>"entry_answers", "eid"=>"28c8af21056392ee8ea4c3f361fb7eba", "nested"=>"true", "adapter"=>"_list_inline_adapter", "_method"=>"get", "action"=>"new", "controller"=>"entry_answer", "parent_model"=>"EntryItem"}
+  [4;35;1mEntryItem Columns (0.015000)[0m   [0mSHOW FIELDS FROM `entry_items`[0m
+  [4;36;1mEntryItem Load (0.000000)[0m   [0;1mSELECT * FROM `entry_items` WHERE (`entry_items`.`entry_item_id` = 12) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCOMMIT[0m
+Rendered entry_answer/_form_attribute (0.01600)
+Rendered entry_answer/_form_attribute (0.01600)
+Rendered entry_answer/_form (0.04700)
+Rendered entry_answer/_create_form (0.04700)
+Rendering _list_inline_adapter
+Rendered core/_messages (0.00000)
+Completed in 0.09300 (10 reqs/sec) | Rendering: 0.01500 (16%) | DB: 0.00000 (0%) | 200 OK [http://localhost/entry_answer/new?_method=get&eid=28c8af21056392ee8ea4c3f361fb7eba&nested=true&parent_column=entry_answers&parent_model=EntryItem&adapter=_list_inline_adapter]
+  [4;35;1mEntryQuestion Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_questions`[0m
+
+
+Processing EntryQuestionController#show (for 127.0.0.1 at 2008-01-23 10:08:42) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6EGNvbnN0cmFpbnRzewY6EGVudHJ5%0AX2l0ZW1zIgcxMjoPY29uZGl0aW9uczA7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZiISYXM6SW5zdHJ1bWVudHsGOwB7ADoMY3NyZl9p%0AZCIlMGQ0MjlhOWNjOTRjZTQxNTYyMGZiNmFjMTg5M2Q1NTIiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7CDA7BnsGOhVlbnRyeV9p%0AbnN0cnVtZW50IgYxOwB7BjsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIKZmxh%0Ac2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoK%0AQHVzZWR7ACIYYXM6ZW50cnlfaW5zdHJ1bWVudHsGOwB7AA%3D%3D--187adcbf4a11915e71e51e87adc30662b322b0e6
+  Parameters: {"parent_column"=>"entry_items", "eid"=>"18b56d57db5c7e18b13e988a0c11ad74", "nested"=>"true", "adapter"=>"_list_inline_adapter", "_method"=>"get", "action"=>"show", "id"=>"6", "controller"=>"entry_question", "parent_model"=>"EntryInstrument", "parent_controller"=>"entry_item"}
+  [4;36;1mEntryItem Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+  [4;35;1mEntryQuestion Load (0.000000)[0m   [0mSELECT * FROM `entry_questions` WHERE (`entry_questions`.`entry_question_id` = 6) [0m
+  [4;36;1mEntryItem Load (0.000000)[0m   [0;1mSELECT * FROM `entry_items` WHERE (`entry_items`.`entry_item_id` = 12) [0m
+Rendered entry_question/_show_columns (0.01600)
+Rendered entry_question/_show (0.01600)
+Rendering _list_inline_adapter
+Rendered core/_messages (0.00000)
+Completed in 0.09300 (10 reqs/sec) | Rendering: 0.01500 (16%) | DB: 0.00000 (0%) | 200 OK [http://localhost/entry_question/show/6?_method=get&eid=18b56d57db5c7e18b13e988a0c11ad74&nested=true&parent_column=entry_items&parent_controller=entry_item&parent_model=EntryInstrument&adapter=_list_inline_adapter]
+  [4;35;1mEntryItem Columns (0.016000)[0m   [0mSHOW FIELDS FROM `entry_items`[0m
+DEPRECATION WARNING: config.columns[:display_type].ui_type will disappear in version 2.0. Please use config.columns[:display_type].form_ui instead.  See http://www.rubyonrails.org/deprecation for details. (called from C:/cvs5/DialogixRails/DialogixManager2/app/controllers/entry_item_controller.rb:6)
+
+
+Processing EntryItemController#row (for 127.0.0.1 at 2008-01-23 10:08:45) [GET]
+  Session ID: BAh7DCISYXM6ZW50cnlfaXRlbXsGOglsaXN0ewAiKGFzOjI4YzhhZjIxMDU2%0AMzkyZWU4ZWE0YzNmMzYxZmI3ZWJhewg6D2NvbmRpdGlvbnMwOhBjb25zdHJh%0AaW50c3sGOhBlbnRyeV9pdGVtcyIHMTI7AHsGOgpsYWJlbCIeRW50cnkgQW5z%0Ad2VycyBmb3IgZGRmZmZmZjoMY3NyZl9pZCIlMGQ0MjlhOWNjOTRjZTQxNTYy%0AMGZiNmFjMTg5M2Q1NTIiEmFzOkluc3RydW1lbnR7BjsAewAiKGFzOjE4YjU2%0AZDU3ZGI1YzdlMThiMTNlOTg4YTBjMTFhZDc0ewg7B3sGOhVlbnRyeV9pbnN0%0AcnVtZW50IgYxOwYwOwB7BjsJIhlFbnRyeSBJdGVtcyBmb3IgVGVzdCIKZmxh%0Ac2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoK%0AQHVzZWR7ACIYYXM6ZW50cnlfaW5zdHJ1bWVudHsGOwB7AA%3D%3D--f319911cd8618566494e0e815b29f8b21b73fb44
+  Parameters: {"parent_column"=>"entry_items", "eid"=>"18b56d57db5c7e18b13e988a0c11ad74", "nested"=>"true", "_method"=>"get", "action"=>"row", "id"=>"12", "controller"=>"entry_item", "parent_model"=>"EntryInstrument"}
+  [4;36;1mEntryQuestion Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `entry_questions`[0m
+  [4;35;1mEntryItem Load (0.000000)[0m   [0mSELECT * FROM `entry_items` WHERE (`entry_items`.`entry_item_id` = 12) [0m
+  [4;36;1mDisplayType Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM `display_types`[0m
+  [4;35;1mDisplayType Load (0.000000)[0m   [0mSELECT * FROM `display_types` WHERE (`display_types`.`display_type_id` = 6) [0m
+  [4;36;1mEntryQuestion Load (0.000000)[0m   [0;1mSELECT * FROM `entry_questions` WHERE (entry_questions.entry_item_id = 12) LIMIT 1[0m
+  [4;35;1mJoin Table Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_answers_entry_items`[0m
+  [4;36;1mEntryAnswer Load (0.016000)[0m   [0;1mSELECT * FROM `entry_answers` INNER JOIN entry_answers_entry_items ON entry_answers.entry_answer_id = entry_answers_entry_items.entry_answer_id WHERE (entry_answers_entry_items.entry_item_id = 12 ) [0m
+  [4;35;1mEntryAnswer Columns (0.000000)[0m   [0mSHOW FIELDS FROM `entry_answers`[0m
+Rendered entry_item/_list_actions (0.01500)
+Rendered entry_item/_list_record (0.06200)
+Completed in 0.17100 (5 reqs/sec) | Rendering: 0.04600 (26%) | DB: 0.03200 (18%) | 200 OK [http://localhost/entry_item/row/12?_method=get&eid=18b56d57db5c7e18b13e988a0c11ad74&nested=true&parent_column=entry_items&parent_model=EntryInstrument]
