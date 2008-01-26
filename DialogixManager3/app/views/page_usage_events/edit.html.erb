@@ -1,0 +1,12 @@
+<h1>Editing page_usage_event</h1>
+
+<%= error_messages_for :page_usage_event %>
+
+<% form_for(@page_usage_event) do |f| %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @page_usage_event %> |
+<%= link_to 'Back', page_usage_events_path %>

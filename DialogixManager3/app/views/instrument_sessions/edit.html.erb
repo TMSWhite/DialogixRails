@@ -1,0 +1,12 @@
+<h1>Editing instrument_session</h1>
+
+<%= error_messages_for :instrument_session %>
+
+<% form_for(@instrument_session) do |f| %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @instrument_session %> |
+<%= link_to 'Back', instrument_sessions_path %>

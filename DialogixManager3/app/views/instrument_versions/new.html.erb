@@ -1,0 +1,11 @@
+<h1>New instrument_version</h1>
+
+<%= error_messages_for :instrument_version %>
+
+<% form_for(@instrument_version) do |f| %>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', instrument_versions_path %>

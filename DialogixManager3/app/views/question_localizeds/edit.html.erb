@@ -1,0 +1,12 @@
+<h1>Editing question_localized</h1>
+
+<%= error_messages_for :question_localized %>
+
+<% form_for(@question_localized) do |f| %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @question_localized %> |
+<%= link_to 'Back', question_localizeds_path %>

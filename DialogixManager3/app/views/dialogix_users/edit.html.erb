@@ -1,0 +1,12 @@
+<h1>Editing dialogix_user</h1>
+
+<%= error_messages_for :dialogix_user %>
+
+<% form_for(@dialogix_user) do |f| %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @dialogix_user %> |
+<%= link_to 'Back', dialogix_users_path %>

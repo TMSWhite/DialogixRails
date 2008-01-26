@@ -1,0 +1,11 @@
+<h1>New item_usage</h1>
+
+<%= error_messages_for :item_usage %>
+
+<% form_for(@item_usage) do |f| %>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', item_usages_path %>
