@@ -1,0 +1,18 @@
+<h1>Listing answer_localizeds</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for answer_localized in @answer_localizeds %>
+  <tr>
+    <td><%= link_to 'Show', answer_localized %></td>
+    <td><%= link_to 'Edit', edit_answer_localized_path(answer_localized) %></td>
+    <td><%= link_to 'Destroy', answer_localized, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New answer_localized', new_answer_localized_path %>

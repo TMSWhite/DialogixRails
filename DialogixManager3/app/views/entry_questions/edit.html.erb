@@ -1,0 +1,12 @@
+<h1>Editing entry_question</h1>
+
+<%= error_messages_for :entry_question %>
+
+<% form_for(@entry_question) do |f| %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @entry_question %> |
+<%= link_to 'Back', entry_questions_path %>

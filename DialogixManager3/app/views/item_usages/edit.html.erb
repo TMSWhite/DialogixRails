@@ -1,0 +1,12 @@
+<h1>Editing item_usage</h1>
+
+<%= error_messages_for :item_usage %>
+
+<% form_for(@item_usage) do |f| %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @item_usage %> |
+<%= link_to 'Back', item_usages_path %>
