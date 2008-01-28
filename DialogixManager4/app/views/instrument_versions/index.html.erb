@@ -1,0 +1,18 @@
+<h1>Listing instrument_versions</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for instrument_version in @instrument_versions %>
+  <tr>
+    <td><%= link_to 'Show', instrument_version %></td>
+    <td><%= link_to 'Edit', edit_instrument_version_path(instrument_version) %></td>
+    <td><%= link_to 'Destroy', instrument_version, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New instrument_version', new_instrument_version_path %>

@@ -1,0 +1,2 @@
+module AnswerLocalizedsHelper
+end

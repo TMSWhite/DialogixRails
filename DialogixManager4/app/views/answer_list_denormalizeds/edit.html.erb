@@ -1,0 +1,12 @@
+<h1>Editing answer_list_denormalized</h1>
+
+<%= error_messages_for :answer_list_denormalized %>
+
+<% form_for(@answer_list_denormalized) do |f| %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @answer_list_denormalized %> |
+<%= link_to 'Back', answer_list_denormalizeds_path %>
