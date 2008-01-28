@@ -1,5 +1,6 @@
 class EntryInstrumentsController < ApplicationController
   active_scaffold :entry_instrument do |config|
+    config.actions << :sortable
     config.actions.exclude :delete
     # Link for all lists
     #config.action_links.add 'Submit', :label => 'Export to Server', :page => true
@@ -11,9 +12,17 @@ class EntryInstrumentsController < ApplicationController
     config.list.columns = [:name, :version, :instrument_description, :created_on, :entry_items] 
     # Below sets a link in the last column
     config.action_links.add 'submit_to_dialogix', :label => 'Submit', :type => :record, :page => true
+    #config.action_links.add 'index', :parameters => {:format => 'tsv'}, 
+    #  :label => "Download", :page => true 
+    #config.actions.add :export
+    #config.export.show_form = false
+    config.export.columns = [:name, :version, :instrument_description, :created_on, :entry_items] 
+    config.export.default_deselected_columns = [ :updated_on ]
+    config.export.default_delimiter = ','
+    config.export.force_quotes = true
     #config.list.sorting = [:position]
     #config.list.columns << :position
-    #config.list.sorting = [{:name => :ASC}]   
+    config.list.sorting = [{:name => :ASC}]   
   end 
   # GET /entry_instruments
   # GET /entry_instruments.xml
@@ -27,19 +36,29 @@ class EntryInstrumentsController < ApplicationController
   #  end
   #end
 
-  # GET /entry_instruments/1
-  # GET /entry_instruments/1.xml
+  
   # Called from ActiveScaffold submit action link 
   def submit_to_dialogix
     @entry_instrument = EntryInstrument.find(params[:id])
 
     respond_to do |format|
       #format.html # show.html.erb
-      format.xml  { render :xml => @entry_instrument }
+      format.xml  { render :xml => @entry_instrument}
+      #format.yaml  { render :yaml => @entry_instrument}
+      #format.json  { render :json => @entry_instrument}
     end
   end
   
- def new_rest
+  def download_tsv
+    @entry_instrument = EntryInstrument.find(params[:id])
+    respond_to do |format|
+      format.tsv  { render :tsv => @entry_instrument}
+    end
+  end
+  
+  # GET /entry_instruments/new
+  # GET /entry_instruments/new.xml
+  def new_rest
     @entry_instrument = EntryInstrument.new
 
     respond_to do |format|

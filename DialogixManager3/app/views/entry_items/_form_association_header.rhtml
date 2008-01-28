@@ -1,6 +1,6 @@
 <thead>
   <tr>
-    <h1>Answer List</h1>
+    <h1>Answer List</h1> <br>
     <%
     active_scaffold_config_for(@record.class).subform.columns.each :for => @record, :flatten => true do |column|
       next unless in_subform?(column, parent_record) and column_renders_as(column) != :hidden

@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+ 
   map.resources :instruments , :active_scaffold => true   
   map.resources :instrument_versions, :active_scaffold => true 
   map.resources :instrument_contents, :active_scaffold => true 
@@ -19,6 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :page_usages, :active_scaffold => true 
   map.resources :item_usages, :active_scaffold => true 
   map.resources :items, :active_scaffold => true  
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
 

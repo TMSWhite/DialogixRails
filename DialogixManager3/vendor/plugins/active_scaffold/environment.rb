@@ -64,14 +64,16 @@ Dir["#{File.dirname __FILE__}/lib/extensions/*.rb"].each { |file| require file }
 Dir["#{File.dirname __FILE__}/lib/helpers/*.rb"].each do |file|
   require file unless ['view_helpers.rb', 'controller_helpers.rb'].include? File.basename(file)
 end
-require 'helpers/view_helpers'
-require 'helpers/controller_helpers'
+#require 'helpers/view_helpers'
+#require 'helpers/controller_helpers'
+require "#{File.dirname __FILE__}/lib/helpers/view_helpers.rb"
+require "#{File.dirname __FILE__}/lib/helpers/controller_helpers" 
 
 ## 
 ## Load the bridge infrastructure
 ## 
-require 'bridges/bridge.rb'
-
+#require 'bridges/bridge.rb'
+require "#{File.dirname(__FILE__)}/lib/bridges/bridge.rb" 
 
 ##
 ## Inject includes for ActiveScaffold libraries

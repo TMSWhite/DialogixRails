@@ -39,6 +39,8 @@ module ActiveScaffold::Actions
         type.xml { render :xml => response_object.to_xml, :content_type => Mime::XML, :status => response_status }
         type.json { render :text => response_object.to_json, :content_type => Mime::JSON, :status => response_status }
         type.yaml { render :text => response_object.to_yaml, :content_type => Mime::YAML, :status => response_status }
+        type.tsv { render :text => response_object.to_tsv(active_scaffold_config.columns), :content_type => Mime::TSV, :status => response_status 
+        }
       end
     end
 

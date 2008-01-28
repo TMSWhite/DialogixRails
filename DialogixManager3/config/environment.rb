@@ -57,4 +57,6 @@ Rails::Initializer.run do |config|
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
 end
+# Add new mime types for use in respond_to blocks:
+Mime::Type.register "text/tsv", :tsv 
 ActiveRecord::Base.primary_key_prefix_type = :table_name_with_underscore
