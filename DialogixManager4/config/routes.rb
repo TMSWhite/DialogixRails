@@ -4,14 +4,15 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :instrument_versions, :active_scaffold => true 
   map.resources :instrument_contents, :active_scaffold => true 
   map.resources :instrument_sessions, :active_scaffold => true   
-  map.resources :entry_questions, :active_scaffold => true 
-  map.resources :entry_items, :active_scaffold => true 
-  map.resources :entry_answers, :active_scaffold => true 
   #map.resources :entry_instruments, :active_scaffold => true
-  #map.resources :entry_instruments do |entry_instruments|
-  #  entry_instruments.resources :entry_items, :active_scaffold => true
-  #end  
-  map.resources :entry_instruments, :has_many => [ :entry_items], :active_scaffold => true
+  map.resources :entry_instruments do |entry_instruments|
+    entry_instruments.resources :entry_items do |entry_items|
+      entry_items.resources :entry_answers, :active_scaffold => true
+    end
+  end  
+  #map.resources :entry_instruments, :has_many => :entry_items, :active_scaffold => true
+  #map.resources :entry_items, :has_many => [:entry_answers], :active_scaffold => true 
+  #map.resources :entry_answers, :active_scaffold => true 
   map.resources :v1_page_usages, :active_scaffold => true 
   map.resources :v1_item_usages, :active_scaffold => true 
   map.resources :v1_data_elements, :active_scaffold => true

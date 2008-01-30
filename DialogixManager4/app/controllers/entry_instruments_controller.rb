@@ -1,4 +1,5 @@
 class EntryInstrumentsController < ApplicationController
+  require 'fastercsv'
   active_scaffold :entry_instrument do |config|
     config.actions << :sortable
     config.actions.exclude :delete
@@ -12,43 +13,66 @@ class EntryInstrumentsController < ApplicationController
     config.list.columns = [:name, :version, :instrument_description, :created_on, :entry_items] 
     # Below sets a link in the last column
     config.action_links.add 'submit_to_dialogix', :label => 'Submit', :type => :record, :page => true
-    #config.action_links.add 'index', :parameters => {:format => 'tsv'}, 
-    #  :label => "Download", :page => true 
-    #config.actions.add :export
-    #config.export.show_form = false
     config.export.columns = [:name, :version, :instrument_description, :created_on, :entry_items] 
     config.export.default_deselected_columns = [ :updated_on ]
     config.export.default_delimiter = ','
     config.export.force_quotes = true
-    #config.list.sorting = [:position]
-    #config.list.columns << :position
     config.list.sorting = [{:name => :ASC}]   
   end 
-  # GET /entry_instruments
-  # GET /entry_instruments.xml
-  #def index
-  #  @entry_instruments = EntryInstrument.find(:all)
-
-  #  respond_to do |format|
-  #    format.html # index.html.erb
-  
-  #  format.xml  { render :xml => @entry_instruments }
-  #  end
-  #end
-
-  
+   
   # Called from ActiveScaffold submit action link 
   def submit_to_dialogix
     @entry_instrument = EntryInstrument.find(params[:id])
-
+    fcsv_options = {
+      :row_sep => "\n",
+      :col_sep => "\t",
+      :force_quotes => true     
+    }
+    # Init append string
+    @answerString = ""   
+    @dialogix_content = FasterCSV.generate(fcsv_options) do |csv|
+      #csv << ["Name", "Version"]
+      @entry_instrument.entry_items.each do |items|
+        csv << [items['name'],
+          items['relevance'],
+          items['question'],
+          items['display_type_id']          
+        ]
+        items.entry_answers.each do |answers|
+          @answerString << '|'
+          @answerString << answers['name']  
+        end
+        csv << @answerString
+        #Reset append string           
+        @answerString = ""          
+      end
+    end
+    puts @dialogix_content
+    #csv()
+    # XML for test out only 
     respond_to do |format|
       #format.html # show.html.erb
-      format.xml  { render :xml => @entry_instrument}
-      #format.yaml  { render :yaml => @entry_instrument}
-      #format.json  { render :json => @entry_instrument}
-    end
+      format.xml  { render :xml => @entry_instrument.entry_items}
+    end 
   end
   
+  def csv
+    url = URI.parse('http://localhost:7070/Dialogix/LoadInstrumentTest.jsp')
+    req = Net::HTTP::Post.new(url.path)
+    req.set_form_data({'title'=>@entry_instrument.name, 
+        'version'=> @entry_instrument.version, 
+        'content'=> @dialogix_content}, "\n")
+    res = Net::HTTP.new(url.host, url.port).start {|http| http.request(req) }
+    case res
+    when Net::HTTPSuccess, Net::HTTPRedirection
+      # OK
+      #puts res.body  
+    else
+      res.error!
+    end   
+   
+  end 
+    
   def download_tsv
     @entry_instrument = EntryInstrument.find(params[:id])
     respond_to do |format|
