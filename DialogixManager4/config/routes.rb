@@ -1,5 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
- 
   map.resources :instruments , :active_scaffold => true   
   map.resources :instrument_versions, :active_scaffold => true 
   map.resources :instrument_contents, :active_scaffold => true 
@@ -10,6 +9,9 @@ ActionController::Routing::Routes.draw do |map|
       entry_items.resources :entry_answers, :active_scaffold => true
     end
   end  
+  #map.resources :entry_items, :has_many => [:entry_answers], :has_one => [:display_types], 
+  #  :active_scaffold => true 
+  map.resources :display_types, :actve_scaffold => true
   #map.resources :entry_instruments, :has_many => :entry_items, :active_scaffold => true
   #map.resources :entry_items, :has_many => [:entry_answers], :active_scaffold => true 
   #map.resources :entry_answers, :active_scaffold => true 

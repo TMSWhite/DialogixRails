@@ -29,11 +29,10 @@ class EntryInstrumentsController < ApplicationController
       :force_quotes => false     
     }
     # Init append string
-    @answerString = ""   
     @dialogix_content = FasterCSV.generate(fcsv_options) do |csv|
       #csv << ["Name", "Version"]
       @entry_instrument.entry_items.each do |items|
-        @answerListString = "list"  # should be item.display_type.name
+        @answerListString = items.display_type.name
         items.entry_answers.each do |answers|
           @answerListString << '|'
           @answerListString << answers['answer_code']
@@ -45,25 +44,20 @@ class EntryInstrumentsController < ApplicationController
           items['question'],
           @answerListString
         ]
-        #Reset append string           
-        @answerString = ""          
       end
     end
-    puts @dialogix_content
+    # puts @dialogix_content
+    # HTTP Post to Dialogix
     csv()
-    # XML for test out only 
-#    respond_to do |format|
-#      #format.html # show.html.erb
-#      format.xml  { render :xml => @entry_instrument.entry_items}
-#    end 
+    
   end
   
   def csv
     url = URI.parse('http://localhost:7070/Dialogix/LoadInstrument-Ruby.jsp')
     req = Net::HTTP::Post.new(url.path)
     req.set_form_data({'title'=>@entry_instrument.name,
-      'version'=> @entry_instrument.version,
-      'contents'=> @dialogix_content})    
+        'version'=> @entry_instrument.version,
+        'contents'=> @dialogix_content})    
     res = Net::HTTP.new(url.host, url.port).start {|http| http.request(req) }
     case res
     when Net::HTTPSuccess, Net::HTTPRedirection

@@ -1,15 +1,7 @@
 class DisplayType < ActiveRecord::Base
-  belongs_to :display_type, :class_name => 'DisplayType', :foreign_key => :display_type_id
   belongs_to :data_type, :class_name => 'DataType', :foreign_key => :data_type_id
-  has_many :display_types, :class_name => 'DisplayType', :foreign_key => :display_type_id
   has_many :instrument_contents, :class_name => 'InstrumentContent', :foreign_key => :display_type_id
-  has_many :data_types, :through => :display_types
-  has_many :readbacks, :through => :instrument_contents
-  has_many :items, :through => :instrument_contents
-  has_many :var_names, :through => :instrument_contents
-  has_many :helps, :through => :instrument_contents
-  has_many :instrument_contents, :through => :instrument_contents
-  has_many :instrument_versions, :through => :instrument_contents
+  has_many :entry_items, :class_name => 'EntryItem', :foreign_key => :display_type_id
   validates_presence_of :sas_informat
   validates_length_of :sas_informat, :allow_nil => false, :maximum => 255
   validates_presence_of :sas_format
