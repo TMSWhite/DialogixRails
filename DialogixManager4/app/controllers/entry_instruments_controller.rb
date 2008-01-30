@@ -26,49 +26,51 @@ class EntryInstrumentsController < ApplicationController
     fcsv_options = {
       :row_sep => "\n",
       :col_sep => "\t",
-      :force_quotes => true     
+      :force_quotes => false     
     }
     # Init append string
     @answerString = ""   
     @dialogix_content = FasterCSV.generate(fcsv_options) do |csv|
       #csv << ["Name", "Version"]
       @entry_instrument.entry_items.each do |items|
+        @answerListString = "list"  # should be item.display_type.name
+        items.entry_answers.each do |answers|
+          @answerListString << '|'
+          @answerListString << answers['answer_code']
+          @answerListString << '|'
+          @answerListString << answers['name']  
+        end        
         csv << [items['name'],
           items['relevance'],
           items['question'],
-          items['display_type_id']          
+          @answerListString
         ]
-        items.entry_answers.each do |answers|
-          @answerString << '|'
-          @answerString << answers['name']  
-        end
-        csv << @answerString
         #Reset append string           
         @answerString = ""          
       end
     end
     puts @dialogix_content
-    #csv()
+    csv()
     # XML for test out only 
-    respond_to do |format|
-      #format.html # show.html.erb
-      format.xml  { render :xml => @entry_instrument.entry_items}
-    end 
+#    respond_to do |format|
+#      #format.html # show.html.erb
+#      format.xml  { render :xml => @entry_instrument.entry_items}
+#    end 
   end
   
   def csv
-    url = URI.parse('http://localhost:7070/Dialogix/LoadInstrumentTest.jsp')
+    url = URI.parse('http://localhost:7070/Dialogix/LoadInstrument-Ruby.jsp')
     req = Net::HTTP::Post.new(url.path)
-    req.set_form_data({'title'=>@entry_instrument.name, 
-        'version'=> @entry_instrument.version, 
-        'content'=> @dialogix_content}, "\n")
+    req.set_form_data({'title'=>@entry_instrument.name,
+      'version'=> @entry_instrument.version,
+      'contents'=> @dialogix_content})    
     res = Net::HTTP.new(url.host, url.port).start {|http| http.request(req) }
     case res
     when Net::HTTPSuccess, Net::HTTPRedirection
       # OK
-      #puts res.body  
+      @result = res.body  
     else
-      res.error!
+      @result = res.error!
     end   
    
   end 

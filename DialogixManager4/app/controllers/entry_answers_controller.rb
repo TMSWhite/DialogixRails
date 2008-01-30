@@ -9,7 +9,7 @@ class EntryAnswersController < ApplicationController
     config.columns[:answer_code].collapsed = true    
     #config.columns[:name].description = "Enter Code"
     
-    config.list.columns = [:position, :name]   
+    config.list.columns = [:position, :name, :answer_code]   
     config.columns[:name].label = "Answer"   
     config.columns[:answer_code].label = "Code"  
   end
