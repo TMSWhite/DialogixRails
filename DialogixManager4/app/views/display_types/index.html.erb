@@ -1,0 +1,18 @@
+<h1>Listing display_types</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for display_type in @display_types %>
+  <tr>
+    <td><%= link_to 'Show', display_type %></td>
+    <td><%= link_to 'Edit', edit_display_type_path(display_type) %></td>
+    <td><%= link_to 'Destroy', display_type, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New display_type', new_display_type_path %>

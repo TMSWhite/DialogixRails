@@ -1,0 +1,12 @@
+<h1>Editing display_type</h1>
+
+<%= error_messages_for :display_type %>
+
+<% form_for(@display_type) do |f| %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @display_type %> |
+<%= link_to 'Back', display_types_path %>

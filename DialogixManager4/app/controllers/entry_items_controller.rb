@@ -1,28 +1,73 @@
 class EntryItemsController < ApplicationController
-  active_scaffold :entry_item do |config|    
+  
+  active_scaffold :entry_items do |config|    
     columns[:display_type].ui_type = :select 
-    config.actions << :sortable
-    
+    #config.actions << :sortable
+    config.list.sorting = [:position]
+    config.actions.exclude:delete
+    config.actions.exclude:show
+    #config.actions.add:show    
     config.create.columns = [:name, :relevance, :question, :display_type,  :entry_answers] 
     config.update.columns = [:name, :relevance, :question, :display_type,  :entry_answers] 
     config.list.columns = [:name, :relevance, :question, :display_type, :entry_answers]     
-    #config.action_links.columns.add 'answer_link', :label => 'Answers', :page => true       
-  end
+    #config.action_links.columns.add 'answer_link', :label => 'Answers', :page => true    
+    
+    config.action_links.add 'up', :label => 'Up', :type => :record, :position => false, :method => 'put' 
+    config.action_links.add 'down', :label => 'Down', :type => :record, :position => false, :method => 'put' 
+    config.action_links.add 'top', :label => 'Top', :type => :record, :position => false, :method => 'put' 
+    config.action_links.add 'bottom', :label => 'Bottom', :type => :record, :position => false, :method => 'put' 
+  end 
+
+
+  def up 
+    @entry_items = EntryItem.find(params[:id]) 
+    @entry_items.move_higher 
+    do_list 
+    render :action => 'move' 
+  end 
+
+
+  def down 
+    @entry_items = EntryItem.find(params[:id]) 
+    @entry_items.move_lower 
+    do_list 
+    render :action => 'move' 
+  end 
+
+
+  def top 
+    @entry_items = EntryItem.find(params[:id]) 
+    @entry_items.move_to_top 
+    do_list 
+    render :action => 'move' 
+  end 
+
+
+  def bottom 
+    @entry_items = EntryItem.find(params[:id]) 
+    @entry_items.move_to_bottom 
+    do_list 
+    render :action => 'move' 
+  end 
+
+  def move 
+  end 
+   
   
   # GET /entry_items
   # GET /entry_items.xml
-  #def index
-  #  @entry_items = EntryItem.find(:all)
+  def index_rest
+    @entry_items = EntryItem.find(:all)
 
-  #  respond_to do |format|
-  #    format.html # index.html.erb
-  #    format.xml  { render :xml => @entry_items }
-  #  end
-  #end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @entry_items }
+    end
+  end
 
   # GET /entry_items/1
   # GET /entry_items/1.xml
-   def show_rest
+  def show_rest
     @entry_item = EntryItem.find(params[:id])
 
     respond_to do |format|

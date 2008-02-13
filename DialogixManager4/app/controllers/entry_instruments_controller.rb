@@ -1,7 +1,7 @@
 class EntryInstrumentsController < ApplicationController
   require 'fastercsv'
   active_scaffold :entry_instrument do |config|
-    config.actions << :sortable
+    #config.actions << :sortable
     config.actions.exclude :delete
     # Link for all lists
     #config.action_links.add 'Submit', :label => 'Export to Server', :page => true
