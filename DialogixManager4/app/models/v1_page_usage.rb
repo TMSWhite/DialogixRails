@@ -1,5 +1,5 @@
 class V1PageUsage < ActiveRecord::Base
-  belongs_to :v1_instrument_session, :class_name => 'V1InstrumentSession', :foreign_key => :v1_instrument_session_id
+  belongs_to :v1_instrument_session, :class_name => 'V1InstrumentSession'
   validates_numericality_of :server_duration, :allow_nil => true, :only_integer => true
   validates_numericality_of :load_duration, :allow_nil => true, :only_integer => true
   validates_presence_of :display_num

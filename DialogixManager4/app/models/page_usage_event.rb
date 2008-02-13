@@ -1,5 +1,5 @@
 class PageUsageEvent < ActiveRecord::Base
-  belongs_to :page_usage, :class_name => 'PageUsage', :foreign_key => :page_usage_id
+  belongs_to :page_usage, :class_name => 'PageUsage'
   validates_presence_of :duration
   validates_numericality_of :duration, :allow_nil => false, :only_integer => true
   validates_presence_of :page_usage_event_sequence

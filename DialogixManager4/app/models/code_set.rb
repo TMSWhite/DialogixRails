@@ -1,7 +1,6 @@
 class CodeSet < ActiveRecord::Base
   set_primary_key :code_set_id
-  has_many :code_value_generals, :class_name => 'CodeValueGeneral', 
-    :foreign_key => :code_set_id
+  has_many :code_value_generals, :class_name => 'CodeValueGeneral'
   validates_presence_of :seq_num
   validates_numericality_of :seq_num, :allow_nil => false, :only_integer => true
   validates_length_of :assigning_authority_cd, :allow_nil => true, :maximum => 20

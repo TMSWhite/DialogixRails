@@ -1,7 +1,7 @@
 class PageUsage < ActiveRecord::Base
-  belongs_to :instrument_session, :class_name => 'InstrumentSession', :foreign_key => :instrument_session_id
-  belongs_to :action_type, :class_name => 'ActionType', :foreign_key => :action_type_id
-  has_many :page_usage_events, :class_name => 'PageUsageEvent', :foreign_key => :page_usage_id
+  belongs_to :instrument_session, :class_name => 'InstrumentSession'
+  belongs_to :action_type, :class_name => 'ActionType'
+  has_many :page_usage_events, :class_name => 'PageUsageEvent'
   validates_numericality_of :page_duration, :allow_nil => true, :only_integer => true
   validates_numericality_of :server_duration, :allow_nil => true, :only_integer => true
   validates_presence_of :page_usage_sequence

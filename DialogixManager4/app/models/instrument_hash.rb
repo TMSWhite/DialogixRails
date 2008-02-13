@@ -1,8 +1,8 @@
 class InstrumentHash < ActiveRecord::Base
-  belongs_to :instrument_hash, :class_name => 'InstrumentHash', :foreign_key => :instrument_hash_id
-  belongs_to :language_list, :class_name => 'LanguageList', :foreign_key => :language_list_id
-  has_many :instrument_hashes, :class_name => 'InstrumentHash', :foreign_key => :instrument_hash_id
-  has_many :instrument_versions, :class_name => 'InstrumentVersion', :foreign_key => :instrument_hash_id
+  belongs_to :instrument_hash, :class_name => 'InstrumentHash'
+  belongs_to :language_list, :class_name => 'LanguageList'
+  has_many :instrument_hashes, :class_name => 'InstrumentHash'
+  has_many :instrument_versions, :class_name => 'InstrumentVersion'
   has_many :language_lists, :through => :instrument_hashes
   has_many :instruments, :through => :instrument_versions
   has_many :instrument_versions, :through => :instrument_versions

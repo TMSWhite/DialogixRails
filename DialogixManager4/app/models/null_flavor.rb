@@ -1,8 +1,8 @@
 class NullFlavor < ActiveRecord::Base
-  belongs_to :null_flavor, :class_name => 'NullFlavor', :foreign_key => :null_flavor_id
-  has_many :data_elements, :class_name => 'DataElement', :foreign_key => :null_flavor_id
-  has_many :item_usages, :class_name => 'ItemUsage', :foreign_key => :null_flavor_id
-  has_many :null_flavors, :class_name => 'NullFlavor', :foreign_key => :null_flavor_id
+  belongs_to :null_flavor, :class_name => 'NullFlavor'
+  has_many :data_elements, :class_name => 'DataElement'
+  has_many :item_usages, :class_name => 'ItemUsage'
+  has_many :null_flavors, :class_name => 'NullFlavor'
   has_many :var_names, :through => :data_elements
   has_many :instrument_sessions, :through => :data_elements
   has_many :answers, :through => :data_elements

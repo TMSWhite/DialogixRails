@@ -1,8 +1,8 @@
 class ActionType < ActiveRecord::Base
-  belongs_to :action_type, :class_name => 'ActionType', :foreign_key => :action_type_id
-  has_many :action_types, :class_name => 'ActionType', :foreign_key => :action_type_id
-  has_many :instrument_sessions, :class_name => 'InstrumentSession', :foreign_key => :action_type_id
-  has_many :page_usages, :class_name => 'PageUsage', :foreign_key => :action_type_id
+  belongs_to :action_type, :class_name => 'ActionType'
+  has_many :action_types, :class_name => 'ActionType'
+  has_many :instrument_sessions, :class_name => 'InstrumentSession'
+  has_many :page_usages, :class_name => 'PageUsage'
   has_many :dialogix_users, :through => :instrument_sessions
   has_many :instruments, :through => :instrument_sessions
   has_many :instrument_sessions, :through => :instrument_sessions

@@ -1,11 +1,11 @@
 class Question < ActiveRecord::Base
-  belongs_to :question, :class_name => 'Question', :foreign_key => :question_id
-  has_many :items, :class_name => 'Item', :foreign_key => :question_id
-  has_many :questions, :class_name => 'Question', :foreign_key => :question_id
-  has_many :question_localizeds, :class_name => 'QuestionLocalized', :foreign_key => :question_id
-  has_many :semantic_mapping_i_q_as, :class_name => 'SemanticMappingIQA', :foreign_key => :question_id
-  has_many :semantic_mapping_qs, :class_name => 'SemanticMappingQ', :foreign_key => :question_id
-  has_many :semantic_mapping_q_as, :class_name => 'SemanticMappingQA', :foreign_key => :question_id
+  belongs_to :question, :class_name => 'Question'
+  has_many :items, :class_name => 'Item'
+  has_many :questions, :class_name => 'Question'
+  has_many :question_localizeds, :class_name => 'QuestionLocalized'
+  has_many :semantic_mapping_i_q_as, :class_name => 'SemanticMappingIQA'
+  has_many :semantic_mapping_qs, :class_name => 'SemanticMappingQ'
+  has_many :semantic_mapping_q_as, :class_name => 'SemanticMappingQA'
   has_many :items, :through => :items
   has_many :validations, :through => :items
   has_many :data_types, :through => :items

@@ -59,4 +59,4 @@ Rails::Initializer.run do |config|
 end
 # Add new mime types for use in respond_to blocks:
 Mime::Type.register "text/tsv", :tsv 
-ActiveRecord::Base.primary_key_prefix_type = :table_name_with_underscore
+#ActiveRecord::Base.primary_key_prefix_type = :table_name_with_underscore

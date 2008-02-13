@@ -1,11 +1,11 @@
 class DataElement < ActiveRecord::Base
-  belongs_to :data_element, :class_name => 'DataElement', :foreign_key => :data_element_id
-  belongs_to :null_flavor, :class_name => 'NullFlavor', :foreign_key => :null_flavor_id
-  belongs_to :answer, :class_name => 'Answer', :foreign_key => :answer_id
-  belongs_to :instrument_session, :class_name => 'InstrumentSession', :foreign_key => :instrument_session_id
-  belongs_to :instrument_content, :class_name => 'InstrumentContent', :foreign_key => :instrument_content_id
-  belongs_to :var_name, :class_name => 'VarName', :foreign_key => :var_name_id
-  has_many :data_elements, :class_name => 'DataElement', :foreign_key => :data_element_id
+  belongs_to :data_element, :class_name => 'DataElement'
+  belongs_to :null_flavor, :class_name => 'NullFlavor'
+  belongs_to :answer, :class_name => 'Answer'
+  belongs_to :instrument_session, :class_name => 'InstrumentSession'
+  belongs_to :instrument_content, :class_name => 'InstrumentContent'
+  belongs_to :var_name, :class_name => 'VarName'
+  has_many :data_elements, :class_name => 'DataElement'
   has_many :var_names, :through => :data_elements
   has_many :instrument_sessions, :through => :data_elements
   has_many :answers, :through => :data_elements

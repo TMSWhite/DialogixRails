@@ -1,5 +1,5 @@
 class DialogixUser < ActiveRecord::Base
-  has_many :instrument_sessions, :class_name => 'InstrumentSession', :foreign_key => :dialogix_user_id
+  has_many :instrument_sessions, :class_name => 'InstrumentSession'
   has_many :instruments, :through => :instrument_sessions, :source => :instrument_version
   has_many :instrument_versions, :through => :instrument_sessions
   validates_presence_of :first_name

@@ -5,7 +5,7 @@ class V1InstrumentSessionsController < ApplicationController
     config.actions.exclude:update
     config.actions.exclude:show    
     config.list.columns= [
-      :v1_instrument_session_id,
+      :id,
       :instrument_version_name,
       :start_time,
       :last_access_time,

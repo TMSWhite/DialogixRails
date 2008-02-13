@@ -1,7 +1,7 @@
 class LoincItemRequest < ActiveRecord::Base
-  belongs_to :loinc_item_request, :class_name => 'LoincItemRequest', :foreign_key => :loinc_item_request_id
-  belongs_to :item, :class_name => 'Item', :foreign_key => :item_id
-  has_many :loinc_item_requests, :class_name => 'LoincItemRequest', :foreign_key => :loinc_item_request_id
+  belongs_to :loinc_item_request, :class_name => 'LoincItemRequest'
+  belongs_to :item, :class_name => 'Item'
+  has_many :loinc_item_requests, :class_name => 'LoincItemRequest'
   has_many :items, :through => :loinc_item_requests
   validates_length_of :loinc_system, :allow_nil => true, :maximum => 255
   validates_length_of :loinc_scale, :allow_nil => true, :maximum => 255

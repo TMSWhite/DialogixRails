@@ -1,9 +1,9 @@
 class ItemUsage < ActiveRecord::Base
-  belongs_to :null_flavor, :class_name => 'NullFlavor', :foreign_key => :null_flavor_id
-  belongs_to :answer, :class_name => 'Answer', :foreign_key => :answer_id
-  belongs_to :instrument_session, :class_name => 'InstrumentSession', :foreign_key => :instrument_session_id
-  belongs_to :instrument_content, :class_name => 'InstrumentContent', :foreign_key => :instrument_content_id
-  belongs_to :var_name, :class_name => 'VarName', :foreign_key => :var_name_id
+  belongs_to :null_flavor, :class_name => 'NullFlavor'
+  belongs_to :answer, :class_name => 'Answer'
+  belongs_to :instrument_session, :class_name => 'InstrumentSession'
+  belongs_to :instrument_content, :class_name => 'InstrumentContent'
+  belongs_to :var_name, :class_name => 'VarName'
   validates_presence_of :item_usage_sequence
   validates_numericality_of :item_usage_sequence, :allow_nil => false, :only_integer => true
   validates_numericality_of :group_num, :allow_nil => true, :only_integer => true

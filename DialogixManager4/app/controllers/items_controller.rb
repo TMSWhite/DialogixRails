@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
     config.actions.exclude:show
     config.actions.exclude:update
     config.actions.add:show
-    #config.list.columns = [:item_type, :question_id, :answer_list_id] 
+#    config.list.columns = [:item_type, :question_localizeds, :data_type, :answer, :validation] 
     #config.nested.add_link("Answers", [:answer_localized])
     columns[:question_localizeds].ui_type = :select 
     #config.columns[:answer_localized].includes = [{'item' => 'answer_localized'}]

@@ -1,9 +1,9 @@
 class VarName < ActiveRecord::Base
-  belongs_to :var_name, :class_name => 'VarName', :foreign_key => :var_name_id
-  has_many :data_elements, :class_name => 'DataElement', :foreign_key => :var_name_id
-  has_many :instrument_contents, :class_name => 'InstrumentContent', :foreign_key => :var_name_id
-  has_many :item_usages, :class_name => 'ItemUsage', :foreign_key => :var_name_id
-  has_many :var_names, :class_name => 'VarName', :foreign_key => :var_name_id
+  belongs_to :var_name, :class_name => 'VarName'
+  has_many :data_elements, :class_name => 'DataElement'
+  has_many :instrument_contents, :class_name => 'InstrumentContent'
+  has_many :item_usages, :class_name => 'ItemUsage'
+  has_many :var_names, :class_name => 'VarName'
   has_many :instrument_sessions, :through => :data_elements
   has_many :answers, :through => :data_elements
   has_many :instrument_contents, :through => :data_elements

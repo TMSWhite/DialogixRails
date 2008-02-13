@@ -1,10 +1,10 @@
 class InstrumentSession < ActiveRecord::Base
-  belongs_to :instrument_version, :class_name => 'InstrumentVersion', :foreign_key => :instrument_version_id
-  belongs_to :dialogix_user, :class_name => 'DialogixUser', :foreign_key => :dialogix_user_id
-  belongs_to :action_type, :class_name => 'ActionType', :foreign_key => :action_type_id
-  has_many :data_elements, :class_name => 'DataElement', :foreign_key => :instrument_session_id
-  has_many :item_usages, :class_name => 'ItemUsage', :foreign_key => :instrument_session_id
-  has_many :page_usages, :class_name => 'PageUsage', :foreign_key => :instrument_session_id
+  belongs_to :instrument_version, :class_name => 'InstrumentVersion'
+  belongs_to :dialogix_user, :class_name => 'DialogixUser'
+  belongs_to :action_type, :class_name => 'ActionType'
+  has_many :data_elements, :class_name => 'DataElement'
+  has_many :item_usages, :class_name => 'ItemUsage'
+  has_many :page_usages, :class_name => 'PageUsage'
   validates_numericality_of :finished, :allow_nil => true, :only_integer => true
   validates_numericality_of :num_vars, :allow_nil => true, :only_integer => true
   validates_presence_of :start_time

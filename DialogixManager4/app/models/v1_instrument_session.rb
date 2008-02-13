@@ -1,6 +1,6 @@
 class V1InstrumentSession < ActiveRecord::Base
-  has_many :v1_data_elements, :class_name => 'V1DataElement', :foreign_key => :v1_instrument_session_id
-  has_many :v1_page_usages, :class_name => 'V1PageUsage', :foreign_key => :v1_instrument_session_id
+  has_many :v1_data_elements, :class_name => 'V1DataElement'
+  has_many :v1_page_usages, :class_name => 'V1PageUsage'
   validates_numericality_of :max_group, :allow_nil => true, :only_integer => true
   validates_numericality_of :max_var_num, :allow_nil => true, :only_integer => true
   validates_presence_of :instrument_version_name

@@ -1,10 +1,10 @@
 class InstrumentContent < ActiveRecord::Base
-  belongs_to :item, :class_name => 'Item', :foreign_key => :item_id
-  belongs_to :display_type, :class_name => 'DisplayType', :foreign_key => :display_type_id
-  belongs_to :help, :class_name => 'Help', :foreign_key => :help_id
-  belongs_to :instrument_version, :class_name => 'InstrumentVersion', :foreign_key => :instrument_version_id
-  belongs_to :var_name, :class_name => 'VarName', :foreign_key => :var_name_id
-  belongs_to :readback, :class_name => 'Readback', :foreign_key => :readback_id  
+  belongs_to :item, :class_name => 'Item'
+  belongs_to :display_type, :class_name => 'DisplayType'
+  belongs_to :help, :class_name => 'Help'
+  belongs_to :instrument_version, :class_name => 'InstrumentVersion'
+  belongs_to :var_name, :class_name => 'VarName'
+  belongs_to :readback, :class_name => 'Readback'  
   has_many :item_usages, :class_name => 'ItemUsage', :foreign_key => :instrument_content_id
   #has_one :question_localized, :through => :item
   validates_length_of :spss_format, :allow_nil => true, :maximum => 255

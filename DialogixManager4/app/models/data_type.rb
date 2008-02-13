@@ -1,9 +1,9 @@
 class DataType < ActiveRecord::Base
-  belongs_to :data_type, :class_name => 'DataType', :foreign_key => :data_type_id
-  has_many :data_types, :class_name => 'DataType', :foreign_key => :data_type_id
-  has_many :display_types, :class_name => 'DisplayType', :foreign_key => :data_type_id
-  has_many :items, :class_name => 'Item', :foreign_key => :data_type_id
-  has_many :validations, :class_name => 'Validation', :foreign_key => :data_type_id
+  belongs_to :data_type, :class_name => 'DataType'
+  has_many :data_types, :class_name => 'DataType'
+  has_many :display_types, :class_name => 'DisplayType'
+  has_many :items, :class_name => 'Item'
+  has_many :validations, :class_name => 'Validation'
   has_many :display_types, :through => :display_types
   has_many :items, :through => :items
   has_many :validations, :through => :items

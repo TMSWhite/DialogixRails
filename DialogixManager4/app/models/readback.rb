@@ -1,8 +1,8 @@
 class Readback < ActiveRecord::Base
-  belongs_to :readback, :class_name => 'Readback', :foreign_key => :readback_id
-  has_many :instrument_contents, :class_name => 'InstrumentContent', :foreign_key => :readback_id
-  has_many :readbacks, :class_name => 'Readback', :foreign_key => :readback_id
-  has_many :readback_localizeds, :class_name => 'ReadbackLocalized', :foreign_key => :readback_id
+  belongs_to :readback, :class_name => 'Readback'
+  has_many :instrument_contents, :class_name => 'InstrumentContent'
+  has_many :readbacks, :class_name => 'Readback'
+  has_many :readback_localizeds, :class_name => 'ReadbackLocalized'
   has_many :items, :through => :instrument_contents
   has_many :var_names, :through => :instrument_contents
   has_many :helps, :through => :instrument_contents
