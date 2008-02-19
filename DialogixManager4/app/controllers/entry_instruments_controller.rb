@@ -76,68 +76,6 @@ class EntryInstrumentsController < ApplicationController
     end
   end
   
-  # GET /entry_instruments/new
-  # GET /entry_instruments/new.xml
-  def new_rest
-    @entry_instrument = EntryInstrument.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @entry_instrument }
-    end
-  end
-
-  # GET /entry_instruments/1/edit
-  def edit_rest
-    @entry_instrument = EntryInstrument.find(params[:id])
-  end
-
-  # POST /entry_instruments
-  # POST /entry_instruments.xml
-  def create_rest
-    @entry_instrument = EntryInstrument.new(params[:entry_instrument])
-
-    respond_to do |format|
-      if @entry_instrument.save
-        flash[:notice] = 'EntryInstrument was successfully created.'
-        format.html { redirect_to(@entry_instrument) }
-        format.xml  { render :xml => @entry_instrument, :status => :created, :location => @entry_instrument }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @entry_instrument.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /entry_instruments/1
-  # PUT /entry_instruments/1.xml
-  def update_rest
-    @entry_instrument = EntryInstrument.find(params[:id])
-
-    respond_to do |format|
-      if @entry_instrument.update_attributes(params[:entry_instrument])
-        flash[:notice] = 'EntryInstrument was successfully updated.'
-        format.html { redirect_to(@entry_instrument) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @entry_instrument.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /entry_instruments/1
-  # DELETE /entry_instruments/1.xml
-  def destroy_rest
-    @entry_instrument = EntryInstrument.find(params[:id])
-    @entry_instrument.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(entry_instruments_url) }
-      format.xml  { head :ok }
-    end
-  end
-  # GET /entry_instruments/new
-  # GET /entry_instruments/new.xml
+  
  
 end

@@ -1,6 +1,6 @@
 class EntryAnswersController < ApplicationController
   active_scaffold :entry_answer do |config|
-    #config.actions << :sortable 
+    config.actions << :sortable 
     config.list.sorting = [:position] 
     config.actions.exclude:delete
     config.actions.exclude:show
@@ -31,8 +31,8 @@ class EntryAnswersController < ApplicationController
 
 
   def down 
-    @items = EntryAnswer.find(params[:id]) 
-    @items.move_lower 
+    @items = EntryAnswer.find(params[:id])     
+    @items.move_lower     
     do_list 
     render :action => 'move' 
   end 
@@ -73,7 +73,7 @@ class EntryAnswersController < ApplicationController
     @entry_answer = EntryAnswer.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @entry_answer }
+      format.xml  { render :xml => @entry_answer }      
     end
   end
 

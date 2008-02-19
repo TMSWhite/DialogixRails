@@ -1,4 +1,6 @@
 class InstrumentSessionsController < ApplicationController
+  require 'ruby-hl7'
+  require 'socket'
   active_scaffold :instrument_session do |config|
     config.actions.exclude:create
     config.actions.exclude:delete
@@ -6,96 +8,100 @@ class InstrumentSessionsController < ApplicationController
     config.actions.exclude:update
     config.actions.add:show
     config.list.columns = [:start_time, :display_num, :current_var_name, :num_vars, :language_code,  
-                           :last_access_time, :item_usages, :page_usages] 
+      :last_access_time, :item_usages, :page_usages] 
     config.columns[:start_time].label = "Start Time"
     config.columns[:display_num].label = "Display"
     config.columns[:current_var_name].label = "Current"
     config.columns[:language_code].label = "Language"
     config.columns[:last_access_time].label = "Last Accessed Time"
     config.list.sorting = [{:start_time => :ASC}]    
+    config.action_links.add 'submit_hl7_message', :label => 'Send HL7', :type => :record, :page => true
+  end
+  
+  def submit_hl7_message
+    @instrument_session = InstrumentSession.find(params[:id])
+    hl7_message
+    #respond_to do |format|
+    #  format.xml  { render :xml => @instrument_session }
+    #end    
+  end
+
+  def hl7_message
+    # create a message
+    sp = "^"
+    local = "L"
+    msg = HL7::Message.new
+    # create a MSH segment 
+    msh = HL7::Message::Segment::MSH.new
+    # Add Message Header
+    msg << msh 
+    #nte = HL7::Message::Segment::NTE.new
+    pid = HL7::Message::Segment::PID.new
+    msg << pid
+    orc = HL7::Message::Segment::Default.new
+    msg << orc  # add the new segment to the message
+    obr = HL7::Message::Segment::Default.new
+    msg << obr       
+    # Assemble Message
+    msh.sending_app "Dialogix"
+    msh.sending_facility = "OMH"    
+    msh.version_id = "2.5"
+    msh.message_type = "ORU"
+    #msh.time_of_message = Time.now
+    msh.message_control_id = rand(10000).to_s
+    msh.processing_id = rand(10000).to_s
+    # PID
+    pid.patient_id_list = @instrument_session.dialogix_user.id.to_s
+    pid.patient_name = @instrument_session.dialogix_user.first_name
+    # ORC
+    orc.e0 = "ORC"          
+    orc.e1 = "100"   
+    # OBR
+    obr.e0 = "OBR"          
+    obr.e1 = ""   
+    obr.e2 = "" 
+    obr.e3 = "" 
+    obr.e4 = @instrument_session.instrument_version.id.to_s << 
+      sp << 
+      @instrument_session.instrument_version.name <<
+      sp << local
+    # OBX        
+    @instrument_session.item_usages.each do |items|
+      obx = HL7::Message::Segment::OBX.new 
+      msg << obx  
+      obx.value_type ="CE"
+      obx.observation_id = items.id.to_s <<
+        sp << items.question_as_asked <<
+        sp << local << 
+        sp << items.var_name.name <<
+        sp << items.question_as_asked <<
+        sp << local
+      obx.observation_sub_id = " "
+      obx.observation_value = items.answer_id.to_s <<
+        sp << items.answer_string <<
+        sp << local <<
+        sp << items.answer_code <<
+        sp << items.answer_string <<
+        sp << local    
+      obx.observation_result_status = "F"           
+    end       
+            
+    puts msg.to_s 
+    @message_str = msg.to_s 
+    # Send HL7 Message
+    #send_message(msg)
     
   end
-  # GET /instrument_sessions
-  # GET /instrument_sessions.xml
-  #def index
-  #  @instrument_sessions = InstrumentSession.find(:all)
-  #
-  #  respond_to do |format|
-  #    format.html # index.html.erb
-  #    format.xml  { render :xml => @instrument_sessions }
-  #  end
-  #end
-
-  # GET /instrument_sessions/1
-  # GET /instrument_sessions/1.xml
-  def show_rest
-    @instrument_session = InstrumentSession.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @instrument_session }
+  
+  def send_message(msg)
+    soc = TCPSocket.open( "localhost", 2100 ) rescue false
+    if (soc)
+      soc.write msg.to_mllp
+      soc.close
+      @message_str = msg.to_s << "<br> Message Sent!"
+    else
+      @message_str = "Connection Failed!"
     end
   end
-
-  # GET /instrument_sessions/new
-  # GET /instrument_sessions/new.xml
-  def new_rest
-    @instrument_session = InstrumentSession.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @instrument_session }
-    end
-  end
-
-  # GET /instrument_sessions/1/edit
-  def edit_rest
-    @instrument_session = InstrumentSession.find(params[:id])
-  end
-
-  # POST /instrument_sessions
-  # POST /instrument_sessions.xml
-  def create_rest
-    @instrument_session = InstrumentSession.new(params[:instrument_session])
-
-    respond_to do |format|
-      if @instrument_session.save
-        flash[:notice] = 'InstrumentSession was successfully created.'
-        format.html { redirect_to(@instrument_session) }
-        format.xml  { render :xml => @instrument_session, :status => :created, :location => @instrument_session }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @instrument_session.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /instrument_sessions/1
-  # PUT /instrument_sessions/1.xml
-  def update_rest
-    @instrument_session = InstrumentSession.find(params[:id])
-
-    respond_to do |format|
-      if @instrument_session.update_attributes(params[:instrument_session])
-        flash[:notice] = 'InstrumentSession was successfully updated.'
-        format.html { redirect_to(@instrument_session) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @instrument_session.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /instrument_sessions/1
-  # DELETE /instrument_sessions/1.xml
-  def destroy_rest
-    @instrument_session = InstrumentSession.find(params[:id])
-    @instrument_session.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(instrument_sessions_url) }
-      format.xml  { head :ok }
-    end
-  end
+ 
 end
