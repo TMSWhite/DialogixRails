@@ -16,16 +16,22 @@ class InstrumentSessionsController < ApplicationController
     config.columns[:last_access_time].label = "Last Accessed Time"
     config.list.sorting = [{:start_time => :ASC}]    
     config.action_links.add 'submit_hl7_message', :label => 'Send HL7', :type => :record, :page => true
+    config.action_links.add 'display_xml', :label => 'XML', :type => :record, :page => true
   end
   
   def submit_hl7_message
     @instrument_session = InstrumentSession.find(params[:id])
     hl7_message
-    #respond_to do |format|
-    #  format.xml  { render :xml => @instrument_session }
-    #end    
+      
   end
-
+  
+  def display_xml
+    @instrument_session = InstrumentSession.find(params[:id])
+    respond_to do |format|
+      format.xml  { render :xml => @instrument_session.item_usages }
+    end    
+  end
+  
   def hl7_message
     # create a message
     sp = "^"
@@ -63,33 +69,32 @@ class InstrumentSessionsController < ApplicationController
     obr.e3 = "" 
     obr.e4 = @instrument_session.instrument_version.id.to_s << 
       sp << 
-      @instrument_session.instrument_version.name <<
+      @instrument_session.instrument_version.instrument.name <<
+      "(" << @instrument_session.instrument_version.name << ")" <<
       sp << local
     # OBX        
     @instrument_session.item_usages.each do |items|
-      obx = HL7::Message::Segment::OBX.new 
-      msg << obx  
-      obx.value_type ="CE"
-      obx.observation_id = items.id.to_s <<
-        sp << items.question_as_asked <<
-        sp << local << 
-        sp << items.var_name.name <<
-        sp << items.question_as_asked <<
-        sp << local
-      obx.observation_sub_id = " "
-      obx.observation_value = items.answer_id.to_s <<
-        sp << items.answer_string <<
-        sp << local <<
-        sp << items.answer_code <<
-        sp << items.answer_string <<
-        sp << local    
-      obx.observation_result_status = "F"           
+      if (not items.answer_code.nil?)
+        obx = HL7::Message::Segment::OBX.new 
+        msg << obx  
+        obx.value_type ="CE"
+        obx.observation_id = items.id.to_s <<
+          sp << items.question_as_asked <<
+          sp << local << 
+          sp << items.var_name.name <<
+          obx.observation_sub_id = " "
+        obx.observation_value = items.answer_id.to_s <<
+          sp << items.answer_string <<
+          sp << local <<
+          sp << items.answer_code <<             
+          obx.observation_result_status = "F"  
+      end
     end       
             
     puts msg.to_s 
     @message_str = msg.to_s 
     # Send HL7 Message
-    #send_message(msg)
+    send_message(msg)
     
   end
   

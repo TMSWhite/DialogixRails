@@ -7,8 +7,8 @@ class ItemUsagesController < ApplicationController
     config.actions.add:show
     config.action_links.add 'export_csv', :label => 'Export to Excel', :page => true
     config.list.columns = [:display_num, :item_usage_sequence, :question_as_asked, :answer_string, :answer_code,  
-                           :null_flavor, :language_code, :group_num,  :time_stamp, 
-                           :instrument_session] 
+      :null_flavor, :language_code, :group_num,  :time_stamp, 
+      :instrument_session] 
     config.columns[:display_num].label = "Display Num"
     config.columns[:question_as_asked].label = "Question as Asked"
     config.columns[:language_code].label = "Language"
@@ -17,17 +17,7 @@ class ItemUsagesController < ApplicationController
     config.columns[:item_usage_sequence].label = "Item Sequence"
     config.list.sorting = [{:item_usage_sequence => :ASC}]        
   end
-  # GET /item_usages
-  # GET /item_usages.xml
-  #def index
-  #  @item_usages = ItemUsage.find(:all)
-  #
-  #   respond_to do |format|
-  #    format.html # index.html.erb
-  #    format.xml  { render :xml => @item_usages }
-  #  end
-  #end
-
+  
   # GET /item_usages/1
   # GET /item_usages/1.xml
   def show_rest
