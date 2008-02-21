@@ -3,7 +3,7 @@ class EntryItemsController < ApplicationController
   active_scaffold :entry_items do |config|    
     columns[:display_type].ui_type = :select 
     config.actions << :sortable
-    config.list.sorting = [:position]
+#    config.list.sorting = [:position]
     config.actions.exclude:delete
     config.actions.exclude:show
     #config.actions.add:show    

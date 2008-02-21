@@ -1,7 +1,7 @@
 class EntryAnswersController < ApplicationController
   active_scaffold :entry_answer do |config|
     config.actions << :sortable 
-    config.list.sorting = [:position] 
+#    config.list.sorting = [:position] 
     config.actions.exclude:delete
     config.actions.exclude:show
     #config.actions.exclude:update
